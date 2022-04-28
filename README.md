@@ -8,4 +8,4 @@ Integrantes:
 
 ## Useful commands
 * Run the server: rackup -p "Port Number"
-
+* Install gems from Gemfile: bundle install
