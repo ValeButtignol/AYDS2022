@@ -20,9 +20,13 @@ Integrantes:
 * Show the running containers: _docker ps_
 * Show the executed containers: _docker ps -a_
 * Execute a command from a running container: _docker exec_
-
-* Run an a container from an image on background: _docker run -d "Container Name"_
-* Run an a container from an image: _docker run "Container Name"_
+<>
+* Depending on the container, you can stay connected to it: _docker exec -it "Container ID" /bin/sh_
+<>
+* Run a container from an image on background iteratively: _docker run -d -it "Container Name"_
+<>
+* Run a container from an image on background: _docker run -d "Container Name"_
+* Run a container from an image: _docker run "Container Name"_
 * Download an image but don't execute it: _docker pull "Image Name"_
 * Start a container on background: _docker start "Container ID"_
 * Stop a container on background: _docker stop "Container ID"_

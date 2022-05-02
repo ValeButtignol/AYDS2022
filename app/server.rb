@@ -27,7 +27,7 @@ class App < Sinatra::Application
     end
     
     get '/' do
-      'Check the logger'
+      'asbfasjdasf'
     end
   end
 end
