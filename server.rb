@@ -2,6 +2,7 @@ require 'sinatra/base'
 require 'bundler/setup'
 require 'sinatra/reloader' if Sinatra::Base.environment == :development
 require 'logger'
+require "sinatra/activerecord"
 
 class App < Sinatra::Application
     
@@ -20,14 +21,71 @@ class App < Sinatra::Application
       logger.info 'Reloaded!!!'
     end
 
-
-
     def initialize(app = nil)
       super()
     end
-    
-    get '/' do
-      'Check the logger'
+
+    class Account
+
+      @firstName = "default_name"
+      @lastName = "default_name"
+      @dni = 0
+      @email = "default_name"
+
+      #Constructor
+      def initialize(firstName,lastName,dni,email)
+     @firstName = firstName
+     @lastName = lastName
+     @dni = dni
+     @email = email
+
+     end
+
+   end
+
+     class User < Account 
+
+      @num = 0
+
     end
+
+    class Administrador < Account
+
+      @num = 0
+    end
+
+    class Team
+
+      @name = "default_name"
+      @players = 0
+
+    end
+
+    class Match
+
+      @time = 0
+      @stadium = "default_stadium"
+      @num = 0
+      @date = 0
+
+    end
+
+    #
+    # class Bet 
+    #  
+    #
+    # @id = 0
+    #
+    # end
+
+    # class Result 
+    #
+    # end
+
+  
+    get '/' do
+      "Hola Juan"
+    end 
+
   end
 end
