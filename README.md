@@ -11,6 +11,8 @@ Integrantes:
 * Run the server: _rackup -p "Port Number"_
 * Install gems from Gemfile: _bundle install_
 * Run docker commands if got permission denied: _sudo chmod 666 /var/run/docker.sock_
+* Solving docker permissions error: _sudo aa-remove-unknown_
+
 
 
 \*Docker Commands:\*
@@ -20,11 +22,11 @@ Integrantes:
 * Show the running containers: _docker ps_
 * Show the executed containers: _docker ps -a_
 * Execute a command from a running container: _docker exec_
-<>
+
 * Depending on the container, you can stay connected to it: _docker exec -it "Container ID" /bin/sh_
-<>
+
 * Run a container from an image on background iteratively: _docker run -d -it "Container Name"_
-<>
+
 * Run a container from an image on background: _docker run -d "Container Name"_
 * Run a container from an image: _docker run "Container Name"_
 * Download an image but don't execute it: _docker pull "Image Name"_
