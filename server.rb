@@ -3,6 +3,8 @@ require 'bundler/setup'
 require 'sinatra/reloader' if Sinatra::Base.environment == :development
 require 'logger'
 require "sinatra/activerecord"
+require_relative 'app/models/user'
+
 
 class App < Sinatra::Application
     
@@ -25,7 +27,7 @@ class App < Sinatra::Application
       super()
     end
 
-  
+    
     get '/' do
       "Hola Juan"
     end 

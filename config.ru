@@ -1,2 +1,2 @@
-require './app/controllers/server'
+require './server'
 run App
