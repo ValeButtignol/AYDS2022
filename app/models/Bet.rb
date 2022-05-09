@@ -1,7 +1,8 @@
- #
-    # class Bet 
-    #  
-    #
-    # @id = 0
-    #
-    # end
+ class Bet < ActiveRecord::Base
+
+   #Class relations
+
+   has_one :User
+   has_one :Match 
+ 
+ end   

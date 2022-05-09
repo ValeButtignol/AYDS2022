@@ -1,15 +1,8 @@
-class Account
+class Account < ActiveRecord::Base 
 
-      @firstName = "default_name"
-      @lastName = "default_name"
-      @dni = 0
-      @email = "default_name"
+      #Class relations
 
-      #Constructor
-      def initialize(firstName,lastName,dni,email)
-     @firstName = firstName
-     @lastName = lastName
-     @dni = dni
-     @email = email
+      belongs_to :User
+      belongs_to :Administrador
 
-     end
+end

@@ -1,8 +1,12 @@
-class Match
+class Match < ActiveRecord::Base
 
-      @time = 0
-      @stadium = "default_stadium"
-      @num = 0
-      @date = 0
+      #Class relations
 
-    end
+      has_one :Bet
+      has_one :Result
+      has_one :home, class_name: 'Team'
+      has_one :visitor, class_name: 'Team'
+      has_many :Administrador
+      
+
+end

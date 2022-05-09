@@ -1,6 +1,8 @@
- class Team
+ class Team < ActiveRecord::Base
 
-      @name = "default_name"
-      @players = 0
+      #Class relations
+
+      has_many :Administrador
+      
 
     end

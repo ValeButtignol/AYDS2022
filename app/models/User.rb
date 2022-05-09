@@ -1,5 +1,6 @@
- class User < Account 
+ class Player_User < ActiviRecord::Base 
 
-      @num = 0
+    belongs_to :User
+    has_many :Bet
 
-    end
+end

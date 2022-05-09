@@ -1,0 +1,7 @@
+require_relative 'Account'
+require_relative 'Administrador'
+require_relative 'Bet'
+require_relative 'Match'
+require_relative 'Result'
+require_relative 'Team'
+require_relative 'User'

@@ -1,4 +1,9 @@
-class Administrador < Account
+class Administrador < ActiveRecord::Base
 
-      @num = 0
+      #Class relations
+      
+      has_many :Match
+      has_many :Result
+      belongs_to :Account
+
 end
