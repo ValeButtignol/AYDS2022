@@ -1,4 +1,4 @@
-require_relative '../app/models/team.rb'
+require_relative '../app/models/init.rb'
 
 describe 'Team' do 
     describe 'when input is empty' do
@@ -10,6 +10,18 @@ describe 'Team' do
 
         end
 
+    end
+
+    describe 'when the teams are equals' do
+        it'It is not valid' do
+            
+            team1 = Team.new(name: "River")
+            team2 = Team.new(name: "Boca")
+
+            expect(team1).not_to eq(team2)
+        
+        end
+    
     end
 
 end
