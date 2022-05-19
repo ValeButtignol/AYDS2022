@@ -4,4 +4,8 @@ class Match < ActiveRecord::Base
   has_one :result
   has_many :forecasts
   has_many :administrators
+
+  validates :stadium, :date, :home_team, :visitor_team, presence: true
+  validates :home_team, comparison: {other_than: :visitor_team}
+
 end

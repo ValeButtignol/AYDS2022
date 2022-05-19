@@ -2,6 +2,8 @@ class Forecast < ActiveRecord::Base
   belongs_to :player
   belongs_to :match
 
+  validates :home_goals, :visitor_goals, :player, :match, presence: true
+
   # Callback that sets forcast.winner automaticly.
   before_create do
     self.winner = set_winner(self.home_goals, self.visitor_goals) 

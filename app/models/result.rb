@@ -2,6 +2,7 @@ class Result < ActiveRecord::Base
   belongs_to :match
   has_many :administrators
 
+  validates :home_goals, :visitor_goals, :match, presence: true
 
   # Callback that sets result.winner automaticly.
   before_create do
