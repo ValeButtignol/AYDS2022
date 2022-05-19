@@ -6,6 +6,7 @@ class CreateResults < ActiveRecord::Migration[7.0]
       t.string :winner
       
       t.references :match
+      t.references :administrator
       
       t.timestamps
     end

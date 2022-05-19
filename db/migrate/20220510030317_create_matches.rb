@@ -4,8 +4,9 @@ class CreateMatches < ActiveRecord::Migration[7.0]
       t.string :stadium
       t.datetime :date
       
-      t.references :local_team, index: true, foreign_key: { to_table: :teams }
+      t.references :home_team, index: true, foreign_key: { to_table: :teams }
       t.references :visitor_team, index: true, foreign_key: { to_table: :teams }
+      t.references :administrator
 
       t.timestamps
     end
