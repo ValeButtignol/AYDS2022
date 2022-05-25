@@ -1,4 +1,4 @@
-require_relative 'app/controllers/App'
-require_relative 'app/controllers/PlayersController'
+require_relative './app/controllers/server'
+require_relative './app/controllers/players_controller'
 use PlayersController
 run App
