@@ -1,39 +1,42 @@
 # AYDS2022
+
 Proyecto AYDS
 
 Integrantes:
+
 * Valentín Buttignol 43228027
 * José Compagnucci 41525147
 * Ignacio Romero 44204074
 
-
 ## Useful commands
-* Run the server: _rackup -p "Port Number"_
-* Install gems from Gemfile: _bundle install_
-* Run docker commands if got permission denied: _sudo chmod 666 /var/run/docker.sock_
-* Solving docker permissions error: _sudo aa-remove-unknown_
 
+* Run the server: ```rackup -p "Port Number"```
+* Install gems from Gemfile: ```bundle install```
+* Run docker commands if got permission denied: ```sudo chmod 666 /var/run/docker.sock```
+* Solving docker permissions error: ```sudo aa-remove-unknown```
+* Run the interpreter: ```docker compose exec app bundle exec irb -I. -r app/controllers/server.rb```
 
+\*DB Commands:\*
+
+* Run Migrations: ```docker compose exec app bundle exec rake db:migrate```
+* Rollback Migration: ```docker compose exec app bundle exec rake db:rollback```
+* Create Migration: ```docker compose exec app bundle exec rake db:migration_name NAME=create_players```
 
 \*Docker Commands:\*
-* Build an image from a Dockerfile: _docker build -t "Image Name" ._
-* Run the containers generated in docker-compose on background: _docker-compose up -d_
-* Stop the running containters in docker-compose: _docker-compose down_
-* Show the running containers: _docker ps_
-* Show the executed containers: _docker ps -a_
-* Execute a command from a running container: _docker exec_
 
-* Depending on the container, you can stay connected to it: _docker exec -it "Container ID" /bin/sh_
+* Build an image from a Dockerfile: ```docker build -t "Image Name" .```
+* Run the containers generated in docker-compose on background: ```docker-compose up -d```
+* Stop the running containters in docker-compose: ```docker-compose down```
+* Show the running containers: ```docker ps```
+* Show the executed containers: ```docker ps -a```
+* Execute a command from a running container: ```docker exec```
 
-* Run a container from an image on background iteratively: _docker run -d -it "Container Name"_
+* Depending on the container, you can stay connected to it: ```docker exec -it "Container ID" /bin/sh```
 
-* Run a container from an image on background: _docker run -d "Container Name"_
-* Run a container from an image: _docker run "Container Name"_
-* Download an image but don't execute it: _docker pull "Image Name"_
-* Start a container on background: _docker start "Container ID"_
-* Stop a container on background: _docker stop "Container ID"_
+* Run a container from an image on background iteratively: ```docker run -d -it "Container Name"```
 
-
-
-
-
+* Run a container from an image on background: ```docker run -d "Container Name"```
+* Run a container from an image: ```docker run "Container Name"```
+* Download an image but don't execute it: ```docker pull "Image Name"```
+* Start a container on background: ```docker start "Container ID"```
+* Stop a container on background: ```docker stop "Container ID"```
