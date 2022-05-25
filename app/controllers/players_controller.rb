@@ -33,13 +33,22 @@ class PlayersController < App
   end
 
   post '/login' do
-    json = JSON.parse(request.body.read)
-    player = Player.find_by(username: json['username'])
-    if player && player.password == json['password']
-      session[:player_id] = player.id
-      redirect to "/landingpage"
+  	player = Player.find_by(username: params[:username], email: params[:email])
+
+    if player && player.authenticate(params[:password])
+      session[:player_id] = player.id 
+      redirect to '/landingpage'
     else
-      redirect to "/login"
+      redirect '/login'
     end
+  
+    #json = JSON.parse(request.body.read)
+    #player = Player.find_by(username: json['username'])
+    #if player && player.password == json['password']
+    #  session[:player_id] = player.id
+    #  redirect to "/landingpage"
+    #else
+    #  redirect to "/login"
+    #end
   end
 end
