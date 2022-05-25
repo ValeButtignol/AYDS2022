@@ -38,37 +38,23 @@ class App < Sinatra::Application
 
 # Start Page  
   get '/' do
-    'Hello'
-    #TODO: Make signup and login actions.
+    erb :index
   end
 
-  get '/login' do
-    erb :login
-  end
 
-  post '/login' do
-    json = JSON.parse(request.body.read)
-    user = User.find_by(name: json['name'])
-    if user && user.password == json['password']
-      session[:user_id] = user.id
-      redirect to "/play"
-    else
-      redirect to "/login"
-    end
-  end
 
-  
+  #CONSULTAR: COMO CONFIGURAR LOS FILTROS?
 # Configure a before filter to protect private routes!
-  before do
-    if session[:user_id]
-      @current_user = User.find_by(id: session[:user_id])
-    else
-      public_pages = ["/", "/login"]
-      if !public_pages.include?(request.path_info)
-        redirect '/login'
-      end
-    end
-  end
+#  before do
+#    if session[:user_id]
+#      @current_user = User.find_by(id: session[:user_id])
+#    else
+#      public_pages = ["/", "/login"]
+#      if !public_pages.include?(request.path_info)
+#        redirect '/login'
+#      end
+#    end
+#  end
 
 
 
