@@ -5,7 +5,7 @@ class CreateForecasts < ActiveRecord::Migration[7.0]
       t.integer :visitor_goals
       t.string :winner
 
-      t.references :player_user
+      t.references :player
       t.references :match
       
       t.timestamps
