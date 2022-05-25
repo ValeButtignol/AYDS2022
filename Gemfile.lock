@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/sinatra/sinatra.git
-  revision: b4f61f59cf8f938db261a6561a69ca61d01e8581
+  revision: 029e27dfb63dd0084a56660030a52271db23a1fe
   specs:
     rack-protection (3.0.0)
       rack
@@ -19,16 +19,17 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    activemodel (7.0.2.4)
-      activesupport (= 7.0.2.4)
-    activerecord (7.0.2.4)
-      activemodel (= 7.0.2.4)
-      activesupport (= 7.0.2.4)
-    activesupport (7.0.2.4)
+    activemodel (7.0.3)
+      activesupport (= 7.0.3)
+    activerecord (7.0.3)
+      activemodel (= 7.0.3)
+      activesupport (= 7.0.3)
+    activesupport (7.0.3)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
+    bcrypt (3.1.18)
     concurrent-ruby (1.1.10)
     diff-lcs (1.5.0)
     i18n (1.10.0)
@@ -66,6 +67,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  bcrypt
   multi_json
   rake
   rspec
