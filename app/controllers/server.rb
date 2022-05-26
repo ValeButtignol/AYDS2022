@@ -45,14 +45,98 @@ class App < Sinatra::Application
 
   #CONSULTAR: COMO CONFIGURAR LOS FILTROS?
 # Configure a before filter to protect private routes!
-#  before do
-#    if session[:player_id]
-#      @current_player = Player.find_by(id: session[:player_id])
-#    else
-#      public_pages = ["/", "/login", "/signup"]
-#      if !public_pages.include?(request.path_info)
-#        redirect '/login'
-#      end
-#    end
-#  end
+  before do
+    if session[:player_id]
+      @current_player = Player.find_by(id: session[:player_id])
+    else
+      public_pages = ["/", "/login", "/signup"]
+      if !public_pages.include?(request.path_info)
+        redirect '/'
+      end
+    end
+  end
+
+
+################## PLAYERS CONTROLLERS ##################
+  get '/signup' do
+    erb :'players/signup'
+  end
+
+  post '/signup' do
+    # Recieve data from the form inside of params hash.
+    # Create a new player and persist it.
+    player = Player.new(params)
+
+    if player.save then
+      redirect to '/login'
+    else
+      redirect to '/signup'
+    end
+  end
+
+
+  get '/login' do
+    erb :'players/login'
+  end
+
+  post '/login' do
+  	player = Player.find_by(username: params[:username], email: params[:email])
+
+    if player && player.authenticate(params[:password])
+      session[:player_id] = player.id 
+      redirect to '/landingpage'
+    else
+      redirect '/login'
+    end
+  
+    #json = JSON.parse(params)
+    #player = Player.find_by(username: json['username'])
+    #if player && player.password == json['password']
+    #  session[:player_id] = player.id
+    #  redirect to "/landingpage"
+    #else
+    #  redirect to "/login"
+    #end
+  end
+
+  get '/logout' do
+    session.clear
+    redirect to '/login'
+  end
+
+  get '/landingpage' do
+    erb :'players/landingpage'
+  end
+
+
+
+
+################## FORECASTS CONTROLLERS ##################
+
+  get '/play' do
+    erb :'forecasts/play'
+  end
+
+  post '/play' do
+    @current_player = Player.find_by(id: session[:player_id])
+    new_forecast = @current_player.forecasts.create(home_goals: params[:home_goals], visitor_goals: params[:visitor_goals], match_id: params[:match_id])
+    if Forecast.find_by_id(new_forecast.id)
+      redirect to '/landingpage'
+    else 
+      redirect to '/play'
+    end
+  end
+
+  get '/forecasts' do
+    erb :'forecasts/forecasts'
+  end
+
+
+
+
+
+
+
+################## MATCHES CONTROLLERS ##################
+
 end
