@@ -12,7 +12,7 @@ class PlayersController < App
   # logout -> delete actual session
 
   get '/signup' do
-    erb :"players/signup"
+    erb :'players/signup'
   end
 
   post '/signup' do
