@@ -51,4 +51,13 @@ class PlayersController < App
     #  redirect to "/login"
     #end
   end
+
+  get '/logout' do
+    session.clear
+    redirect to '/login'
+  end
+
+  get '/landingpage' do
+    erb :'players/landingpage'
+  end
 end
