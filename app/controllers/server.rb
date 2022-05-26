@@ -45,18 +45,14 @@ class App < Sinatra::Application
 
   #CONSULTAR: COMO CONFIGURAR LOS FILTROS?
 # Configure a before filter to protect private routes!
-#  before do
-#    if session[:user_id]
-#      @current_user = User.find_by(id: session[:user_id])
-#    else
-#      public_pages = ["/", "/login"]
-#      if !public_pages.include?(request.path_info)
-#        redirect '/login'
-#      end
-#    end
-#  end
-
-
-
-
+  before do
+    if session[:player_id]
+      @current_player = Player.find_by(id: session[:player_id])
+    else
+      public_pages = ["/", "/login", "/signup"]
+      if !public_pages.include?(request.path_info)
+        redirect '/login'
+      end
+    end
+  end
 end
