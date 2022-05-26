@@ -1,4 +1,10 @@
-class ForecastsController < App
+class ForecastsController < Sinatra::Base
+
+  configure do
+    set :views, settings.root + '/../views'
+    set :sessions, true
+    set :session_secret, ENV.fetch('SESSION_SECRET') { SecureRandom.hex(64) }
+  end
 
   get '/play' do
     erb :'forecasts/play'

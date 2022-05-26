@@ -1,4 +1,10 @@
-class PlayersController < App
+class PlayersController < Sinatra::Base
+
+  configure do
+    set :views, settings.root + '/../views'
+    set :sessions, true
+    set :session_secret, ENV.fetch('SESSION_SECRET') { SecureRandom.hex(64) }
+  end
 
   # This model will be responsable for anything involving our players as
   # signup, login, logout, redirect to create forecast, redirect to watch 
