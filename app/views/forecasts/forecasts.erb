@@ -2,10 +2,10 @@
 
 <%@player = Player.find_by_id(session[:player_id])%>
 
-<h2> Your Points: <%@player.points%> </h2>
+<h2> Your Points: <%=@player.points%> </h2>
 
 <% @player.forecasts.each do |f| %>
-  <p><%= f.home_goals %> - <%= f.visitor_goals %> - <%= f.match_id %> </p>
+  <p>Home Goals: <%= f.home_goals %> - Visitor Goals: <%= f.visitor_goals %> - Match: <%= f.match_id %> </p>
 <% end %>
 
-<p><a href="/landingpage">Sign up</a></p>
+<p><a href="/landingpage">Back</a></p>

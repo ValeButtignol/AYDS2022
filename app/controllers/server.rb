@@ -150,4 +150,9 @@ class App < Sinatra::Application
 
 ################## MATCHES CONTROLLERS ##################
 
+  get '/matches/played' do
+    erb :'matches/played'
+  end
+
+
 end
