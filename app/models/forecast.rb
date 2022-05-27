@@ -12,8 +12,8 @@ class Forecast < ActiveRecord::Base
   # Consult: In which other way can we do this?
   after_create do
     f = Forecast.find_by(player: self.player, match: self.match) 
-    if f.player == self.player and f.match == self.match then
-      self.destroy
+    if f.player == self.player and f.match == self.match and f.id != self.id then
+      self.delete
     end
   end
 
