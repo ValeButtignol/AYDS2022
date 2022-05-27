@@ -1,5 +1,7 @@
 <h1>Your Forecasts</h1>
 
+<%@player = Player.find_by_id(session[:player_id])%>
+
 <h2> Your Points: <%@player.points%> </h2>
 
 <% @player.forecasts.each do |f| %>

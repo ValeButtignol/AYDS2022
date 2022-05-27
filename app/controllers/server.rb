@@ -119,13 +119,16 @@ class App < Sinatra::Application
 
   post '/play' do
 
-    new_forecast = Forecast.new (
-      player_id: session[:player_id],
-      home_goals: params['home_goals']
-      visitor_goals: params['visitor_goals']
-      match_id: params['match_id']
-    )
+    new_forecast = Forecast.new
+    new_forecast.player_id = session[:player_id]
+    new_forecast.home_goals = params['home_goals']
+    new_forecast.visitor_goals = params['visitor_goals']
+    new_forecast.match_id = params['match_id']
+    
     new_forecast.save
+
+    logger.info(session[:player_id])
+    
     logger.info(new_forecast)
     
     if Forecast.find_by_id(new_forecast.id) then
