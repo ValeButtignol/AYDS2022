@@ -1,0 +1,13 @@
+<h1>Login Administrator</h1>
+
+  <% if @error %>
+      <div class="error">Sign up failed.</div>
+  <% end %>
+
+  <form action="/login_administrator" method="post">
+      Enter Username: <input type="text" name="username" placeholder="Username" />
+      Enter Email: <input type="email" name="email" placeholder="Email" />
+      Enter Password: <input type="password" name="password" placeholder="Password" />
+
+      <input type="submit" value="Login" />
+  </form>
