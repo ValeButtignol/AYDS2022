@@ -154,5 +154,9 @@ class App < Sinatra::Application
     erb :'matches/played'
   end
 
+  get '/matches/toplay' do
+    erb :'matches/toplay'
+  end
+
 
 end
