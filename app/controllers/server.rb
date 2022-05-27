@@ -118,9 +118,17 @@ class App < Sinatra::Application
   end
 
   post '/play' do
-    @current_player = Player.find_by(id: session[:player_id])
-    new_forecast = @current_player.forecasts.create(home_goals: params[:home_goals], visitor_goals: params[:visitor_goals], match_id: params[:match_id])
-    if Forecast.find_by_id(new_forecast.id)
+
+    new_forecast = Forecast.new (
+      player_id: session[:player_id],
+      home_goals: params['home_goals']
+      visitor_goals: params['visitor_goals']
+      match_id: params['match_id']
+    )
+    new_forecast.save
+    logger.info(new_forecast)
+    
+    if Forecast.find_by_id(new_forecast.id) then
       redirect to '/landingpage'
     else 
       redirect to '/play'
