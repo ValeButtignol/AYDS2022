@@ -1,15 +1,44 @@
-<h1>Login</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+
+  <link rel="stylesheet" href="style_login.css">    
+  
+  <title>Login</title>
+
+</head>
+<body>
+
+  <img class="logo" src="./image/2022_FIFA_World_Cup_Horizontal.png">
+  
+  <h1>Login</h1>
 
   <% if @error %>
       <div class="error">Login failed.</div>
   <% end %>
 
   <form action="/login" method="post">
-      <input type="text" name="username" placeholder="Username" />
-      <input type="email" name="email" placeholder="Email" />
-      <input type="password" name="password" placeholder="Password" />
 
-      <input type="submit" value="Login" />
+    <div class="input-wrapper1">
+      <input class="input" type="text" name="username" placeholder="Username" />
+    </div>
+
+    <div class="input-wrapper2">
+      <input type="email" name="email" placeholder="Email" />
+    </div>
+
+    <div class="input-wrapper3">
+      <input type="password" name="password" placeholder="Password" />
+    </div>
+      
+    <button class="button1" type="submit" value="Login">
+      login
+    </button>
+      
   </form>
 
-<p>If you don't have an account you can <a href="/signup">Sign up!</a></p>
+  <button class="button2"><a style="color:white; text-decoration:none;" href="/signup">Sign up!</a></button>
+
+</body>
+</html>
