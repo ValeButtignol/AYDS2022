@@ -1,13 +1,57 @@
-<h1>Sign up</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
-  <% if @error %>
-      <div class="error">Sign up failed.</div>
-  <% end %>
 
-  <form action="/signup" method="post">
-      Enter Username: <input type="text" name="username" placeholder="Username" />
-      Enter Email: <input type="email" name="email" placeholder="Email" />
-      Enter Password: <input type="password" name="password" placeholder="Password" />
+    <link rel="stylesheet" href="style_signup.css">    
+    <title>Sing up</title>
+</head>
+<body>
 
-      <input type="submit" value="Sign up" />
-  </form>
+    <img class="logo" src="./image/2022_FIFA_World_Cup_Horizontal.png">
+  
+
+    <h1>Sign up</h1>
+
+    <% if @error %>
+        <div class="error">Sign up failed.</div>
+    <% end %>
+
+    <form action="/signup" method="post">
+
+        <div class="input-wrapper1">
+            <input type="text" name="username" placeholder="Username" />
+        </div>
+
+        <div class="input-wrapper2">
+            <input type="email" name="email" placeholder="Email" />
+        </div>
+
+        <div class="input-wrapper3">
+            <input type="password" name="password" placeholder="Password" />
+        </div>
+
+        <button class="button1" type="submit" value="Sign up">
+            Sign up
+        </button>   
+    
+    
+    </form>
+
+
+
+</body>
+</html>
+
+<!-- 
+    Enter Username: <input type="text" name="username" placeholder="Username" />
+        Enter Email: <input type="email" name="email" placeholder="Email" />
+        Enter Password: <input type="password" name="password" placeholder="Password" />
+
+        <input type="submit" value="Sign up" />
+
+
+-->
+
+
+
