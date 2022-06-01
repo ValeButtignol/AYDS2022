@@ -150,13 +150,12 @@ class App < Sinatra::Application
 
 ################## MATCHES CONTROLLERS ##################
 
-  get '/matches/played' do
-    erb :'matches/played'
+  get '/matches' do
+    erb :'matches/matches'
   end
 
-  get '/matches/toplay' do
-    erb :'matches/toplay'
+  get '/groups' do
+    erb :'matches/groups'
   end
-
 
 end
