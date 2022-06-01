@@ -42,12 +42,12 @@ class Result < ActiveRecord::Base
 
   def set_won_matches(match)
     if match.result.winner == "home"
-      match.home_team.update(won_matches: match.home_team.won_matches + 2)
+      match.home_team.update(points_of_group: match.home_team.points_of_group + 2)
     elsif match.result.winner == "visitor"
-      match.visitor_goals.update(won_matches: match.visitor_goals.won_matches + 2)
+      match.visitor_goals.update(points_of_group: match.visitor_goals.points_of_group + 2)
     else
-      match.home_team.update(won_matches: match.home_team.won_matches + 1)
-      match.visitor_goals.update(won_matches: match.visitor_goals.won_matches + 1)
+      match.home_team.update(points_of_group: match.home_team.points_of_group + 1)
+      match.visitor_goals.update(points_of_group: match.visitor_goals.points_of_group + 1)
     end
   end
 end

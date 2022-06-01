@@ -1,0 +1,24 @@
+<h1>Groups Phase</h1>
+
+<% @groups = Group.all%>
+<% @groups.each do |g| %>
+  <table class="default">
+    <th>
+      <%= g.name %>
+    </th>
+    <% @teams = g.team_ids %>
+    <% @teams.each do |t| %>
+    <% team = Team.find_by_id(t) %>
+      <tr>
+        <td>
+          <%= team.name %>
+        </td>
+        <td>
+          <%= team.points_of_group %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+
+<p><a href="/landingpage">Back</a></p>
