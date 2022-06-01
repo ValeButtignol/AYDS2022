@@ -10,7 +10,7 @@ class Forecast < ActiveRecord::Base
   end
 
   before_create do
-    if self.match.result.exists?
+    if self.match.result
       self.delete
     end
   end

@@ -1,20 +1,22 @@
 <h1>Create Forecast</h1>
 
   <% if @error %>
-      <div class="error">Login failed.</div>
+    <div class="error">Login failed.</div>
   <% end %>
 
   <form action="/play" method="post">
-      Home Goals: <input type="number" name="home_goals" placeholder="Home Goals" />
-      Visitor Goals: <input type="number" name="visitor_goals" placeholder="Visitor Goals" />
-      Match: <select>
+    Home Goals: <input type="number" name="home_goals" placeholder="Home Goals" />
+    Visitor Goals: <input type="number" name="visitor_goals" placeholder="Visitor Goals" />
+    Match: 
+      <select name="match_id">
         <% @matches = Match.all%>
         <% @matches.each do |m| %>
-          <option value="<%= m.id %>"><%= m.home_team.name %> vs <%= m.visitor_team.name %></option>
+        <option value="<%= m.id %>"> <%= m.home_team.name %> vs <%= m.visitor_team.name %></option>
         <% end %>
+      </select>
 
 
-      <input type="submit" value="Create Forecast" />
+    <input type="submit" value="Create Forecast" />
   </form>
 
   <p><a href="/landingpage">Back</a></p>
