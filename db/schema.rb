@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_25_060325) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_01_000403) do
   create_table "administrators", force: :cascade do |t|
     t.string "username"
     t.string "email"
@@ -31,6 +31,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_25_060325) do
     t.index ["player_id"], name: "index_forecasts_on_player_id"
   end
 
+  create_table "groups", force: :cascade do |t|
+    t.string "name"
+    t.integer "administrator_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["administrator_id"], name: "index_groups_on_administrator_id"
+  end
+
   create_table "matches", force: :cascade do |t|
     t.string "stadium"
     t.datetime "date"
@@ -39,6 +47,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_25_060325) do
     t.integer "administrator_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "type"
     t.index ["administrator_id"], name: "index_matches_on_administrator_id"
     t.index ["home_team_id"], name: "index_matches_on_home_team_id"
     t.index ["visitor_team_id"], name: "index_matches_on_visitor_team_id"
@@ -70,7 +79,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_25_060325) do
     t.integer "administrator_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "group_id"
+    t.integer "won_matches_of_group", default: 0
     t.index ["administrator_id"], name: "index_teams_on_administrator_id"
+    t.index ["group_id"], name: "index_teams_on_group_id"
   end
 
   add_foreign_key "matches", "teams", column: "home_team_id"
