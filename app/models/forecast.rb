@@ -9,7 +9,6 @@ class Forecast < ActiveRecord::Base
     self.winner = set_winner(self.home_goals, self.visitor_goals) 
   end
 
-
   before_create do
     if self.match.result.exists?
       self.delete
@@ -22,7 +21,6 @@ class Forecast < ActiveRecord::Base
       self.delete
     end
   end
-
 
   def set_winner(home_goals, visitor_goals)
     if home_goals > visitor_goals
