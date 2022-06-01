@@ -7,7 +7,12 @@
   <form action="/play" method="post">
       Home Goals: <input type="number" name="home_goals" placeholder="Home Goals" />
       Visitor Goals: <input type="number" name="visitor_goals" placeholder="Visitor Goals" />
-      Match: <input type="number" name="match_id" placeholder="Match" />
+      Match: <select>
+        <% @matches = Match.all%>
+        <% @matches.each do |m| %>
+          <option value="<%= m.id %>"><%= m.home_team.name %> vs <%= m.visitor_team.name %></option>
+        <% end %>
+
 
       <input type="submit" value="Create Forecast" />
   </form>
