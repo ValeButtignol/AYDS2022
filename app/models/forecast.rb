@@ -9,7 +9,13 @@ class Forecast < ActiveRecord::Base
     self.winner = set_winner(self.home_goals, self.visitor_goals) 
   end
 
-  # Consult: In which other way can we do this?
+
+  before_create do
+    if self.match.result.exists?
+      self.delete
+    end
+  end
+
   after_create do
     f = Forecast.find_by(player: self.player, match: self.match) 
     if f.player == self.player and f.match == self.match and f.id != self.id then
@@ -18,7 +24,6 @@ class Forecast < ActiveRecord::Base
   end
 
 
-  # Consult: Should we create a class for the public methods?
   def set_winner(home_goals, visitor_goals)
     if home_goals > visitor_goals
       "home"
@@ -28,5 +33,4 @@ class Forecast < ActiveRecord::Base
       "draw"
     end
   end
-
 end

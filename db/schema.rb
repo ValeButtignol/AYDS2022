@@ -80,7 +80,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_01_000403) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "group_id"
-    t.integer "won_matches_of_group", default: 0
+    t.integer "points_of_group", default: 0
     t.index ["administrator_id"], name: "index_teams_on_administrator_id"
     t.index ["group_id"], name: "index_teams_on_group_id"
   end
