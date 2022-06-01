@@ -41,7 +41,7 @@ class Result < ActiveRecord::Base
   end
 
   def set_won_matches(match)
-    if match.type == "GROUP"
+    if match.match_type == "GROUP"
       if match.result.winner == "home"
         match.home_team.update(points_of_group: match.home_team.points_of_group + 3)
       elsif match.result.winner == "visitor"

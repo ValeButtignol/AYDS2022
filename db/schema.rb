@@ -47,7 +47,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_01_000403) do
     t.integer "administrator_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "type"
+    t.string "match_type"
     t.index ["administrator_id"], name: "index_matches_on_administrator_id"
     t.index ["home_team_id"], name: "index_matches_on_home_team_id"
     t.index ["visitor_team_id"], name: "index_matches_on_visitor_team_id"
