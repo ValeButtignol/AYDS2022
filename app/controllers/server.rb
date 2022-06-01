@@ -167,7 +167,17 @@ class App < Sinatra::Application
   end
 
 
+  get '/delete_forecast' do
+    erb :'forecasts/delete_forecast'
+  end
 
+  # CONSULTAR CON EL PROFE
+  delete '/delete_forecast' do
+    logger.info(params)
+    forecast = Forecast.find_by(id: params[:id])
+    forecast.destroy
+    redirect to '/landingpage'
+  end
 
 
 
