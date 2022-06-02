@@ -1,0 +1,21 @@
+<h1>Create Result</h1>
+
+  <% if @error %>
+      <div class="error">Sign up failed.</div>
+  <% end %>
+
+  <form action="/create_result" method="post">
+      Enter Home Goals: <input type="text" name="home_goals" placeholder="Home Goals" />
+
+      Enter Visitor Goals:  <input type="text" name="visitor_goals" placeholder="Visitor Goals" />
+
+      Matchs:
+      <select name="match_id">
+      <% @match = Match.all%>
+      <% @match.each do |m| %>
+      <option value="<%= m.id %>"> <%= m.home_team.name %> vs <%= m.visitor_team.name %></option>
+      <% end %>
+      </select>
+
+      <input type="submit" value="Enter"/>
+  </form>
