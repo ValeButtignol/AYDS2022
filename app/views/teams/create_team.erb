@@ -1,0 +1,15 @@
+<h1>Create Team</h1>
+
+  <% if @error %>
+      <div class="error">Sign up failed.</div>
+  <% end %>
+
+  <form action="/create_team" method="post">
+      Enter Team: <input type="text" name="name" placeholder="Team" />
+      Enter Group: <input type="text" name="group_id" placeholder="Group" />
+
+      
+
+
+      <input type="submit" value="Enter"/>
+  </form>
