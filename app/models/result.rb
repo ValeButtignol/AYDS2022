@@ -20,6 +20,13 @@ class Result < ActiveRecord::Base
     set_won_matches(self.match)
   end
 
+  after_create do
+    r = Result.find_by(match: self.match)
+    if r.match == self.match and r.id != self.id then
+      self.delete
+    end
+  end
+
   # Function that calculates the winner.
   def set_points(result, forecast)
     if result.winner == forecast.winner then
