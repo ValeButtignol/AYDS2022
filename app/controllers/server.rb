@@ -161,24 +161,25 @@ class App < Sinatra::Application
     end
   end
 
-
+  # Displays the edit form having a forecast param on it.
   get '/forecasts/:id/edit' do
     @forecast = Forecast.find_by(id: params[:id])
     erb :'forecasts/edit'
   end
 
+  # Updates the forecast with the new data.
   patch '/forecasts/:id' do
     Forecast.find_by(id: params[:id]).update(home_goals: params['home_goals'], visitor_goals: params['visitor_goals'])
     redirect to '/forecasts'
   end
 
+  # Deletes the forecast.
   delete '/forecasts/:id' do
     Forecast.find_by(id: params[:id]).destroy
     redirect to '/forecasts'
   end
 
-
-
+  # Displays all the forecasts.
   get '/forecasts' do
     erb :'forecasts/forecasts'
   end
@@ -186,10 +187,12 @@ class App < Sinatra::Application
 
 ################## MATCHES CONTROLLERS ##################
 
+  # Show all the not played matches and the matches to play.
   get '/matches' do
     erb :'matches/matches'
   end
 
+  # Show all the groups and its teams with its points
   get '/groups' do
     erb :'matches/groups'
   end

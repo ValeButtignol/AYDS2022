@@ -4,21 +4,25 @@
 
 <h2> Your Points: <%=@player.points%> </h2>
 
-
+<!-- Now we have a view for the forecasts of the matches to play and also for the played matches.-->
 <h3> Forecasts of matches to play </h3>
-<% @player.forecasts.each do |f| %>
+<% @player.forecasts.each do |f| %> 
   <% m = Match.find_by_id(f.match_id) %>
   <% if m.result == nil then%>
     <% home = Team.find_by_id(m.home_team_id) %>
     <% visitor = Team.find_by_id(m.visitor_team_id) %>
+
+    <!-- For each forecast, we show the predicted goals corresponding to the teams, and we can Edit the forecast-->
     <%= home.name %> <%= f.home_goals %> vs <%= f.visitor_goals %> <%= visitor.name %> - Date: <%= m.date %> <a href="/forecasts/<%= f.id%>/edit"> Edit Forecast</a>  
     
+    <!-- This is a button to delete the forecast-->
+    <!-- It calls a post method, but overrides it with delete-->
     <form action="/forecasts/ <%= f.id %>" method="post">
       <input type="hidden" name="_method" value="delete">
       <input type="submit" value="Delete Forecast" />
     </form>
     </p>
-    
+
   <% end %>
 <% end %>
 

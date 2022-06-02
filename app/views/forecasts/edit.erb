@@ -1,5 +1,6 @@
 <h1> Edit Forecast </h1>
 
+<!-- It calls a post method and overrides it with the patch method for update-->
 <form action="/forecasts/ <%= @forecast.id%>" method="post">
   <input type="hidden" name="_method" value="patch">
   Home Goals: <input type="number" name="home_goals" value="<%= @forecast.home_goals %>" />
