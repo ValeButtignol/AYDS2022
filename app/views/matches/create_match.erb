@@ -1,0 +1,21 @@
+<h1>Create Match</h1>
+
+  <% if @error %>
+      <div class="error">Sign up failed.</div>
+  <% end %>
+
+  <form action="/create_match" method="post">
+      Enter Stadium: <input type="text" name="stadium" placeholder="Stadium" />
+      Enter Home: <input type="text" name="home_team_id" placeholder="Home" />
+      Enter Visitor: <input type="text" name="visitor_team_id" placeholder="Visitor" />
+
+      <select name="match_type">
+      <option value="GROUP">GROUP</option>
+      <option value="OCTAVES">OCTAVES</option>
+      <option value="QUARTERS">QUARTERS</option>
+      <option value="SEMI">SEMI</option>
+      <option value="FINAL">FINAL</option>
+      </select>
+
+      <input type="submit" value="Enter"/>
+  </form>
