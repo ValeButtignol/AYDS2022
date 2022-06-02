@@ -11,7 +11,7 @@
   <% if m.result == nil then%>
     <% home = Team.find_by_id(m.home_team_id) %>
     <% visitor = Team.find_by_id(m.visitor_team_id) %>
-    <%= home.name %> <%= f.home_goals %> vs <%= f.visitor_goals %> <%= visitor.name %> - Date: <%= m.date %> </p>
+    <%= home.name %> <%= f.home_goals %> vs <%= f.visitor_goals %> <%= visitor.name %> - Date: <%= m.date %> <a href="/forecasts/<%= f.id%>/edit"> Edit Forecast</a> </p>
   <% end %>
 <% end %>
 
@@ -27,3 +27,5 @@
     Forecast: <%= home.name %> <%= f.home_goals %> vs <%= f.visitor_goals %> <%= visitor.name %> </p>
   <% end %>
 <% end %>
+
+<p><a href="/landingpage">Back</a></p>

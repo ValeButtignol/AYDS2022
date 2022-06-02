@@ -142,7 +142,6 @@ class App < Sinatra::Application
   end
 
   post '/play' do
-
     new_forecast = Forecast.new
     new_forecast.player_id = session[:player_id]
     new_forecast.home_goals = params['home_goals']
@@ -162,24 +161,23 @@ class App < Sinatra::Application
     end
   end
 
+
+  get '/forecasts/:id/edit' do
+    @forecast = Forecast.find_by(id: params[:id])
+    erb :'forecasts/edit'
+  end
+
+  patch '/forecasts/:id' do
+    @forecast = Forecast.find_by(id: params[:id])
+    @forecast.update(home_goals: params['home_goals'], visitor_goals: params['visitor_goals'])
+    redirect to '/forecasts'
+  end
+
+
+
   get '/forecasts' do
     erb :'forecasts/forecasts'
   end
-
-
-  get '/delete_forecast' do
-    erb :'forecasts/delete_forecast'
-  end
-
-  # CONSULTAR CON EL PROFE
-  delete '/delete_forecast' do
-    logger.info(params)
-    forecast = Forecast.find_by(id: params[:id])
-    forecast.destroy
-    redirect to '/landingpage'
-  end
-
-
 
 
 ################## MATCHES CONTROLLERS ##################
