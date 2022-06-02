@@ -168,8 +168,12 @@ class App < Sinatra::Application
   end
 
   patch '/forecasts/:id' do
-    @forecast = Forecast.find_by(id: params[:id])
-    @forecast.update(home_goals: params['home_goals'], visitor_goals: params['visitor_goals'])
+    Forecast.find_by(id: params[:id]).update(home_goals: params['home_goals'], visitor_goals: params['visitor_goals'])
+    redirect to '/forecasts'
+  end
+
+  delete '/forecasts/:id' do
+    Forecast.find_by(id: params[:id]).destroy
     redirect to '/forecasts'
   end
 

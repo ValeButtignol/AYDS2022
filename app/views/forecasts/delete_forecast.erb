@@ -2,8 +2,8 @@
 
 <% @player = Player.find_by_id(session[:player_id]) %>
 <% @forecasts = @player.forecasts%>
-  <form>
-    <select name="forecast_id">
+  <form action="/delete_forecast" method="delete">
+    <select name="forecast_id" >
       <% @forecasts.each do |f| %>
         <% match = Match.find_by_id(f.match_id)%>
         <% home = Team.find_by_id(match.home_team_id)%>

@@ -11,7 +11,14 @@
   <% if m.result == nil then%>
     <% home = Team.find_by_id(m.home_team_id) %>
     <% visitor = Team.find_by_id(m.visitor_team_id) %>
-    <%= home.name %> <%= f.home_goals %> vs <%= f.visitor_goals %> <%= visitor.name %> - Date: <%= m.date %> <a href="/forecasts/<%= f.id%>/edit"> Edit Forecast</a> </p>
+    <%= home.name %> <%= f.home_goals %> vs <%= f.visitor_goals %> <%= visitor.name %> - Date: <%= m.date %> <a href="/forecasts/<%= f.id%>/edit"> Edit Forecast</a>  
+    
+    <form action="/forecasts/ <%= f.id %>" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="Delete Forecast" />
+    </form>
+    </p>
+    
   <% end %>
 <% end %>
 
