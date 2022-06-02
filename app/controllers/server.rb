@@ -81,6 +81,40 @@ class App < Sinatra::Application
       erb :'administrators/landingpage_admin'
     end
 
+
+################## TEAMS CONTROLLERS ##################
+
+get '/create_team' do
+  erb :'teams/create_team'
+end
+
+post '/create_team' do
+
+  team = Team.new(name: params[:name],)
+  team.save
+
+  if team then
+    redirect to '/landingpage_admin'
+  else
+    redirect '/create_team'
+  end
+
+
+end
+
+################## RESULTS CONTROLLERS ##################
+#
+#get '/result' do
+#  erb :'results/result'
+#end
+#
+#post '/result' do
+#
+#  result = Player.find_by(username: params[:username], email: params[:email])
+#
+#end
+
+
 ################## PLAYERS CONTROLLERS ##################
   get '/signup' do
     erb :'players/signup'
@@ -184,7 +218,28 @@ class App < Sinatra::Application
 
 ################## MATCHES CONTROLLERS ##################
 
-  get '/matches' do
+  get '/create_match' do
+   erb :'matches/create_match' 
+  end
+
+  post '/create_match' do
+
+
+    match = Match.new(stadium: params[:stadium],date: DateTime.now(),
+    home_team_id: params[:home_team_id],visitor_team_id: params[:visitor_team_id], administrator_id: session[:administrator_id],
+    match_type: params[:match_type])
+  
+     match.save
+
+    if match then
+      redirect to '/landingpage_admin'
+    else
+      redirect '/create_match'
+    end
+
+ end
+
+get '/matches' do
     erb :'matches/matches'
   end
 
