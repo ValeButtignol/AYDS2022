@@ -17,11 +17,8 @@ Integrantes:
 * Run the interpreter: ```docker compose exec app bundle exec irb -I. -r app/controllers/server.rb```
 
 \*Commands GitHub:\*
-* Pull without erasing my data : ```git add .```
-                                ```git stash```
-                                ```git pull```
-                                ```git stash pop```
 
+* Pull without erasing my data : ```git add .``` ```git stash``` ```git pull``` ```git stash pop```
 
 \*DB Commands:\*
 

@@ -176,7 +176,6 @@ end
   end
 
   post '/play' do
-
     new_forecast = Forecast.new
     new_forecast.player_id = session[:player_id]
     new_forecast.home_goals = params['home_goals']
@@ -196,53 +195,60 @@ end
     end
   end
 
+  # Displays the edit form having a forecast param on it.
+  get '/forecasts/:id/edit' do
+    @forecast = Forecast.find_by(id: params[:id])
+    erb :'forecasts/edit'
+  end
+
+  # Updates the forecast with the new data.
+  patch '/forecasts/:id' do
+    Forecast.find_by(id: params[:id]).update(home_goals: params['home_goals'], visitor_goals: params['visitor_goals'])
+    redirect to '/forecasts'
+  end
+
+  # Deletes the forecast.
+  delete '/forecasts/:id' do
+    Forecast.find_by(id: params[:id]).destroy
+    redirect to '/forecasts'
+  end
+
+  # Displays all the forecasts.
   get '/forecasts' do
     erb :'forecasts/forecasts'
   end
 
 
-  get '/delete_forecast' do
-    erb :'forecasts/delete_forecast'
-  end
-
-  # CONSULTAR CON EL PROFE
-  delete '/delete_forecast' do
-    logger.info(params)
-    forecast = Forecast.find_by(id: params[:id])
-    forecast.destroy
-    redirect to '/landingpage'
-  end
-
-
-
-
 ################## MATCHES CONTROLLERS ##################
 
-  get '/create_match' do
-   erb :'matches/create_match' 
-  end
-
-  post '/create_match' do
-
-
-    match = Match.new(stadium: params[:stadium],date: DateTime.now(),
-    home_team_id: params[:home_team_id],visitor_team_id: params[:visitor_team_id], administrator_id: session[:administrator_id],
-    match_type: params[:match_type])
-  
-     match.save
-
-    if match then
-      redirect to '/landingpage_admin'
-    else
-      redirect '/create_match'
-    end
-
+get '/create_match' do
+  erb :'matches/create_match' 
  end
 
-get '/matches' do
+ post '/create_match' do
+
+
+   match = Match.new(stadium: params[:stadium],date: DateTime.now(),
+   home_team_id: params[:home_team_id],visitor_team_id: params[:visitor_team_id], 
+   administrator_id: session[:administrator_id],
+   match_type: params[:match_type])
+ 
+    match.save
+
+   if match then
+     redirect to '/landingpage_admin'
+   else
+     redirect '/create_match'
+   end
+
+end
+
+  # Show all the not played matches and the matches to play.
+  get '/matches' do
     erb :'matches/matches'
   end
 
+  # Show all the groups and its teams with its points
   get '/groups' do
     erb :'matches/groups'
   end
