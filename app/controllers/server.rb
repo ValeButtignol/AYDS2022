@@ -81,7 +81,24 @@ class App < Sinatra::Application
       erb :'administrators/landingpage_admin'
     end
 
+################## GROUPES CONTROLLERS ##################
 
+
+get '/create_group' do
+  erb :'groupes/create_group'
+end
+
+post '/create_group' do
+
+  group = Group.new(name: params[:name])
+
+  if group.save then
+    redirect to '/landingpage_admin'
+  else
+    redirect '/create_group'
+  end
+
+end
 ################## TEAMS CONTROLLERS ##################
 
 get '/create_team' do
@@ -90,10 +107,12 @@ end
 
 post '/create_team' do
 
-  team = Team.new(name: params[:name],)
-  team.save
+  team = Team.new
+  team.name= params[:name]
+  team.group_id= params[:group_id]
+  team.administrator_id = session[:admin_id]
 
-  if team then
+  if team.save then
     redirect to '/landingpage_admin'
   else
     redirect '/create_team'
@@ -103,16 +122,16 @@ post '/create_team' do
 end
 
 ################## RESULTS CONTROLLERS ##################
-#
-#get '/result' do
-#  erb :'results/result'
-#end
-#
-#post '/result' do
-#
-#  result = Player.find_by(username: params[:username], email: params[:email])
-#
-#end
+
+get '/create_result' do
+  erb :'results/create_result'
+end
+
+post '/create_result' do
+
+  result = Player.find_by(username: params[:username], email: params[:email])
+
+end
 
 
 ################## PLAYERS CONTROLLERS ##################
@@ -227,15 +246,17 @@ get '/create_match' do
 
  post '/create_match' do
 
+    match = Match.new
+    match.administrator_id = session[:admin_id]
+    match.stadium = params['stadium']
+    match.date = params['date']
+    match.home_team_id = params['home_team_id']
+    match.visitor_team_id = params['visitor_team_id']
+    match.match_type = params['match_type']
 
-   match = Match.new(stadium: params[:stadium],date: DateTime.now(),
-   home_team_id: params[:home_team_id],visitor_team_id: params[:visitor_team_id], 
-   administrator_id: session[:administrator_id],
-   match_type: params[:match_type])
- 
-    match.save
-
-   if match then
+  logger.info(session)
+   
+   if match.save then
      redirect to '/landingpage_admin'
    else
      redirect '/create_match'
