@@ -6,9 +6,26 @@
 
   <form action="/create_match" method="post">
       Enter Stadium: <input type="text" name="stadium" placeholder="Stadium" />
-      Enter Home: <input type="text" name="home_team_id" placeholder="Home" />
-      Enter Visitor: <input type="text" name="visitor_team_id" placeholder="Visitor" />
 
+      Enter Date:  <input type="datetime-local" name="date" placeholder="Date" />
+
+      Enter Home:
+      <select name="home_team_id">
+      <% @team = Team.all%>
+      <% @team.each do |t| %>
+      <option value="<%= t.id %>"> <%= t.name %> </option>
+      <% end %>
+      </select>
+
+      Enter Visitor: 
+      <select name="visitor_team_id">
+      <% @team = Team.all%>
+      <% @team.each do |t| %>
+      <option value="<%= t.id %>"> <%= t.name %> </option>
+      <% end %>
+      </select>
+
+      Match Type:
       <select name="match_type">
       <option value="GROUP">GROUP</option>
       <option value="OCTAVES">OCTAVES</option>
