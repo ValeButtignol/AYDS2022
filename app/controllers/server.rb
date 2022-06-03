@@ -129,7 +129,17 @@ end
 
 post '/create_result' do
 
-  result = Player.find_by(username: params[:username], email: params[:email])
+  result = Result.new
+  result.home_goals = params['home_goals']
+  result.visitor_goals = params['visitor_goals']
+  result.match_id = params['match_id']
+  result.administrator_id = session[:admin_id]
+  
+  if result.save then
+    redirect to '/landingpage_admin'
+  else
+    redirect '/create_result' 
+  end
 
 end
 
