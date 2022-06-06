@@ -99,6 +99,7 @@ post '/create_group' do
   end
 
 end
+
 ################## TEAMS CONTROLLERS ##################
 
 get '/create_team' do
@@ -119,6 +120,25 @@ post '/create_team' do
   end
 
 
+end
+
+get '/all_teams' do
+  erb :'teams/all_teams'
+end
+
+get '/all_teams/:id/edit' do
+  @team = Team.find_by(id: params[:id])
+  erb :'teams/edit_team'
+end
+
+patch '/all_teams_edit/:id' do
+  Team.find_by(id: params[:id]).update(name: params['name'])
+  redirect to '/all_teams'
+end
+
+delete '/all_teams_delete/:id' do
+  Team.find_by(id: params[:id]).destroy
+  redirect to '/all_teams'
 end
 
 ################## RESULTS CONTROLLERS ##################
