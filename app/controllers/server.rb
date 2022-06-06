@@ -90,7 +90,7 @@ end
 
 post '/create_group' do
 
-  group = Group.new(name: params[:name])
+  group = Group.new(name: params[:name],administrator_id: session['admin_id'])
 
   if group.save then
     redirect to '/landingpage_admin'
@@ -98,6 +98,26 @@ post '/create_group' do
     redirect '/create_group'
   end
 
+end
+
+get '/all_groupes' do
+  erb :'groupes/all_groupes'
+end
+
+get '/all_groupes/:id/edit' do
+  @group = Group.find_by(id: params[:id])
+  erb :'groupes/edit_group'
+end
+
+patch '/all_groupes_edit/:id' do
+  Group.find_by(id: params[:id]).update(name: params['name'])
+  Team.find_by.group_id(group_id: params[:id]).destroy
+  redirect to '/all_groupes'
+end
+
+delete '/all_groupes_delete/:id' do
+  Group.find_by(id: params[:id]).destroy
+  redirect to '/all_groupes'
 end
 
 ################## TEAMS CONTROLLERS ##################
