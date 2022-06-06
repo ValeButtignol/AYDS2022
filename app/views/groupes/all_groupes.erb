@@ -1,0 +1,22 @@
+<h1>All Groupes</h1>
+
+<%@admin = Administrator.find_by_id(session[:admin_id])%>
+
+<!-- All created groupes will be displayed.-->
+<h3> Groupes created </h3>
+<% @admin.groups.each do |m| %> 
+
+    <!-- For each created group we can edit or delete.-->
+    <% m.id %> <%= m.name %> <a href="/all_groupes/<%= m.id%>/edit">Edit Group</a>  
+    
+    <!-- This is a button to delete the group-->
+    <!-- It calls a post method, but overrides it with delete-->
+    <form action="/all_groupes_delete/ <%= m.id %>" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="Delete Group" />
+    </form>
+    </p>
+
+<% end %>
+
+<p><a href="/landingpage_admin">Back</a></p>
