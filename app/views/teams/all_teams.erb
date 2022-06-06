@@ -7,11 +7,11 @@
 <% @admin.teams.each do |g| %> 
 
     <!-- For each created team we can edit or delete.-->
-    <% g.id %> <%= g.name %> <a href="/all_teams/<%= g.id%>/edit">Edit Team</a>  
+    <% g.id %> <%= g.name %> Group: <%= g.group_id %> <a href="/all_teams/<%= g.id %>/edit">Edit Team</a>  
     
     <!-- This is a button to delete the team-->
     <!-- It calls a post method, but overrides it with delete-->
-    <form action="/all_teams_delete/ <%= g.id %>" method="post">
+    <form action="/all_teams_delete/<%= g.id %>" method="post">
       <input type="hidden" name="_method" value="delete">
       <input type="submit" value="Delete Team" />
     </form>
