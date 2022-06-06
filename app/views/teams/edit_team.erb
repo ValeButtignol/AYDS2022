@@ -1,11 +1,12 @@
 <h1> Edit Team</h1>
 
 <!-- It calls a post method and overrides it with the patch method for update-->
-<form action="/all_team_edit/ <%= @team.id%>" method="post">
+<form action="/all_team_edit/<%= @team.id %>" method="post">
   <input type="hidden" name="_method" value="patch">
   Name: <input type="text" name="name" value="<%= @team.name %>" />
+  Group: <input type="number" name="group_id" value="<%= @team.group_id %>" />
   <input type="submit" value="Edit Team" />
-  
+
 </form>
 
 <p><a href="/landingpage_admin">Back</a></p>
