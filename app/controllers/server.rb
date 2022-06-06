@@ -304,4 +304,23 @@ end
     erb :'matches/groups'
   end
 
+  get '/all_matchs' do
+    erb :'matches/all_matchs'
+  end
+  
+  get '/all_matchs/:id/edit' do
+    @match = Match.find_by(id: params[:id])
+    erb :'matches/edit_match'
+  end
+  
+  patch '/all_matchs_edit/:id' do
+    Match.find_by(id: params[:id]).update(home_team_id: params['home_team_id'],visitor_team_id: params['visitor_team_id'],stadium: params['stadium'])
+    redirect to '/all_matchs'
+  end
+  
+  delete '/all_matchs_delete/:id' do
+    Match.find_by(id: params[:id]).destroy
+    redirect to '/all_matchs'
+  end
+
 end
