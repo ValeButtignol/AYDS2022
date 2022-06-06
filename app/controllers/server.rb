@@ -132,7 +132,7 @@ get '/all_teams/:id/edit' do
 end
 
 patch '/all_teams_edit/:id' do
-  Team.find_by(id: params[:id]).update(name: params['name'])
+  Team.find_by(id: params[:id]).update(name: params['name'],group_id: params['group_id']) 
   redirect to '/all_teams'
 end
 
@@ -214,9 +214,6 @@ end
   get '/landingpage' do
     erb :'players/landingpage'
   end
-
-
-
 
 ################## FORECASTS CONTROLLERS ##################
 
