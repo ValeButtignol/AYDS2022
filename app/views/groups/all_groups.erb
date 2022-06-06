@@ -1,17 +1,19 @@
-<h1>All Groupes</h1>
+<h1>All Groups</h1>
 
-<%@admin = Administrator.find_by_id(session[:admin_id])%>
+<% @admin = Administrator.find_by_id(session[:admin_id]) %>
+<% @groups = Group.all %>
+
 
 <!-- All created groupes will be displayed.-->
-<h3> Groupes created </h3>
-<% @admin.groups.each do |m| %> 
+<h3> Groups created </h3>
+<% @groups.each do |g| %> 
 
     <!-- For each created group we can edit or delete.-->
-    <% m.id %> <%= m.name %> <a href="/all_groupes/<%= m.id%>/edit">Edit Group</a>  
+    <% g.id %> <%= g.name %> <a href="/all_groups/<%= g.id%>/edit">Edit Group</a>  
     
     <!-- This is a button to delete the group-->
     <!-- It calls a post method, but overrides it with delete-->
-    <form action="/all_groupes_delete/ <%= m.id %>" method="post">
+    <form action="/all_groups_delete/ <%= g.id %>" method="post">
       <input type="hidden" name="_method" value="delete">
       <input type="submit" value="Delete Group" />
     </form>

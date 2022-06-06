@@ -60,128 +60,129 @@ class App < Sinatra::Application
 ################## ADMINISTRATORS CONTROLLERS ##################
 
 
-    get '/login_admin' do
-      erb :'administrators/login_admin'
-    end
-  
-    post '/login_admin' do
-  
-      admin = Administrator.find_by(username: params[:username], email: params[:email])
-
-      if admin && admin.authenticate(params[:password])
-        session[:admin_id] = admin.id 
-        redirect to '/landingpage_admin'
-      else
-        redirect '/login_admin'
-      end
-
-    end
-
-    get '/landingpage_admin' do
-      erb :'administrators/landingpage_admin'
-    end
-
-################## GROUPES CONTROLLERS ##################
-
-
-get '/create_group' do
-  erb :'groupes/create_group'
-end
-
-post '/create_group' do
-
-  group = Group.new(name: params[:name],administrator_id: session['admin_id'])
-
-  if group.save then
-    redirect to '/landingpage_admin'
-  else
-    redirect '/create_group'
+  get '/login_admin' do
+    erb :'administrators/login_admin'
   end
 
-end
+  post '/login_admin' do
 
-get '/all_groupes' do
-  erb :'groupes/all_groupes'
-end
+    admin = Administrator.find_by(username: params[:username], email: params[:email])
 
-get '/all_groupes/:id/edit' do
-  @group = Group.find_by(id: params[:id])
-  erb :'groupes/edit_group'
-end
+    if admin && admin.authenticate(params[:password])
+      session[:admin_id] = admin.id 
+      redirect to '/landingpage_admin'
+    else
+      redirect '/login_admin'
+    end
 
-patch '/all_groupes_edit/:id' do
-  Group.find_by(id: params[:id]).update(name: params['name'])
-  Team.find_by.group_id(group_id: params[:id]).destroy
-  redirect to '/all_groupes'
-end
+  end
 
-delete '/all_groupes_delete/:id' do
-  Group.find_by(id: params[:id]).destroy
-  redirect to '/all_groupes'
-end
+  get '/landingpage_admin' do
+    erb :'administrators/landingpage_admin'
+  end
+
+################## GROUPS CONTROLLERS ##################
+
+
+  get '/create_group' do
+    erb :'groups/create_group'
+  end
+
+  post '/create_group' do
+
+    group = Group.new(name: params[:name],administrator_id: session['admin_id'])
+
+    if group.save then
+      redirect to '/landingpage_admin'
+    else
+      redirect '/create_group'
+    end
+
+  end
+
+  get '/all_groups' do
+    erb :'groups/all_groups'
+  end
+
+  get '/all_groups/:id/edit' do
+    @group = Group.find_by(id: params[:id])
+    erb :'groups/edit_group'
+  end
+
+  patch '/all_groups_edit/:id' do
+    Group.find_by(id: params[:id]).update(name: params['name'])
+    redirect to '/all_groups'
+  end
+
+  delete '/all_groups_delete/:id' do
+    Team.find_by.group_id(group_id: params[:id]).destroy
+    Group.find_by(id: params[:id]).destroy
+    redirect to '/all_groups'
+  end
+
+  # Show all the groups and its teams with its points
+  get '/groups' do
+    erb :'matches/groups'
+  end
+
 
 ################## TEAMS CONTROLLERS ##################
 
-get '/create_team' do
-  erb :'teams/create_team'
-end
-
-post '/create_team' do
-
-  team = Team.new
-  team.name= params[:name]
-  team.group_id= params[:group_id]
-  team.administrator_id = session[:admin_id]
-
-  if team.save then
-    redirect to '/landingpage_admin'
-  else
-    redirect '/create_team'
+  get '/create_team' do
+    erb :'teams/create_team'
   end
 
+  post '/create_team' do
+    team = Team.new
+    team.name= params[:name]
+    team.group_id= params[:group_id]
+    team.administrator_id = session[:admin_id]
 
-end
+    if team.save then
+      redirect to '/landingpage_admin'
+    else
+      redirect '/create_team'
+    end
+  end
 
-get '/all_teams' do
-  erb :'teams/all_teams'
-end
+  get '/all_teams/:id/edit' do
+    @team = Team.find_by(id: params[:id])
+    erb :'teams/edit_team'
+  end
 
-get '/all_teams/:id/edit' do
-  @team = Team.find_by(id: params[:id])
-  erb :'teams/edit_team'
-end
+  patch '/all_teams_edit/:id' do
+    Team.find_by(id: params[:id]).update(name: params['name'], group_id: params['group_id'], administrator_id: params['admin_id']) 
+    redirect to '/all_teams'
+  end
 
-patch '/all_teams_edit/:id' do
-  Team.find_by(id: params[:id]).update(name: params['name'],group_id: params['group_id']) 
-  redirect to '/all_teams'
-end
+  delete '/all_teams_delete/:id' do
+    Team.find_by(id: params[:id]).destroy
+    redirect to '/all_teams'
+  end
 
-delete '/all_teams_delete/:id' do
-  Team.find_by(id: params[:id]).destroy
-  redirect to '/all_teams'
-end
+  get '/all_teams' do
+    erb :'teams/all_teams'
+  end
 
 ################## RESULTS CONTROLLERS ##################
 
-get '/create_result' do
-  erb :'results/create_result'
-end
-
-post '/create_result' do
-
-  result = Result.new
-  result.home_goals = params['home_goals']
-  result.visitor_goals = params['visitor_goals']
-  result.match_id = params['match_id']
-  result.administrator_id = session[:admin_id]
-  
-  if result.save then
-    redirect to '/landingpage_admin'
-  else
-    redirect '/create_result' 
+  get '/create_result' do
+    erb :'results/create_result'
   end
 
-end
+  post '/create_result' do
+    result = Result.new
+    result.home_goals = params['home_goals']
+    result.visitor_goals = params['visitor_goals']
+    result.match_id = params['match_id']
+    result.administrator_id = session[:admin_id]
+    
+    if result.save then
+      redirect to '/landingpage_admin'
+    else
+      redirect '/create_result' 
+    end
+  end
 
 
 ################## PLAYERS CONTROLLERS ##################
@@ -287,12 +288,11 @@ end
 
 ################## MATCHES CONTROLLERS ##################
 
-get '/create_match' do
-  erb :'matches/create_match' 
- end
+  get '/create_match' do
+    erb :'matches/create_match' 
+  end
 
- post '/create_match' do
-
+  post '/create_match' do
     match = Match.new
     match.administrator_id = session[:admin_id]
     match.stadium = params['stadium']
@@ -301,43 +301,37 @@ get '/create_match' do
     match.visitor_team_id = params['visitor_team_id']
     match.match_type = params['match_type']
 
-  logger.info(session)
+    logger.info(session)
    
-   if match.save then
-     redirect to '/landingpage_admin'
-   else
-     redirect '/create_match'
-   end
-
-end
-
-  # Show all the not played matches and the matches to play.
-  get '/matches' do
-    erb :'matches/matches'
-  end
-
-  # Show all the groups and its teams with its points
-  get '/groups' do
-    erb :'matches/groups'
-  end
-
-  get '/all_matchs' do
-    erb :'matches/all_matchs'
+    if match.save then
+      redirect to '/landingpage_admin'
+    else
+      redirect '/create_match'
+    end
   end
   
-  get '/all_matchs/:id/edit' do
+  get '/all_matches/:id/edit' do
     @match = Match.find_by(id: params[:id])
     erb :'matches/edit_match'
   end
   
-  patch '/all_matchs_edit/:id' do
+  patch '/all_matches_edit/:id' do
     Match.find_by(id: params[:id]).update(home_team_id: params['home_team_id'],visitor_team_id: params['visitor_team_id'],stadium: params['stadium'])
-    redirect to '/all_matchs'
+    redirect to '/all_matches'
   end
   
-  delete '/all_matchs_delete/:id' do
+  delete '/all_matches_delete/:id' do
     Match.find_by(id: params[:id]).destroy
-    redirect to '/all_matchs'
+    redirect to '/all_matches'
+  end
+
+  get '/all_matches' do
+    erb :'matches/all_matches'
+  end
+
+  # Show all the not played matches and the matches to play.
+  get '/matches' do
+    erb :'matches/matches'
   end
 
 end

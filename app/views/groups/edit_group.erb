@@ -1,7 +1,8 @@
 <h1> Edit Group</h1>
 
+
 <!-- It calls a post method and overrides it with the patch method for update-->
-<form action="/all_groupes_edit/ <%= @group.id%>" method="post">
+<form action="/all_groups_edit/ <%= @group.id%>" method="post">
   <input type="hidden" name="_method" value="patch">
   Name: <input type="text" name="name" value="<%= @group.name %>" />
   <input type="submit" value="Edit Group" />

@@ -1,11 +1,11 @@
 <h1> Edit Match</h1>
 
 <!-- It calls a post method and overrides it with the patch method for update-->
-<form action="/all_matchs_edit/ <%= @match.id%>" method="post">
+<form action="/all_matches_edit/ <%= @match.id%>" method="post">
   <input type="hidden" name="_method" value="patch">
-  Home: <input type="number" name="home_team_id" value="<%= @match.home_team_id %>" />
-  Visitor: <input type="number" name="visitor_team_id" value="<%= @match.visitor_team_id %>" />
-  Stadium: <input type="text" name="stadium" value="<%= @match.stadium %>" />
+    Home: <input type="number" name="home_team_id" value="<%= @match.home_team_id %>" />
+    Visitor: <input type="number" name="visitor_team_id" value="<%= @match.visitor_team_id %>" />
+    Stadium: <input type="text" name="stadium" value="<%= @match.stadium %>" />
   <input type="submit" value="Edit Match" />
   
 </form>

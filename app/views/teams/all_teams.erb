@@ -1,17 +1,18 @@
 <h1>All Teams</h1>
 
-<%@admin = Administrator.find_by_id(session[:admin_id])%>
+<% @admin = Administrator.find_by_id(session[:admin_id])%>
+<% @teams = Team.all %>
 
 <!-- All created teams will be displayed.-->
 <h3> Teams created </h3>
-<% @admin.teams.each do |g| %> 
+<% @teams.each do |t| %> 
 
     <!-- For each created team we can edit or delete.-->
-    <% g.id %> <%= g.name %> Group: <%= g.group_id %> <a href="/all_teams/<%= g.id %>/edit">Edit Team</a>  
-    
+    <% t.id %> <%= t.name %> Group: <%= t.group_id %> <a href="/all_teams/<%= t.id %>/edit">Edit Team</a>  
+    <% t.administrator_id = @admin.id%>
     <!-- This is a button to delete the team-->
     <!-- It calls a post method, but overrides it with delete-->
-    <form action="/all_teams_delete/<%= g.id %>" method="post">
+    <form action="/all_teams_delete/<%= t.id %>" method="post">
       <input type="hidden" name="_method" value="delete">
       <input type="submit" value="Delete Team" />
     </form>

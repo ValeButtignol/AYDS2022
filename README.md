@@ -14,7 +14,6 @@ Integrantes:
 * Install gems from Gemfile: ```bundle install```
 * Run docker commands if got permission denied: ```sudo chmod 666 /var/run/docker.sock```
 * Solving docker permissions error: ```sudo aa-remove-unknown```
-* Run the interpreter: ```docker compose exec app bundle exec irb -I. -r app/controllers/server.rb```
 
 \*Commands GitHub:\*
 
@@ -22,6 +21,7 @@ Integrantes:
 
 \*DB Commands:\*
 
+* Run the interpreter: ```docker compose exec app bundle exec irb -I. -r app/controllers/server.rb```
 * Run Migrations: ```docker compose exec app bundle exec rake db:migrate```
 * Rollback Migration: ```docker compose exec app bundle exec rake db:rollback```
 * Create Migration: ```docker compose exec app bundle exec rake db:migration_name NAME=create_players```
