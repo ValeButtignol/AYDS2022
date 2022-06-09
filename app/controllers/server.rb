@@ -31,6 +31,7 @@ class App < Sinatra::Application
     
   configure do
     set :views, 'app/views'
+    set :public_folder, './public'
     set :sessions, true
     set :session_secret, ENV.fetch('SESSION_SECRET') { SecureRandom.hex(64) }
   end
