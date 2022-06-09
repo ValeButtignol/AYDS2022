@@ -6,10 +6,11 @@
 <!-- All created teams will be displayed.-->
 <h3> Teams created </h3>
 <% @teams.each do |t| %> 
-
+<% @group = Group.find_by(id: t.group_id)%>
     <!-- For each created team we can edit or delete.-->
-    <% t.id %> <%= t.name %> Group: <%= t.group_id %> <a href="/all_teams/<%= t.id %>/edit">Edit Team</a>  
-    <% t.administrator_id = @admin.id%>
+    <% t.id %> <%= t.name %> Group: <%= @group.name %> <a href="/all_teams/<%= t.id %>/edit">Edit Team</a>  
+  
+    
     <!-- This is a button to delete the team-->
     <!-- It calls a post method, but overrides it with delete-->
     <form action="/all_teams_delete/<%= t.id %>" method="post">
