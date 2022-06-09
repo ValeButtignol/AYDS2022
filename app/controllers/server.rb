@@ -85,7 +85,6 @@ class App < Sinatra::Application
 
 ################## GROUPS CONTROLLERS ##################
 
-
   get '/create_group' do
     erb :'groups/create_group'
   end
@@ -99,7 +98,6 @@ class App < Sinatra::Application
     else
       redirect '/create_group'
     end
-
   end
 
   get '/all_groups' do
@@ -113,18 +111,24 @@ class App < Sinatra::Application
 
   patch '/all_groups_edit/:id' do
     Group.find_by(id: params[:id]).update(name: params['name'])
-    redirect to '/all_groups'
+    redirect to '/landingpage_admin'
   end
 
   delete '/all_groups_delete/:id' do
-    Team.find_by.group_id(group_id: params[:id]).destroy
-    Group.find_by(id: params[:id]).destroy
-    redirect to '/all_groups'
+    @group = Group.find_by(id: params[:id])
+    if (@group.teams.count == 0) 
+      @group.destroy
+      redirect to '/landingpage_admin'
+    else
+      #flash message
+      redirect to '/all_groups'
+    end
+      
   end
 
   # Show all the groups and its teams with its points
   get '/groups' do
-    erb :'matches/groups'
+    erb :'groups/groups'
   end
 
 
@@ -158,8 +162,15 @@ class App < Sinatra::Application
   end
 
   delete '/all_teams_delete/:id' do
-    Team.find_by(id: params[:id]).destroy
-    redirect to '/all_teams'
+    @team = Team.find_by(id: params[:id])
+    if (@team.matches.count == 0)
+      @team.destroy
+      redirect to '/landingpage_admin'
+    else
+      #flash message
+      redirect to '/all_teams'
+    end
+      
   end
 
   get '/all_teams' do
@@ -179,6 +190,8 @@ class App < Sinatra::Application
     result.match_id = params['match_id']
     result.administrator_id = session[:admin_id]
     
+    #Flash message: Are you sure you want to create this result?
+
     if result.save then
       redirect to '/landingpage_admin'
     else
@@ -196,7 +209,7 @@ class App < Sinatra::Application
     # Recieve data from the form inside of params hash.
     # Create a new player and persist it.
     player = Player.new(params)
-
+    
     if player.save then
       redirect to '/login'
     else
@@ -294,6 +307,8 @@ class App < Sinatra::Application
     match.visitor_team_id = params['visitor_team_id']
     match.match_type = params['match_type']
 
+    # Flash message: Are you sure you want to create this match?
+
     logger.info(session)
    
     if match.save then
@@ -309,13 +324,19 @@ class App < Sinatra::Application
   end
   
   patch '/all_matches_edit/:id' do
-    Match.find_by(id: params[:id]).update(home_team_id: params['home_team_id'],visitor_team_id: params['visitor_team_id'],stadium: params['stadium'])
+    Match.find_by(id: params[:id]).update(home_team_id: params['home_team_id'],visitor_team_id: params['visitor_team_id'],stadium: params['stadium'], date: params['date'], match_type: params['match_type'])
     redirect to '/all_matches'
   end
   
   delete '/all_matches_delete/:id' do
-    Match.find_by(id: params[:id]).destroy
-    redirect to '/all_matches'
+    @match = Match.find_by(id: params[:id])
+    if (@match.forecasts.count == 0 && @match.results.count == 0)
+      @match.destroy
+      redirect to '/landingpage_admin'
+    else
+      #Flash message
+      redirect to '/all_matches'
+    end  
   end
 
   get '/all_matches' do

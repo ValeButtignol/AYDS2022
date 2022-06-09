@@ -19,9 +19,16 @@
       <% end %>
     </select>
 
-    
     Date: <input type="datetime-local" name="date" value="<%= @match.date %>" />
     Stadium: <input type="text" name="stadium" value="<%= @match.stadium %>" />
+    Match Type:
+      <select name="match_type">
+        <option value="GROUP">GROUP</option>
+        <option value="OCTAVES">OCTAVES</option>
+        <option value="QUARTERS">QUARTERS</option>
+        <option value="SEMI">SEMI</option>
+        <option value="FINAL">FINAL</option>
+      </select>
   <input type="submit" value="Edit Match" />
   
 </form>
