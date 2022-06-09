@@ -4,8 +4,8 @@ class Player < ActiveRecord::Base
   
   has_many :forecasts
 
-  validates :username, :email, presence: true
-  validates :username, :email, uniqueness: true
+  validates :username, presence: true
+  validates :username, uniqueness: true
 
   # Adds salt to the password.
   has_secure_password

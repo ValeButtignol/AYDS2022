@@ -10,10 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_01_000403) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_09_213003) do
   create_table "administrators", force: :cascade do |t|
     t.string "username"
-    t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest", default: "", null: false
@@ -55,7 +54,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_01_000403) do
 
   create_table "players", force: :cascade do |t|
     t.string "username"
-    t.string "email"
     t.integer "points"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

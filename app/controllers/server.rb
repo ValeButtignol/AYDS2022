@@ -62,14 +62,13 @@ class App < Sinatra::Application
 
 ################## ADMINISTRATORS CONTROLLERS ##################
 
-
   get '/login_admin' do
     erb :'administrators/login_admin'
   end
 
   post '/login_admin' do
 
-    admin = Administrator.find_by(username: params[:username], email: params[:email])
+    admin = Administrator.find_by(username: params[:username])
 
     if admin && admin.authenticate(params[:password])
       session[:admin_id] = admin.id 
@@ -211,7 +210,7 @@ class App < Sinatra::Application
   end
 
   post '/login' do
-  	player = Player.find_by(username: params[:username], email: params[:email])
+  	player = Player.find_by(username: params[:username])
 
     if player && player.authenticate(params[:password])
       session[:player_id] = player.id 
