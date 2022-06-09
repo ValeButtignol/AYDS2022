@@ -3,8 +3,23 @@
 <!-- It calls a post method and overrides it with the patch method for update-->
 <form action="/all_matches_edit/ <%= @match.id%>" method="post">
   <input type="hidden" name="_method" value="patch">
-    Home: <input type="number" name="home_team_id" value="<%= @match.home_team_id %>" />
-    Visitor: <input type="number" name="visitor_team_id" value="<%= @match.visitor_team_id %>" />
+   
+    Home: 
+    <select name="home_team_id">
+      <% @team = Team.all%>
+      <% @team.each do |t| %>
+        <option value="<%= t.id %>"> <%= t.name %> </option>
+      <% end %>
+    </select>
+
+    Visitor: 
+    <select name="visitor_team_id">
+      <% @team.each do |t| %>
+        <option value="<%= t.id %>"> <%= t.name %> </option>
+      <% end %>
+    </select>
+
+    
     Date: <input type="datetime-local" name="date" value="<%= @match.date %>" />
     Stadium: <input type="text" name="stadium" value="<%= @match.stadium %>" />
   <input type="submit" value="Edit Match" />
