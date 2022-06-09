@@ -44,18 +44,20 @@ class App < Sinatra::Application
 
 
 
-  #CONSULTAR: COMO CONFIGURAR LOS FILTROS?
 # Configure a before filter to protect private routes!
-#  before do
-#   if session[:player_id]
-#     @current_player = Player.find_by(id: session[:player_id])
-#   else
-#     public_pages = ["/", "/login", "/signup","/login_admin"]
-#     if !public_pages.include?(request.path_info)
-#       redirect '/'
-#     end
-#   end
-# end
+  before do
+    if session[:player_id]
+      @current_player = Player.find_by(id: session[:player_id])
+    elsif session[:admin_id]
+      @current_administrator = Administrator.find_by(id: session[:admin_id])
+      administrator_pages = ["/create_group", "/create_team", "/create_match", "/create_result", "/all_groups", "/all_teams", "/all_matches", "/logout"]
+    else
+      public_pages = ["/", "/login", "/signup","/login_admin"]
+      if !public_pages.include?(request.path_info)
+        redirect '/'
+      end
+    end
+  end
 
 
 ################## ADMINISTRATORS CONTROLLERS ##################
@@ -217,15 +219,6 @@ class App < Sinatra::Application
     else
       redirect '/login'
     end
-  
-    #json = JSON.parse(params)
-    #player = Player.find_by(username: json['username'])
-    #if player && player.password == json['password']
-    #  session[:player_id] = player.id
-    #  redirect to "/landingpage"
-    #else
-    #  redirect to "/login"
-    #end
   end
 
   get '/logout' do
