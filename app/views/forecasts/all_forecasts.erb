@@ -4,6 +4,19 @@
 
 <h2> Your Points: <%=@player.points%> </h2>
 
+
+<h3> Forecasts played matches </h3>
+<% @player.forecasts.each do |f| %>
+  <% m = Match.find_by_id(f.match_id) %>
+  <% if m.result != nil then%>
+    <% home = Team.find_by_id(m.home_team_id) %>
+    <% visitor = Team.find_by_id(m.visitor_team_id) %>
+    Match: <%= home.name %> <%= m.result.home_goals %> vs <%= m.result.visitor_goals %> <%= visitor.name %> - Date: <%= m.date %>
+    Forecast: <%= home.name %> <%= f.home_goals %> vs <%= f.visitor_goals %> <%= visitor.name %> </p>
+  <% end %>
+<% end %>
+
+
 <!-- Now we have a view for the forecasts of the matches to play and also for the played matches.-->
 <h3> Forecasts of matches to play </h3>
 <% @player.forecasts.each do |f| %> 
@@ -26,17 +39,5 @@
   <% end %>
 <% end %>
 
-
-
-<h3> Forecasts played matches </h3>
-<% @player.forecasts.each do |f| %>
-  <% m = Match.find_by_id(f.match_id) %>
-  <% if m.result != nil then%>
-    <% home = Team.find_by_id(m.home_team_id) %>
-    <% visitor = Team.find_by_id(m.visitor_team_id) %>
-    Match: <%= home.name %> <%= m.result.home_goals %> vs <%= f.result.visitor_goals %> <%= visitor.name %> - Date: <%= m.date %>
-    Forecast: <%= home.name %> <%= f.home_goals %> vs <%= f.visitor_goals %> <%= visitor.name %> </p>
-  <% end %>
-<% end %>
-
+<p><a href="/play">Create a Forecast</a></p>
 <p><a href="/landingpage">Back</a></p>

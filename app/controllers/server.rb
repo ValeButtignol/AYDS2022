@@ -283,7 +283,7 @@ class App < Sinatra::Application
 
   # Displays all the forecasts.
   get '/forecasts' do
-    erb :'forecasts/forecasts'
+    erb :'forecasts/all_forecasts'
   end
 
 
@@ -327,12 +327,12 @@ class App < Sinatra::Application
   end
 
   get '/all_matches' do
-    erb :'matches/all_matches'
+    erb :'matches/all_matches_admin'
   end
 
   # Show all the not played matches and the matches to play.
   get '/matches' do
-    erb :'matches/matches'
+    erb :'matches/all_matches'
   end
 
 end

@@ -1,23 +1,21 @@
-<h1>All Matches</h1>
+<h1>Played Matches</h1>
 
-<% @admin = Administrator.find_by_id(session[:admin_id])%>
 <% @matches = Match.all%>
 
-<!-- All created matchs will be displayed.-->
-<h3> Matches created </h3>
-<% @matches.each do |m| %> 
-
-    <!-- For each created match we can edit or delete.-->
-    <% m.id %> <%= m.home_team.name %> vs <%= m.visitor_team.name %> Date: <%= m.date %> Stadium: <%= m.stadium%> <a href="/all_matches/<%= m.id%>/edit">Edit Match</a>  
-    
-    <!-- This is a button to delete the match-->
-    <!-- It calls a post method, but overrides it with delete-->
-    <form action="/all_matches_delete/ <%= m.id %>" method="post">
-      <input type="hidden" name="_method" value="delete">
-      <input type="submit" value="Delete Match" />
-    </form>
-    </p>
-
+<% @matches.each do |m| %>
+  <%if m.result != nil%>
+    <p>Home: <%= m.home_team_id %> - Visitor: <%= m.visitor_team_id %> - Date: <%= m.date %> - Stadium: <%= m.stadium %> </p>
+    <p>Home Goals: <%= m.result.home_goals %> - Visitor Goals: <%= m.result.visitor_goals %> </p>
+  <% end %>
 <% end %>
 
-<p><a href="/landingpage_admin">Back</a></p>
+<h1>Matches To Play</h1>
+
+<% @matches.each do |m| %>
+  <%if m.result == nil%>
+    <p>Home: <%= m.home_team_id %> - Visitor: <%= m.visitor_team_id %> - Date: <%= m.date %> - Stadium: <%= m.stadium %> </p>
+  <% end %>
+<% end %>
+
+<p><a href="/play">Create a new forecast</a></p>
+<p><a href="/landingpage">Back</a></p>
