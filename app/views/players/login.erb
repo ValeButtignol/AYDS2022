@@ -13,109 +13,59 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Days+One&display=swap" rel="stylesheet"> 
 
+
+  <style>
+
+    body {
+        
+        background-image: url("./image/Background.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: fixed;
+    }
+
+    </style>
+
 </head>
 <body>
 
-  
+  <% if @error %>
+    <div class="error">Login failed.</div>
+  <% end %>
 
-    <% if @error %>
-      <div class="error">Login failed.</div>
-    <% end %>
-    
 
-    <div class="position-relative">
+    <div class="position-absolute top-50 start-50 translate-middle ">
 
-      <div class="bg-image" style="background-image: url('/public/image/Background.png'); height: 100vh;">
-
-      <div class="position-absolute top-50 start-50 translate-middle m-0">
-        <form  action="/login" method="post">
         
-          <a href="/" class="text-center fs-1 p-4" style="font-family: Days One, sans-serif; color: white; text-decoration: none;">ProdemosAr</a>
+        <form  action="/login" method="post">
 
+            <a href="/" class="text-center fs-1 p-4" style="font-family: Days One, sans-serif; color: white; text-decoration: none;">ProdemosAr</a>
 
-          <p class="text-light fs-2 text-md-start  mt-5 ">Login</p>
-
-          
-          <div class="container-md ">
-
-            <div class="form-floating mb-3 w-100 ">
-              <input type="text" name="username" class="form-control" id="floatingInput" placeholder="Username">
-              <label for="floatingInput">Username</label>
-            </div>
+            <p class="text-light fs-2 text-md-start  mt-5 ">Login</p>
 
             <div class="form-floating mb-3 w-100">
-              <input type="email" name="email" class="form-control" id="floatingPassword" placeholder="Email">
-              <label for="floatingPassword">Email</label>
+                <input type="text" name="username" class="form-control" id="floatingInput" placeholder="Username">
+                <label for="floatingInput">Username</label>
+            </div>
+                
+            <div class="form-floating mb-3 w-100">
+                <input type="email" name="email" class="form-control" id="floatingPassword" placeholder="Email">
+                <label for="floatingPassword">Email</label>
             </div>
             <div class="form-floating w-100">
-              <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
-              <label for="floatingPassword">Password</label>
+                <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+                <label for="floatingPassword">Password</label>
             </div>
-
+                
             <button type="submit" value="Login" class="btn btn-success mt-3">Login</button>
-
+                
             <button type="button" class="btn btn-success mt-3"><a style="color:white; text-decoration: none;" href="/signup">Sign-up</a></button>
-
-
-
-
-          </div>
-
         </form>
-      </div>
     </div>
-  </div>
-
   
 
 </body>
 </html>
 
 
-<!--
-<div
-class="bg-image"
-style="
-background-image: url('/public/image/Background.png');
-height: 100vh;
-">
-
-    <img src="/image/2022_FIFA_World_Cup_Horizontal.png" class="rounded mx-auto d-block " style="height:50% ;" alt="...">
-
-    <% if @error %>
-      <div class="error">Login failed.</div>
-    <% end %>
-    
-    <form action="/login" method="post">
-      <div class="position-relative">
-          <div class="position-absolute top-50 start-50 translate-middle mt-5">
-              
-              
-              <p class="text-light fs-1 text-md-start  mt-4 ">Login</p>
-
-
-              <div class="container-xxl ">
-                  <div class="form-floating mb-3 w-100 ">
-                      <input type="text" name="username" class="form-control" id="floatingInput" placeholder="Username">
-                      <label for="floatingInput">Username</label>
-                  </div>
-                  <div class="form-floating mb-3 w-100">
-                      <input type="email" name="email" class="form-control" id="floatingPassword" placeholder="Email">
-                      <label for="floatingPassword">Email</label>
-                  </div>
-                  <div class="form-floating w-100">
-                      <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
-                      <label for="floatingPassword">Password</label>
-                  </div>
-
-                  <button type="submit" value="Login" class="btn btn-success mt-3">Login</button>
-
-                  <button type="button" class="btn btn-success mt-3"><a href="/signup">Sign-up</a></button>
-
-
-              </div>
-          </div>
-        </div>
-    </form>
-</div>
--->
