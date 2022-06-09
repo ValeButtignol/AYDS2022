@@ -5,6 +5,7 @@
   <input type="hidden" name="_method" value="patch">
     Home: <input type="number" name="home_team_id" value="<%= @match.home_team_id %>" />
     Visitor: <input type="number" name="visitor_team_id" value="<%= @match.visitor_team_id %>" />
+    Date: <input type="datetime-local" name="date" value="<%= @match.date %>" />
     Stadium: <input type="text" name="stadium" value="<%= @match.stadium %>" />
   <input type="submit" value="Edit Match" />
   
