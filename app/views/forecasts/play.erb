@@ -1,22 +1,67 @@
-<h1>Create Forecast</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Play</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
-  <% if @error %>
-    <div class="error">Login failed.</div>
-  <% end %>
-
-  <form action="/play" method="post">
-    Home Goals: <input type="number" name="home_goals" placeholder="Home Goals" />
-    Visitor Goals: <input type="number" name="visitor_goals" placeholder="Visitor Goals" />
-    Match: 
-      <select name="match_id">
-        <% @matches = Match.all%>
-        <% @matches.each do |m| %>
-        <option value="<%= m.id %>"> <%= m.home_team.name %> vs <%= m.visitor_team.name %></option>
-        <% end %>
-      </select>
+</head>
+<body>
+  
+    
+    <div class="position-relative">
 
 
-    <input type="submit" value="Create Forecast" />
-  </form>
+        <div class="bg-image mw-100" style="background-image: url('image/Background.png'); height: 100vh;">
 
-  <p><a href="/landingpage">Back</a></p>
+            <div class="position-absolute top-50 start-50 translate-middle text-center">
+
+
+               
+                <h1 class="fs-1 p-5" style="color:white ;">Create Forecast</h1>
+                 
+
+                <div class="container-lg">
+
+                    <form action="/play" method="post">
+                
+                        
+            
+                        <div class="row">
+                            <div class="col">
+                              <input type="number" name="home_goals" class="form-control" placeholder="home_goals" aria-label="home_goals">
+                            </div>
+                            <div class="col">
+                              <input type="number" name="visitor_goals" class="form-control" placeholder="visitor_goals" aria-label="visitor_goals">
+                            </div>
+                        </div>
+                        
+                        <p class="fs-3 mt-5" style="color:white ;">Match</p>
+                        
+                        <select name="match_id" class="form-select " aria-label="Default select example">
+                        
+                            <% @matches = Match.all%>
+                            <% @matches.each do |m| %>
+                            <option value="<%= m.id %>"> <%= m.home_team.name %> vs <%= m.visitor_team.name %></option>
+                            <% end %>
+                        
+                        </select>
+                        
+                        <input class="m-3" type="submit" value="Create Forecast" />
+            
+                    </form>
+            
+
+                </div>
+
+            </div>
+            
+    </div>
+    
+
+    
+
+</body>
+</html>
