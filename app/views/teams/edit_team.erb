@@ -4,7 +4,13 @@
 <form action="/all_teams_edit/<%= @team.id %>" method="post">
   <input type="hidden" name="_method" value="patch">
   Name: <input type="text" name="name" value="<%= @team.name %>" />
-  Group: <input type="number" name="group_id" value="<%= @team.group_id %>" />
+  Enter Group: 
+      <select name="group_id">
+        <% @group = Group.all%>
+        <% @group.each do |t| %>
+         <option value="<%= t.id %>"> <%= t.name %> </option>
+        <% end %>
+      </select>
   <input type="submit" value="Edit Team" />
 
 </form>
