@@ -7,8 +7,14 @@
 
   <form action="/create_team" method="post">
       Enter Team: <input type="text" name="name" placeholder="Team" />
-      Enter Group: <input type="text" name="group_id" placeholder="Group" />
-      
+
+      Enter Group: 
+      <select name="group_id">
+        <% @group = Group.all%>
+        <% @group.each do |t| %>
+         <option value="<%= t.id %>"> <%= t.name %> </option>
+        <% end %>
+      </select>
       
       <input type="submit" value="Enter"/>
   </form>
