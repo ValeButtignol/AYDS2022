@@ -200,12 +200,12 @@ class App < Sinatra::Application
     player = Player.new(params)
     
     if player.save then
-      redirect to '/login'
+      redirect to '/player/login'
     else
-      redirect to '/signup'
+      # Flash message: username invalid
+      redirect to '/player/signup'
     end
   end
-
 
   get '/player/login' do
     erb :'players/login'
@@ -216,9 +216,10 @@ class App < Sinatra::Application
 
     if player && player.authenticate(params[:password])
       session[:player_id] = player.id 
-      redirect to '/landingpage'
+      redirect to '/player/landingpage'
     else
-      redirect '/login'
+      # Flash message: Username or password invalid
+      redirect '/player/login'
     end
   end
 
@@ -233,11 +234,11 @@ class App < Sinatra::Application
 
 ################## FORECASTS CONTROLLERS ##################
 
-  get '/play' do
-    erb :'forecasts/play'
+  get '/player/forecast/new' do
+    erb :'forecasts/create_forecast'
   end
 
-  post '/play' do
+  post '/player/forecast/new' do
     new_forecast = Forecast.new
     new_forecast.player_id = session[:player_id]
     new_forecast.home_goals = params['home_goals']
@@ -251,32 +252,33 @@ class App < Sinatra::Application
     logger.info(new_forecast)
     
     if Forecast.find_by_id(new_forecast.id) then
-      redirect to '/landingpage'
+      redirect to '/player/landingpage'
     else 
-      redirect to '/play'
+      # Flash message: Invalid forecast
+      redirect to '/player/forecast/new'
     end
   end
 
   # Displays the edit form having a forecast param on it.
-  get '/forecasts/:id/edit' do
+  get '/player/forecast/:id/edit' do
     @forecast = Forecast.find_by(id: params[:id])
     erb :'forecasts/edit'
   end
 
   # Updates the forecast with the new data.
-  patch '/forecasts/:id' do
+  patch '/player/forecast_edit/:id' do
     Forecast.find_by(id: params[:id]).update(home_goals: params['home_goals'], visitor_goals: params['visitor_goals'])
-    redirect to '/forecasts'
+    redirect to '/player/forecasts'
   end
 
   # Deletes the forecast.
-  delete '/forecasts/:id' do
+  delete '/player/forecast_delete/:id' do
     Forecast.find_by(id: params[:id]).destroy
-    redirect to '/forecasts'
+    redirect to '/player/forecasts'
   end
 
   # Displays all the forecasts.
-  get '/forecasts' do
+  get '/player/forecasts' do
     erb :'forecasts/all_forecasts'
   end
 

@@ -25,11 +25,11 @@
     <% visitor = Team.find_by_id(m.visitor_team_id) %>
 
     <!-- For each forecast, we show the predicted goals corresponding to the teams, and we can Edit the forecast-->
-    <%= home.name %> <%= f.home_goals %> vs <%= f.visitor_goals %> <%= visitor.name %> - Date: <%= m.date %> <a href="/forecasts/<%= f.id%>/edit"> Edit Forecast</a>  
+    <%= home.name %> <%= f.home_goals %> vs <%= f.visitor_goals %> <%= visitor.name %> - Date: <%= m.date %> <a href="/player/forecast/<%= f.id%>/edit"> Edit Forecast</a>  
     
     <!-- This is a button to delete the forecast-->
     <!-- It calls a post method, but overrides it with delete-->
-    <form action="/forecasts/ <%= f.id %>" method="post">
+    <form action="/player/forecast_delete/ <%= f.id %>" method="post">
       <input type="hidden" name="_method" value="delete">
       <input type="submit" value="Delete Forecast" />
     </form>
@@ -37,5 +37,5 @@
   <% end %>
 <% end %>
 
-<p><a href="/play">Create a Forecast</a></p>
-<p><a href="/landingpage">Back</a></p>
+<p><a href="/player/forecast/new">Create a Forecast</a></p>
+<p><a href="/player/landingpage">Back</a></p>
