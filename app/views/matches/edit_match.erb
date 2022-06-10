@@ -1,7 +1,7 @@
 <h1> Edit Match</h1>
 
 <!-- It calls a post method and overrides it with the patch method for update-->
-<form action="/all_matches_edit/ <%= @match.id%>" method="post">
+<form action="/admin/match_edit/ <%= @match.id%>" method="post">
   <input type="hidden" name="_method" value="patch">
    
     Home: 
@@ -33,4 +33,4 @@
   
 </form>
 
-<p><a href="/landingpage_admin">Back</a></p>
+<p><a href="/admin/landingpage">Back</a></p>

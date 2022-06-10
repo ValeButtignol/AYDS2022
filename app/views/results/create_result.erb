@@ -9,7 +9,7 @@
 
       Enter Visitor Goals:  <input type="text" name="visitor_goals" placeholder="Visitor Goals" />
 
-      Matchs:
+      Matches:
       <select name="match_id">
       <% @match = Match.all%>
       <% @match.each do |m| %>
@@ -19,3 +19,5 @@
 
       <input type="submit" value="Enter"/>
   </form>
+
+<p><a href="/admin/landingpage">Back</a></p>

@@ -1,0 +1,37 @@
+<h1>All Teams</h1>
+
+<% @admin = Administrator.find_by_id(session[:admin_id])%>
+<% @teams = Team.all %>
+
+<% @groups = Group.all%>
+<% @groups.each do |g| %>
+  <table class="default">
+    <th>
+      <%= g.name %>
+      <% @teams = g.team_ids %> <a href="/admin/group/<%= g.id%>/edit">Edit Group</a>
+      <form action="/admin/group_delete/ <%= g.id %>" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="Delete Group" />
+      </form>
+    </th>
+
+    <% @teams.each do |t| %>
+      <% team = Team.find_by_id(t) %>
+      <tr>
+        <td> <%= team.name %> </td>
+        <td> <%= team.points_of_group %> </td>
+        <td> <a href="/admin/team/<%= team.id %>/edit">Edit Team</a> </td>
+        <td>
+        <form action="/admin/team_delete/<%= team.id %>" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <input type="submit" value="Delete Team" />
+        </form>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+
+<p><a href="/admin/group/new">Create a group</a></p>
+<p><a href="/admin/team/new">Create a team</a></p>
+<p><a href="/admin/landingpage">Back</a></p>

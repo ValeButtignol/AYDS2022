@@ -1,16 +1,16 @@
 <h1>Create Match</h1>
 
   <% if @error %>
-      <div class="error">Sign up failed.</div>
+    <div class="error">Sign up failed.</div>
   <% end %>
 
-  <form action="/create_match" method="post">
+  <form action="/admin/match/new" method="post">
 
       Enter Home:
       <select name="home_team_id">
         <% @team = Team.all%>
         <% @team.each do |t| %>
-            <option value="<%= t.id %>"> <%= t.name %> </option>
+          <option value="<%= t.id %>"> <%= t.name %> </option>
         <% end %>
       </select>
 
@@ -18,7 +18,7 @@
       <select name="visitor_team_id">
         <% @team = Team.all%>
         <% @team.each do |t| %>
-         <option value="<%= t.id %>"> <%= t.name %> </option>
+          <option value="<%= t.id %>"> <%= t.name %> </option>
         <% end %>
       </select>
 
@@ -37,3 +37,5 @@
 
       <input type="submit" value="Enter"/>
   </form>
+
+<p><a href="/admin/landingpage">Back</a></p>
