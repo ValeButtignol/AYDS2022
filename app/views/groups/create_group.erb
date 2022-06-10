@@ -1,12 +1,12 @@
 <h1>Create Group</h1>
-
   <% if @error %>
-      <div class="error">Sign up failed.</div>
+    <div class="error">Sign up failed.</div>
   <% end %>
 
-  <form action="/create_group" method="post">
-  Enter Group: <input type="text" name="name" placeholder="Group" />
-      <input type="submit" value="Enter"/>
+  <form action="/admin/group/new" method="post">
+    Enter Group: 
+    <input type="text" name="name" placeholder="Group" />
+    <input type="submit" value="Enter"/>
   </form>
 
-<p><a href="/landingpage_admin">Back</a></p>
+<p><a href="/admin/landingpage">Back</a></p>

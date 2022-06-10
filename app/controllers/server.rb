@@ -6,15 +6,13 @@ require "sinatra/activerecord"
 require_relative '../models/init.rb'
 
 class App < Sinatra::Application
-    
+
   configure :production, :development do
     enable :logging
-
     logger = Logger.new(STDOUT)
     logger.level = Logger::DEBUG if development?
     set :logger, logger
   end
-  
 
   configure :development do
     register Sinatra::Reloader
@@ -23,7 +21,6 @@ class App < Sinatra::Application
       logger.info 'Reloaded!!!'
     end
   end
-
 
   def initialize(app = nil)
     super()
@@ -36,132 +33,117 @@ class App < Sinatra::Application
     set :session_secret, ENV.fetch('SESSION_SECRET') { SecureRandom.hex(64) }
   end
 
-
 # Start Page  
   get '/' do
     erb :index
   end
 
-
-
 # Configure a before filter to protect private routes!
-  before do
-    if session[:player_id]
-      @current_player = Player.find_by(id: session[:player_id])
-    elsif session[:admin_id]
-      @current_administrator = Administrator.find_by(id: session[:admin_id])
-      administrator_pages = ["/create_group", "/create_team", "/create_match", "/create_result", "/all_groups", "/all_teams", "/all_matches", "/logout"]
-    else
-      public_pages = ["/", "/login", "/signup","/login_admin"]
-      if !public_pages.include?(request.path_info)
-        redirect '/'
-      end
-    end
-  end
+#  before do
+#    if session[:player_id]
+#      @current_player = Player.find_by(id: session[:player_id])
+#    elsif session[:admin_id]
+#      @current_administrator = Administrator.find_by(id: session[:admin_id])
+#      administrator_pages = ["/create_group", "/create_team", "/create_match", "/create_result", "/all_groups", "/all_teams", "/all_matches", "/logout"]
+#    else
+#      public_pages = ["/", "/login", "/signup","/login_admin"]
+#      if !public_pages.include?(request.path_info)
+#        redirect '/'
+#      end
+#    end
+#  end
 
 
 ################## ADMINISTRATORS CONTROLLERS ##################
 
-  get '/login_admin' do
+  get '/admin/login' do
     erb :'administrators/login_admin'
   end
 
-  post '/login_admin' do
-
+  post '/admin/login' do
     admin = Administrator.find_by(username: params[:username])
-
     if admin && admin.authenticate(params[:password])
       session[:admin_id] = admin.id 
-      redirect to '/landingpage_admin'
+      redirect to '/admin/landingpage'
     else
-      redirect '/login_admin'
+      redirect '/admin/login'
     end
-
   end
 
-  get '/landingpage_admin' do
+  get '/admin/landingpage' do
     erb :'administrators/landingpage_admin'
   end
 
 ################## GROUPS CONTROLLERS ##################
 
-  get '/create_group' do
+  get '/admin/group/new' do
     erb :'groups/create_group'
   end
 
-  post '/create_group' do
-
+  post '/admin/group/new' do
     group = Group.new(name: params[:name],administrator_id: session['admin_id'])
-
     if group.save then
-      redirect to '/landingpage_admin'
+      redirect to '/admin/landingpage'
     else
-      redirect '/create_group'
+      redirect '/admin/group/new'
     end
   end
 
-  get '/all_groups' do
-    erb :'groups/all_groups'
-  end
-
-  get '/all_groups/:id/edit' do
+  get '/admin/group/:id/edit' do
     @group = Group.find_by(id: params[:id])
     erb :'groups/edit_group'
   end
 
-  patch '/all_groups_edit/:id' do
+  patch '/admin/group_edit/:id' do
     Group.find_by(id: params[:id]).update(name: params['name'])
     redirect to '/landingpage_admin'
   end
 
-  delete '/all_groups_delete/:id' do
+  delete '/admin/group_delete/:id' do
     @group = Group.find_by(id: params[:id])
     if (@group.teams.count == 0) 
       @group.destroy
-      redirect to '/landingpage_admin'
+      redirect to '/admin/landingpage'
     else
-      #flash message
-      redirect to '/'
+      #flash message: this group cant be deleted because it has teams
+      redirect to '/admin/groups&teams'
     end
-      
   end
 
-  # Show all the groups and its teams with its points
-  get '/groups' do
-    erb :'groups/groups'
+  get '/player/groups&teams' do
+    erb :'groups/groups_teams'
   end
-
 
 ################## TEAMS CONTROLLERS ##################
 
-  get '/create_team' do
+  get '/admin/team/new' do
     erb :'teams/create_team'
   end
 
-  post '/create_team' do
+  post '/admin/team/new' do
     team = Team.new
     team.name= params[:name]
     team.group_id= params[:group_id]
     team.administrator_id = session[:admin_id]
 
     if team.save then
-      redirect to '/landingpage_admin'
+      redirect to '/admin/landingpage'
     else
-      redirect '/create_team'
+      redirect '/admin/team/new'
     end
   end
 
-  get '/all_teams/:id/edit' do
+  get '/admin/teams/:id/edit' do
     @team = Team.find_by(id: params[:id])
     erb :'teams/edit_team'
   end
 
-  patch '/all_teams_edit/:id' do
+  patch '/admin/teams_edit/:id' do
     Team.find_by(id: params[:id]).update(name: params['name'], group_id: params['group_id'], administrator_id: params['admin_id']) 
     redirect to '/all_teams'
   end
 
-  delete '/all_teams_delete/:id' do
+  delete '/admin/teams_delete/:id' do
     @team = Team.find_by(id: params[:id])
     @matches = Match.all
     had_match = false
@@ -173,24 +155,24 @@ class App < Sinatra::Application
         
     if had_match then
       #flash message: Cannot delete this team because it has matches
-      redirect to '/all_teams'
+      redirect to '/admin/groups&teams'
     else
       @team.destroy
-      redirect to '/landingpage_admin'
+      redirect to '/admin/landingpage'
     end
   end
 
-  get '/all_teams' do
+  get '/admin/groups&teams' do
     erb :'teams/all_teams'
   end
 
 ################## RESULTS CONTROLLERS ##################
 
-  get '/create_result' do
+  get '/admin/result/new' do
     erb :'results/create_result'
   end
 
-  post '/create_result' do
+  post '/admin/result/new' do
     result = Result.new
     result.home_goals = params['home_goals']
     result.visitor_goals = params['visitor_goals']
@@ -200,19 +182,19 @@ class App < Sinatra::Application
     #Flash message: Are you sure you want to create this result?
     logger.info(result)
     if result.save then
-      redirect to '/landingpage_admin'
+      redirect to '/admin/landingpage'
     else
-      redirect '/create_result' 
+      redirect '/admin/result/new' 
     end
   end
 
 
 ################## PLAYERS CONTROLLERS ##################
-  get '/signup' do
+  get '/player/signup' do
     erb :'players/signup'
   end
 
-  post '/signup' do
+  post '/player/signup' do
     # Recieve data from the form inside of params hash.
     # Create a new player and persist it.
     player = Player.new(params)
@@ -225,11 +207,11 @@ class App < Sinatra::Application
   end
 
 
-  get '/login' do
+  get '/player/login' do
     erb :'players/login'
   end
 
-  post '/login' do
+  post '/player/login' do
   	player = Player.find_by(username: params[:username])
 
     if player && player.authenticate(params[:password])
@@ -245,7 +227,7 @@ class App < Sinatra::Application
     redirect to '/'
   end
 
-  get '/landingpage' do
+  get '/player/landingpage' do
     erb :'players/landingpage'
   end
 
