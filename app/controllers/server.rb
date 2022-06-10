@@ -121,7 +121,7 @@ class App < Sinatra::Application
       redirect to '/landingpage_admin'
     else
       #flash message
-      redirect to '/all_groups'
+      redirect to '/'
     end
       
   end
@@ -163,14 +163,21 @@ class App < Sinatra::Application
 
   delete '/all_teams_delete/:id' do
     @team = Team.find_by(id: params[:id])
-    if (@team.matches.count == 0)
+    @matches = Match.all
+    had_match = false
+    @matches.each do |m|
+      if m.home_team == @team.id || m.visitor_team == @team.id
+        had_match = true
+      end
+    end
+        
+    if had_match then
+      #flash message: Cannot delete this team because it has matches
+      redirect to '/all_teams'
+    else
       @team.destroy
       redirect to '/landingpage_admin'
-    else
-      #flash message
-      redirect to '/all_teams'
     end
-      
   end
 
   get '/all_teams' do
@@ -191,7 +198,7 @@ class App < Sinatra::Application
     result.administrator_id = session[:admin_id]
     
     #Flash message: Are you sure you want to create this result?
-
+    logger.info(result)
     if result.save then
       redirect to '/landingpage_admin'
     else
@@ -235,7 +242,7 @@ class App < Sinatra::Application
 
   get '/logout' do
     session.clear
-    redirect to '/login'
+    redirect to '/'
   end
 
   get '/landingpage' do
@@ -330,7 +337,7 @@ class App < Sinatra::Application
   
   delete '/all_matches_delete/:id' do
     @match = Match.find_by(id: params[:id])
-    if (@match.forecasts.count == 0 && @match.results.count == 0)
+    if (@match.forecasts.count == 0 && @match.result == nil)
       @match.destroy
       redirect to '/landingpage_admin'
     else

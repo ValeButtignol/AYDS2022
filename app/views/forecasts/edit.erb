@@ -4,7 +4,7 @@
 <form action="/forecasts/ <%= @forecast.id%>" method="post">
   <input type="hidden" name="_method" value="patch">
   Home Goals: <input type="number" name="home_goals" value="<%= @forecast.home_goals %>" />
-  Home Goals: <input type="number" name="visitor_goals" value="<%= @forecast.visitor_goals %>" />
+  Visitor Goals: <input type="number" name="visitor_goals" value="<%= @forecast.visitor_goals %>" />
   <input type="submit" value="Edit Forecast" />
 </form>
 

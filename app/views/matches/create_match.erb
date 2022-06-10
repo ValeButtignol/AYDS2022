@@ -5,9 +5,6 @@
   <% end %>
 
   <form action="/create_match" method="post">
-      Enter Stadium: <input type="text" name="stadium" placeholder="Stadium" />
-
-      Enter Fecha:  <input type="datetime-local" name="date" placeholder="Date" />
 
       Enter Home:
       <select name="home_team_id">
@@ -33,6 +30,10 @@
         <option value="SEMI">SEMI</option>
         <option value="FINAL">FINAL</option>
       </select>
+
+      Enter Stadium: <input type="text" name="stadium" placeholder="Stadium" />
+
+      Enter Fecha:  <input type="datetime-local" name="date" placeholder="Date" />
 
       <input type="submit" value="Enter"/>
   </form>

@@ -4,21 +4,72 @@
 <% @teams = Team.all %>
 
 <!-- All created teams will be displayed.-->
+<!--
 <h3> Teams created </h3>
 <% @teams.each do |t| %> 
 <% @group = Group.find_by(id: t.group_id)%>
+-->
+
+
     <!-- For each created team we can edit or delete.-->
-    <% t.id %> <%= t.name %> Group: <%= @group.name %> <a href="/all_teams/<%= t.id %>/edit">Edit Team</a>  
-  
+<!--    <% t.id %> <%= t.name %> Group: <%= @group.name %> <a href="/all_teams/<%= t.id %>/edit">Edit Team</a>  
+  <% @groups = Group.all%>
+<% @groups.each do |g| %>
+  <table class="default">
+    <th>
+      <%= g.name %>
+    </th>
+    <% @teams = g.team_ids %>
+    <% @teams.each do |t| %>
+    <% team = Team.find_by_id(t) %>
+      <tr>
+        <td> <%= team.name %> </td>
+        <td> <%= team.points_of_group %> </td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+-->
     
     <!-- This is a button to delete the team-->
     <!-- It calls a post method, but overrides it with delete-->
-    <form action="/all_teams_delete/<%= t.id %>" method="post">
+<!--    <form action="/all_teams_delete/<%= t.id %>" method="post">
       <input type="hidden" name="_method" value="delete">
       <input type="submit" value="Delete Team" />
     </form>
-    </p>
 
 <% end %>
+-->
 
+<% @groups = Group.all%>
+<% @groups.each do |g| %>
+  <table class="default">
+    <th>
+      <%= g.name %>
+      <% @teams = g.team_ids %> <a href="/all_groups/<%= g.id%>/edit">Edit Group</a>
+      <form action="/all_groups_delete/ <%= g.id %>" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="Delete Group" />
+      </form>
+    </th>
+
+    <% @teams.each do |t| %>
+      <% team = Team.find_by_id(t) %>
+      <tr>
+        <td> <%= team.name %> </td>
+        <td> <%= team.points_of_group %> </td>
+        <td> <a href="/all_teams/<%= team.id %>/edit">Edit Team</a> </td>
+        <td>
+        <form action="/all_teams_delete/<%= team.id %>" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <input type="submit" value="Delete Team" />
+        </form>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+
+<p><a href="/create_group">Create a group</a></p>
+<p><a href="/create_team">Create a team</a></p>
 <p><a href="/landingpage_admin">Back</a></p>

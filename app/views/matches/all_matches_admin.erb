@@ -3,8 +3,17 @@
 <% @admin = Administrator.find_by_id(session[:admin_id])%>
 <% @matches = Match.all%>
 
+<h3>Played Matches</h3>
+
+<% @matches.each do |m| %>
+  <%if m.result != nil%>
+    <p> <%= m.home_team.name %> <%= m.result.home_goals %> - <%= m.result.visitor_goals %> <%= m.visitor_team.name %> - Date: <%= m.date %> - Stadium: <%= m.stadium %> </p>
+  <% end %>
+<% end %>
+
+
 <!-- All created matchs will be displayed.-->
-<h3> Matches created </h3>
+<h3> Matches to play </h3>
 <% @matches.each do |m| %> 
 
     <!-- For each created match we can edit or delete.-->
@@ -17,7 +26,6 @@
       <input type="submit" value="Delete Match" />
     </form>
     </p>
-
 <% end %>
 
 <p><a href="/landingpage_admin">Back</a></p>
