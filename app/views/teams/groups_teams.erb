@@ -66,7 +66,7 @@
 
                 <% @teams = g.team_ids %> 
                 
-                <a class="mt-4 w-25 h-25 btn btn-light btn-sm " href="/admin/group/<%= g.id%>/edit">Edit Group</a>
+                <a class="mt-5 h-25 btn btn-sm badge rounded-pill text-bg-light " href="/admin/group/<%= g.id%>/edit">Edit Group</a>
                 
                 <form class=" mt-4" action="/admin/group_delete/ <%= g.id %>" method="post">
                     <input type="hidden" name="_method" value="delete">
@@ -81,7 +81,9 @@
 
             <% @teams.each do |t| %>
             <% team = Team.find_by_id(t) %>
+
             <tr>
+                
                 <td> <%= team.name %> </td>
                 <td> <%= team.points_of_group %> </td>
                 <td> <a class="ms-5 btn btn-success btn-sm" href="/admin/team/<%= team.id %>/edit">Edit Team</a> </td>
