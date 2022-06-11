@@ -1,0 +1,20 @@
+<h1>Played Matches</h1>
+
+<% @matches = Match.all%>
+
+<% @matches.each do |m| %>
+  <%if m.result != nil%>
+    <p> <%= m.home_team.name %> <%= m.result.home_goals %> - <%= m.result.visitor_goals %> <%= m.visitor_team.name %> - Date: <%= m.date %> - Stadium: <%= m.stadium %> </p>
+  <% end %>
+<% end %>
+
+<h1>Matches To Play</h1>
+
+<% @matches.each do |m| %>
+  <%if m.result == nil%>
+    <p>Home: <%= m.home_team.name %> - Visitor: <%= m.visitor_team.name %> - Date: <%= m.date %> - Stadium: <%= m.stadium %> </p>
+  <% end %>
+<% end %>
+
+<p><a href="/player/forecast/new">Create a new forecast</a></p>
+<p><a href="/player/landingpage">Back</a></p>
