@@ -64,10 +64,10 @@
         <form action="/player/forecast_delete/ <%= f.id %>" method="post">
 
             <p><strong>    
-                <%= home.name %> <%= f.home_goals %> vs <%= f.visitor_goals %> <%= visitor.name %> - Date: <%= m.date %> <a href="/player/forecast/<%= f.id%>/edit" class="ms-2 btn btn-success me-2"> Edit Forecast</a>  
+                <%= home.name %> <%= f.home_goals %> vs <%= f.visitor_goals %> <%= visitor.name %> - Date: <%= m.date %> <a href="/player/forecast/<%= f.id%>/edit" class="ms-2 btn btn-light me-2"> Edit Forecast</a>  
             
-                <input type="hidden" name="_method" value="delete" class="btn btn-success ">
-                <input type="submit" value="Delete Forecast" class="btn btn-success" />
+                <input type="hidden" name="_method" value="delete" class="btn btn-light ">
+                <input type="submit" value="Delete Forecast" class="btn btn-light" />
             </strong></p>
 
             
@@ -76,7 +76,7 @@
         <% end %>
         <% end %>
 
-        <p><a class="btn btn-success" href="/player/forecast/new">Create a Forecast</a></p>
+        <p><a class="btn btn-light" href="/player/forecast/new">Create a Forecast</a></p>
         <p><a class="btn btn-success mt-4" href="/player/landingpage">Back</a></p>
 
     </div>
