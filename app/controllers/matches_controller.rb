@@ -1,4 +1,8 @@
 class  MatchesController < Sinatra::Base
+
+  configure do
+    set :views, 'app/views'
+  end
     get '/admin/match/new' do
         erb :'matches/create_match' 
       end

@@ -4,13 +4,8 @@ require 'sinatra/reloader' if Sinatra::Base.environment == :development
 require 'logger'
 require "sinatra/activerecord"
 require_relative '../models/init.rb'
-require_relative '../controllers/players_controller'
-require_relative '../controllers/administrators_controller'
-require_relative '../controllers/groups_controller'
-require_relative '../controllers/teams_controller'
-require_relative '../controllers/results_controller'
-require_relative '../controllers/forecasts_controller'
-require_relative '../controllers/matches_controller'
+require_relative 'init_controller.rb'
+
 
 class App < Sinatra::Application
 

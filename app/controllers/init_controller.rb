@@ -1,0 +1,7 @@
+require_relative 'players_controller'
+require_relative 'administrators_controller'
+require_relative 'groups_controller'
+require_relative 'teams_controller'
+require_relative 'results_controller'
+require_relative 'forecasts_controller'
+require_relative 'matches_controller'

@@ -1,4 +1,8 @@
 class AdministratorsController < Sinatra::Base
+  
+  configure do
+    set :views, 'app/views'
+  end
 
 get '/admin/login' do
     erb :'administrators/login_admin'
