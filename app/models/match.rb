@@ -37,7 +37,7 @@ class Match < ActiveRecord::Base
       self.destroy
     elsif self.match_type == 'SEMI' and semifinals > 2
       self.destroy
-    elsif self.match_type == 'THIRD AND FOURTH' and third_fourths > 2
+    elsif self.match_type == 'THIRD AND FOURTH' and third_fourths > 1
       self.destroy
     elsif self.match_type == 'FINAL' and finals > 1
       self.destroy
