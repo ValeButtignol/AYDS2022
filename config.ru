@@ -1,19 +1,4 @@
 require 'sinatra'
-
 require_relative './app/controllers/server'
-require_relative './app/controllers/players_controller'
-require_relative './app/controllers/administrators_controller'
-require_relative './app/controllers/groups_controller'
-require_relative './app/controllers/teams_controller'
-require_relative './app/controllers/results_controller'
-require_relative './app/controllers/forecasts_controller'
-require_relative './app/controllers/matches_controller'
 use Rack::MethodOverride
 run App
-use PlayersController
-use AdministratorsController
-use GroupsController
-use TeamsController
-use ResultsController
-use ForecastsController
-use MatchesController
