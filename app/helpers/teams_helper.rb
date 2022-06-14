@@ -1,14 +1,10 @@
-class TeamsController < Sinatra::Base
+module Teams
 
-  configure do
-    set :views, 'app/views'
-  end     
-
-  get '/admin/team/new' do
+  def get_team
     erb :'teams/create_team'
   end
     
-  post '/admin/team/new' do
+  def post_team
     team = Team.new
     team.name= params[:name]
     team.group_id= params[:group_id]
@@ -21,17 +17,17 @@ class TeamsController < Sinatra::Base
     end
   end
     
-  get '/admin/team/:id/edit' do
+  def get_team_edit
     @team = Team.find_by(id: params[:id])
     erb :'teams/edit_team'
   end
 
-  patch '/admin/team_edit/:id' do
+  def patch_team
     Team.find_by(id: params[:id]).update(name: params['name'], group_id: params['group_id'], administrator_id: params['admin_id']) 
     redirect to '/admin/landingpage'
   end
 
-  delete '/admin/team_delete/:id' do
+  def delete_team
     @team = Team.find_by(id: params[:id])
     @matches = Match.all
     had_match = false
@@ -52,7 +48,7 @@ class TeamsController < Sinatra::Base
 
   end
 
-  get '/admin/groups&teams' do
+  def get_team_and_group
     erb :'teams/groups_teams'
   end
 

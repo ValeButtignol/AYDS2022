@@ -1,14 +1,10 @@
-class ResultsController < Sinatra::Base
-   
-  configure do
-    set :views, 'app/views'
-  end
+module Results
 
-  get '/admin/result/new' do
+  def get_result
       erb :'results/create_result'
     end
   
-  post '/admin/result/new' do
+  def post_result
     result = Result.new
     result.home_goals = params['home_goals']
     result.visitor_goals = params['visitor_goals']

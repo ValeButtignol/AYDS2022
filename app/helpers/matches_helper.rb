@@ -1,14 +1,10 @@
-class  MatchesController < Sinatra::Base
-
-  configure do
-    set :views, 'app/views'
-  end
-    
-  get '/admin/match/new' do
-        erb :'matches/create_match' 
+module Matches
+  
+  def get_match
+    erb :'matches/create_match' 
   end
 
-  post '/admin/match/new' do
+  def post_match
     match = Match.new
     match.administrator_id = session[:admin_id]
     match.stadium = params['stadium']
@@ -28,17 +24,17 @@ class  MatchesController < Sinatra::Base
     end
   end
   
-  get '/admin/match/:id/edit' do
+  def get_match_edit
     @match = Match.find_by(id: params[:id])
     erb :'matches/edit_match'
   end
   
-  patch '/admin/match_edit/:id' do
+  def patch_match
     Match.find_by(id: params[:id]).update(home_team_id: params['home_team_id'],visitor_team_id: params['visitor_team_id'],stadium: params['stadium'], date: params['date'], match_type: params['match_type'])
     redirect to '/admin/matches'
   end
   
-  delete '/admin/match_delete/:id' do
+  def delete_match
     @match = Match.find_by(id: params[:id])
     if (@match.forecasts.count == 0 && @match.result == nil)
       @match.destroy
@@ -49,12 +45,12 @@ class  MatchesController < Sinatra::Base
     end  
   end
 
-  get '/admin/matches' do
+  def get_match_admin
     erb :'matches/matches_admin'
   end
 
   # Show all the not played matches and the matches to play.
-  get '/player/matches' do
+  def get_match_player
     erb :'matches/matches_player'
   end
 end

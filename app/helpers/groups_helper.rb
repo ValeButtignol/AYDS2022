@@ -1,14 +1,10 @@
-class GroupsController < Sinatra::Base
-
-  configure do
-    set :views, 'app/views'
-  end
+module Groups
     
-  get '/admin/group/new' do
+  def get_group
         erb :'groups/create_group'
   end
 
-  post '/admin/group/new' do
+  def post_group
     group = Group.new(name: params[:name],administrator_id: session['admin_id'])
     if group.save then
       redirect to '/admin/landingpage'
@@ -17,17 +13,17 @@ class GroupsController < Sinatra::Base
     end
   end
 
-  get '/admin/group/:id/edit' do
+  def get_group_edit
     @group = Group.find_by(id: params[:id])
     erb :'groups/edit_group'
   end
 
-  patch '/admin/group_edit/:id' do
+  def patch_group
     Group.find_by(id: params[:id]).update(name: params['name'])
     redirect to '/admin/landingpage'
   end
 
-  delete '/admin/group_delete/:id' do
+  def delete_group
     @group = Group.find_by(id: params[:id])
     if (@group.teams.count == 0) 
       @group.destroy
@@ -38,7 +34,7 @@ class GroupsController < Sinatra::Base
     end
   end
 
-  get '/player/groups&teams' do
+  def get_group_and_team
     erb :'groups/groups_teams'
   end
   

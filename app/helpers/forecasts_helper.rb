@@ -1,13 +1,10 @@
-class ForecastsController < Sinatra::Base
-  configure do
-    set :views, 'app/views'
-  end
+module Forecasts
     
-  get '/player/forecast/new' do
+  def get_forecast
         erb :'forecasts/create_forecast'
   end
 
-  post '/player/forecast/new' do
+  def post_forecast
     new_forecast = Forecast.new
     new_forecast.player_id = session[:player_id]
     new_forecast.home_goals = params['home_goals']
@@ -29,25 +26,25 @@ class ForecastsController < Sinatra::Base
   end
 
   # Displays the edit form having a forecast param on it.
-  get '/player/forecast/:id/edit' do
+  def get_forecast_edit
     @forecast = Forecast.find_by(id: params[:id])
     erb :'forecasts/edit'
   end
 
   # Updates the forecast with the new data.
-  patch '/player/forecast_edit/:id' do
+  def patch_forecast
     Forecast.find_by(id: params[:id]).update(home_goals: params['home_goals'], visitor_goals: params['visitor_goals'])
     redirect to '/player/forecasts'
   end
 
   # Deletes the forecast.
-  delete '/player/forecast_delete/:id' do
+  def delete_forecast
     Forecast.find_by(id: params[:id]).destroy
     redirect to '/player/forecasts'
   end
 
   # Displays all the forecasts.
-  get '/player/forecasts' do
+  def get_all_forecast
     erb :'forecasts/all_forecasts'
   end
 end
