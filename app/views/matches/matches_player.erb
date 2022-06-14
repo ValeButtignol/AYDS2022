@@ -18,3 +18,29 @@
 
 <p><a href="/player/forecast/new">Create a new forecast</a></p>
 <p><a href="/player/landingpage">Back</a></p>
+
+<h1> PlayOffs </h1>
+<table>
+  <th> OCTAVES </th>
+  <% @matches.each do |m| %>
+    <% if m.match_type == "OCTAVES" %>
+      <%if m.result == nil %>
+        <tr>
+          <td> <%= m.home_team.name %> </td> 
+        </tr>
+        <tr>
+          <td> <%= m.visitor_team.name %> </td>
+        </tr>
+      <% else %>
+        <tr>
+          <td> <%= m.home_team.name %> </td> 
+          <td> <%= m.result.home_goals %> </td>
+        </tr>
+        <tr>
+          <td> <%= m.visitor_team.name %> </td> 
+          <td> <%= m.result.visitor_goals %> </td>
+        </tr>
+      <% end %>
+    <% end %>
+  <% end %>
+</table>
