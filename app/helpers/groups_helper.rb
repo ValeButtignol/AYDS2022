@@ -1,7 +1,7 @@
 module Groups
     
   def get_group
-        erb :'groups/create_group'
+    erb :'groups/create_group'
   end
 
   def post_group
@@ -37,5 +37,4 @@ module Groups
   def get_group_and_team
     erb :'groups/groups_teams'
   end
-  
 end

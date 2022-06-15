@@ -2,7 +2,7 @@ module Results
 
   def get_result
       erb :'results/create_result'
-    end
+  end
   
   def post_result
     result = Result.new
@@ -19,5 +19,4 @@ module Results
       redirect '/admin/result/new' 
     end
   end
-    
 end

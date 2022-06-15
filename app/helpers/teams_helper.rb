@@ -45,11 +45,9 @@ module Teams
       @team.destroy
       redirect to '/admin/landingpage'
     end
-
   end
 
   def get_team_and_group
     erb :'teams/groups_teams'
   end
-
 end

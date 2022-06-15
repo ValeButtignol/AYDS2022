@@ -1,9 +1,7 @@
 module Players
-  
   def get_signup
     erb :'/players/signup'
   end
-
   def post_signup
     # Recieve data from the form inside of params hash.
     # Create a new player and persist it.
@@ -15,13 +13,10 @@ module Players
       # Flash message: username invalid
       redirect to '/player/signup'
     end
-
   end
-    
   def get_login
     erb :'players/login'
   end
-    
   def post_login
     player = Player.find_by(username: params[:username])
   
@@ -33,14 +28,11 @@ module Players
       redirect '/player/login'
     end
   end
-  
   def get_logout
     session.clear
     redirect to '/'
   end
-  
   def get_landingpage
     erb :'players/landingpage'
   end
-   
 end
