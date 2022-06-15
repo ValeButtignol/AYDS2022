@@ -4,13 +4,26 @@ require 'sinatra/reloader' if Sinatra::Base.environment == :development
 require 'logger'
 require "sinatra/activerecord"
 require_relative '../models/init.rb'
-require_relative '../helpers/init_helper'
+require_relative '../helpers/players_helper'
+require_relative '../helpers/administrators_helper'
+require_relative '../helpers/forecasts_helper'
+require_relative '../helpers/teams_helper'
+require_relative '../helpers/results_helper'
+require_relative '../helpers/groups_helper'
+require_relative '../helpers/matches_helper'
+
 
 
 class App < Sinatra::Application
 
-  helpers Init
-
+  helpers Players
+  helpers Administrators
+  helpers Forecasts
+  helpers Teams
+  helpers Groups
+  helpers Results
+  helpers Matches
+  
   configure :production, :development do
     enable :logging
     logger = Logger.new(STDOUT)
