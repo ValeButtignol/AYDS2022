@@ -11,6 +11,7 @@ module Players
       redirect to '/player/login'
     else
       # Flash message: username invalid
+      flash[:error] = "Username invalid"
       redirect to '/player/signup'
     end
   end
@@ -25,6 +26,7 @@ module Players
       redirect to '/player/landingpage'
     else
       # Flash message: Username or password invalid
+      flash[:error] = "Username or password invalid"
       redirect '/player/login'
     end
   end

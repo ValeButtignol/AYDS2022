@@ -21,6 +21,7 @@ module Forecasts
       redirect to '/player/landingpage'
     else 
       # Flash message: Invalid forecast
+      flash[:error] = "Invalid forecast"
       redirect to '/player/forecast/new'
     end
   end

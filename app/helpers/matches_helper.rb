@@ -14,7 +14,7 @@ module Matches
     match.match_type = params['match_type']
 
     # Flash message: Are you sure you want to create this match?
-
+    
     logger.info(session)
    
     if match.save then
