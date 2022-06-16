@@ -48,7 +48,7 @@
       <div class="error">Sign up failed.</div>
     <% end %>
 
-    <form action="/admin/match/new" method="post">
+    <form action="/admin/match/new" method="post" id="formNewMatch">
       <ul class="list-group">
         <div style="color:white ;">Enter Home:</div>
         <select class="mb-2" name="home_team_id">
@@ -82,12 +82,40 @@
         <div style="color:white ;">Enter Fecha:</div>  
         <input class="mb-2" type="datetime-local" name="date" placeholder="Date" />
 
-        <input class="mt-3 btn btn-dark" type="submit" value="Enter"/>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+          Enter
+        </button>
+
       </ul>
     </form>
   </div>
 
+  <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Notice</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+              Are you sure you want to create this match?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" onclick="sendFormulario()" class="btn btn-primary">Accept</button>
+              </div>
+            </div>
+          </div>
+        </div>
 
+        <script>
+        function sendFormulario() {
+            let objetoRepresentaForm = document.getElementById("formNewMatch"); 
+            objetoRepresentaForm.submit();
+        }
+        </script>
 <!--
 <h1>Create Match</h1>
 
@@ -132,30 +160,3 @@
 <p><a href="/admin/landingpage">Back</a></p>
 
 -->
-
-<!-- 
-   Button trigger modal
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-          Enter
-        </button>
-
-  
-  Modal 
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Notice</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-              Are you sure you want to create this match?
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Accept</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        -->
