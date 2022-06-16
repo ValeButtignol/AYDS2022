@@ -23,6 +23,13 @@
   <% if @error %>
     <div class="error">Login failed.</div>
   <% end %>
+
+  <% flash.each do |type, msg| %>
+   <div class= "alert alert-danger" role="error">
+    <%= msg %>
+    </div>
+  <% end %>
+
     <div class="position-absolute top-50 start-50 translate-middle ">
       <form  action="/player/login" method="post">
         <a href="/" class="text-center fs-1 p-4" style="font-family: Days One, sans-serif; color: white; text-decoration: none;">ProdemosAr</a>

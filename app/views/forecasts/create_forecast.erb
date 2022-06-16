@@ -16,6 +16,13 @@
       }
     </style>
   </head>
+
+  <% flash.each do |type, msg| %>
+    <div class= "alert alert-danger" role="error">
+     <%= msg %>
+     </div>
+   <% end %>
+   
   <body>
     <p><a class="btn btn-success m-3" href="/player/landingpage">Back</a></p>
     <div class="position-absolute top-50 start-50 translate-middle text-center">

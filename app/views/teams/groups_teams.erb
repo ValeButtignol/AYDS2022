@@ -37,7 +37,11 @@
         
     </header>
 
-    
+    <% flash.each do |type, msg| %>
+        <div class= "alert alert-danger" role="error">
+          <%= msg %>
+        </div>
+    <% end %>
 
     <div class="btn-group-vertical ms-5 mt-4 gap-4 position-absolute top-50 start-0 translate-middle-y">
         <p><a class="btn btn-outline-primary btn-outline-light me-1" href="/admin/group/new">Create new group</a></p>
@@ -155,6 +159,8 @@
         <p><a class="btn btn-light" href="/admin/team/new">Create a team</a></p>
 
     </div>
+
+    
 
 
 -----------------
