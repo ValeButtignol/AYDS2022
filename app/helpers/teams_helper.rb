@@ -40,7 +40,7 @@ module Teams
         
     if had_match then
       #flash message: Cannot delete this team because it has matches
-      flash[:error] = "Cannot delete this team because it has matches"
+      #flash[:error] = "Cannot delete this team because it has matches"
       redirect to '/admin/groups&teams'
     else
       @team.destroy
