@@ -3,16 +3,15 @@ require 'bundler/setup'
 require 'sinatra/reloader' if Sinatra::Base.environment == :development
 require 'logger'
 require "sinatra/activerecord"
+require 'sinatra/flash'
 require_relative '../models/init.rb'
 require_relative '../helpers/players_helper'
 require_relative '../helpers/administrators_helper'
-require_relative '../helpers/forecasts_helper'
 require_relative '../helpers/teams_helper'
-require_relative '../helpers/results_helper'
 require_relative '../helpers/groups_helper'
+require_relative '../helpers/forecasts_helper'
+require_relative '../helpers/results_helper'
 require_relative '../helpers/matches_helper'
-
-
 
 class App < Sinatra::Application
 
