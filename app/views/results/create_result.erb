@@ -9,7 +9,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Days+One&display=swap" rel="stylesheet"> 
-
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
     <style>
         body {
           background-image: url("/image/Background.png");
@@ -55,7 +56,7 @@
             <div class="error">Sign up failed.</div>
         <% end %>
 
-        <form class="mb-2" action="/admin/result/new" method="post">
+        <form class="mb-2" action="/admin/result/new" method="post" id="formNewResult">
 
             <ul class="list-group">
 
@@ -73,40 +74,39 @@
                 <% end %>
                 </select>
 
-                <input class="mt-4 btn btn-light" type="submit" value="Enter"/>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    Enter
+                </button>
             </ul>
-            
         </form>
-        
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Notice</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        Are you sure you want to create this result?
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" onclick="sendFormulario()" class="btn btn-primary">Accept</button>
+        </div>
+        </div>
+    </div>
+    </div>
+    
+    <script>
+    function sendFormulario() {
+        let objetoRepresentaForm = document.getElementById("formNewResult");
+        objetoRepresentaForm.submit();
+    }
+    </script>
+
 </body>
 </html>
-
-
-<!--
-
-<h1>Create Result</h1>
-
-  <% if @error %>
-      <div class="error">Sign up failed.</div>
-  <% end %>
-
-  <form action="/admin/result/new" method="post">
-      Enter Home Goals: <input type="text" name="home_goals" placeholder="Home Goals" />
-
-      Enter Visitor Goals:  <input type="text" name="visitor_goals" placeholder="Visitor Goals" />
-
-      Matches:
-      <select name="match_id">
-      <% @match = Match.all%>
-      <% @match.each do |m| %>
-      <option value="<%= m.id %>"> <%= m.home_team.name %> vs <%= m.visitor_team.name %></option>
-      <% end %>
-      </select>
-
-      <input type="submit" value="Enter"/>
-  </form>
-
-<p><a href="/admin/landingpage">Back</a></p>
--->
-
