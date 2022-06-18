@@ -36,10 +36,20 @@
         
         <div class="container-fluid">
             <div class="d-flex">
-
+    
                 <p class="m-4"><a href="/admin/landingpage" class="text-center fs-1 " style="font-family: Days One, sans-serif; color: white; text-decoration: none;">ProdemosAr</a></p>
-                <p class="m-4 position-absolute top-0 end-0"><a class="btn btn-outline-primary btn-outline-light me-2" href="/logout">Logout</a></p>
+                
             </div>
+    
+            <%@player = Administrator.find_by_id(session[:admin_id])%>
+            <div class="d-flex m-4 position-absolute top-0 end-0">
+    
+                
+                <h4 class=" mt-2 me-4 fs-3 " style="color:white ;">Username: <%=@player.username%> </h4>
+                <p class=""><a class="btn btn-outline-primary btn-outline-light me-2 mt-2" href="/logout">Logout</a></p>
+            
+            </div>
+            
         </div>
         
     </header>

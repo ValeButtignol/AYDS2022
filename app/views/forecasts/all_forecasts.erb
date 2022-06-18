@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forecasts</title>
+    <title>ProdemosAr</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,6 +23,64 @@
 </head>
 <body>
     
+
+    <header>
+        
+        <div class="container-fluid">
+            <div class="d-flex">
+
+                <p class="m-4"><a href="/player/landingpage" class="text-center fs-1 " style="font-family: Days One, sans-serif; color: white; text-decoration: none;">ProdemosAr</a></p>
+                
+            </div>
+
+            <%@player = Player.find_by_id(session[:player_id])%>
+            <div class="d-flex m-4 position-absolute top-0 end-0">
+
+                
+                <h4 class=" mt-2 me-4 fs-3 " style="color:white ;">Username: <%=@player.username%> </h4>
+                <p class=""><a class="btn btn-outline-primary btn-outline-light me-2 mt-2" href="/logout">Logout</a></p>
+            
+            </div>
+            
+        </div>
+        
+    </header>
+    <div class="btn-group-vertical mt-4 gap-4 position-absolute top-50 start-0 translate-middle-y">
+
+      <div class="container-md w-75 ">
+        <div class="d-grid gap-5">
+          <a class="btn btn-outline-primary btn-outline-light me-1" href="/player/forecast/new">Create new forecast</a>
+          <a class="btn btn-outline-primary btn-outline-light me-1" href="/player/forecasts">See all your forecasts and points</a>
+          <a class="btn btn-outline-primary btn-outline-light me-1" href="/player/matches">See the played matches or the matches to play</a>
+          <a class="btn btn-outline-primary btn-outline-light me-1" href="/player/groups&teams">See the groups phase table</a>
+          
+        </div>   
+      </div>
+
+    </div>
+
+    <div class="position-absolute top-50 start-50 translate-middle ms-5 text-center">
+
+        
+        <h1 class="display-3" style="font-family: Days One, sans-serif; color: white;">Forecasts</h1>
+
+        <%@player = Player.find_by_id(session[:player_id])%>
+
+        <h2 class="pt-1" style="color:white ;"> Your Points: <%=@player.points%> </h2>
+
+
+    </div>
+
+
+
+</body>
+</html>
+
+<!--
+
+    <a class="btn btn-success m-3" href="/player/landingpage">Back</a>
+
+        
     <div class="p-4">
 
         <h1 class="display-2" style="font-family: Days One, sans-serif; color: white;">Forecasts</h1>
@@ -38,7 +96,7 @@
             <% @player.forecasts.each do |f| %>
             <% m = Match.find_by_id(f.match_id) %>
             <% if m.result != nil then%>
-            <!--VER DE BORRAR ESTO-->
+            VER DE BORRAR ESTO
             <% home = Team.find_by_id(m.home_team_id) %>
             <% visitor = Team.find_by_id(m.visitor_team_id) %>
             Match: <%= home.name %> <%= m.result.home_goals %> vs <%= m.result.visitor_goals %> <%= visitor.name %> - Date: <%= m.date %>
@@ -48,7 +106,7 @@
 
         </strong></p>
 
-        <!-- Now we have a view for the forecasts of the matches to play and also for the played matches.-->
+         Now we have a view for the forecasts of the matches to play and also for the played matches.
         <h3 class="pt-4 pb-1" style="color:white;" > Forecasts of matches to play </h3>
 
             <% @player.forecasts.each do |f| %> 
@@ -57,10 +115,10 @@
             <% home = Team.find_by_id(m.home_team_id) %>
             <% visitor = Team.find_by_id(m.visitor_team_id) %>
 
-        <!-- For each forecast, we show the predicted goals corresponding to the teams, and we can Edit the forecast-->
+         For each forecast, we show the predicted goals corresponding to the teams, and we can Edit the forecast
         
-        <!-- This is a button to delete the forecast-->
-        <!-- It calls a post method, but overrides it with delete-->
+         This is a button to delete the forecast
+         It calls a post method, but overrides it with delete
         <form action="/player/forecast_delete/ <%= f.id %>" method="post">
 
             <p><strong>    
@@ -81,11 +139,5 @@
 
     </div>
 
-</body>
-</html>
-
-<!--
-
-    <a class="btn btn-success m-3" href="/player/landingpage">Back</a>
 -->
 
