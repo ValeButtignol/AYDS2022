@@ -23,7 +23,7 @@ module Players
   
     if player && player.authenticate(params[:password])
       session[:player_id] = player.id 
-      redirect to '/player/landingpage'
+      redirect to '/player/landingpage/:id/edit'
     else
       # Flash message: Username or password invalid
       flash[:error] = "Username or password invalid"
@@ -34,7 +34,15 @@ module Players
     session.clear
     redirect to '/'
   end
+
   def get_landingpage
+    @player = Player.find_by(id: params[:id])
     erb :'players/landingpage'
+  end
+
+  def delete_player 
+    @player = Player.find_by(id: params[:id])
+    @player.destroy
+    redirect to '/views/index'
   end
 end

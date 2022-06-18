@@ -91,8 +91,12 @@ class App < Sinatra::Application
     get_logout
   end
 
-  get '/player/landingpage' do
+  get '/player/landingpage/:id/edit' do
     get_landingpage
+  end
+
+  delete '/player/delete/:id' do
+    delete_player
   end
 
 ################ ADMINISTRATORS CONTROLLERS ################
