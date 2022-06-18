@@ -1,7 +1,7 @@
 module Forecasts
     
   def get_forecast
-        erb :'forecasts/create_forecast'
+    erb :'forecasts/create_forecast'
   end
 
   def post_forecast
@@ -20,7 +20,6 @@ module Forecasts
     if Forecast.find_by_id(new_forecast.id) then
       redirect to '/player/landingpage/:id/edit'
     else 
-      # Flash message: Invalid forecast
       flash[:error] = "Invalid forecast"
       redirect to '/player/forecast/new'
     end

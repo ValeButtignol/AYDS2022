@@ -13,8 +13,6 @@ module Matches
     match.visitor_team_id = params['visitor_team_id']
     match.match_type = params['match_type']
 
-    # Flash message: Are you sure you want to create this match?
-    
     logger.info(session)
    
     if match.save then

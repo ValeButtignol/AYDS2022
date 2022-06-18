@@ -11,8 +11,6 @@ module Results
     result.match_id = params['match_id']
     result.administrator_id = session[:admin_id]
       
-    #Flash message: Are you sure you want to create this result?
-  
     logger.info(result)
     if result.save then
       redirect to '/admin/landingpage'
