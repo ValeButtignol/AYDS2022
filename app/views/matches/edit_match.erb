@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Days+One&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 
     <style>
         body {
@@ -38,8 +39,8 @@
         <div class="d-flex m-4 position-absolute top-0 end-0">
 
             
-            <h4 class=" mt-2 me-4 fs-3 " style="color:white ;">Username: <%=@player.username%> </h4>
-            <p class=""><a class="btn btn-outline-primary btn-outline-light me-2 mt-2" href="/logout">Logout</a></p>
+          <i class="bi bi-person-circle fs-3 mt-2 me-2 " style="color:white ;"></i> <p class=" me-4 fs-2 " style="color:white ;"><%=@player.username%> </p>
+          <p class=""><a class="btn btn-outline-primary btn-outline-light me-2 mt-2" href="/logout">Logout</a></p>
         
         </div>
         

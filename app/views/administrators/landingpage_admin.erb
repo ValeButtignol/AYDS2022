@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Days+One&display=swap" rel="stylesheet"> 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <style>
         body {
             background-image: url("../image/Background.png");
@@ -34,7 +35,7 @@
             <div class="d-flex m-4 position-absolute top-0 end-0">
     
                 
-                <h4 class=" mt-2 me-4 fs-3 " style="color:white ;">Username: <%=@player.username%> </h4>
+                <i class="bi bi-person-circle fs-3 mt-2 me-2 " style="color:white ;"></i> <p class=" me-4 fs-2 " style="color:white ;"><%=@player.username%> </p>
                 <p class=""><a class="btn btn-outline-primary btn-outline-light me-2 mt-2" href="/logout">Logout</a></p>
             
             </div>
