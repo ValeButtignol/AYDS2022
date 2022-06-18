@@ -10,6 +10,7 @@ module Administrators
       session[:admin_id] = admin.id 
       redirect to '/admin/landingpage'
     else
+      flash[:error] = "Username or password invalid"
       redirect '/admin/login'
     end
   end
