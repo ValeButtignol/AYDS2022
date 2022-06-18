@@ -20,6 +20,13 @@
           background-position: center center;
           background-attachment: fixed;
         }
+
+        .Scroll {
+            height:auto;
+            width:600px ;
+            overflow-y: scroll;
+        }
+
     </style>
 
 </head>
@@ -37,11 +44,7 @@
         
     </header>
 
-    <% flash.each do |type, msg| %>
-        <div class= "alert alert-danger" role="error">
-          <%= msg %>
-        </div>
-    <% end %>
+    
 
     <div class="btn-group-vertical ms-5 mt-4 gap-4 position-absolute top-50 start-0 translate-middle-y">
         <p><a class="btn btn-outline-primary btn-outline-light me-1" href="/admin/group/new">Create new group</a></p>
@@ -56,57 +59,68 @@
 
         <h1 class="fs-1 text-center" style="color:white ;">All Teams</h1>
         
-        <% @admin = Administrator.find_by_id(session[:admin_id])%>
-        <% @teams = Team.all %>
+        <div class="Scroll border rounded-3">
+            <div class="">
+                <div class="row p-3 bg-light text-dark rounded-4">
 
-        <% @groups = Group.all%>
-        <% @groups.each do |g| %>
+                    <div class="col">
 
-        <div class="container-fluid">
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <% @admin = Administrator.find_by_id(session[:admin_id])%>
+                        <% @teams = Team.all %>
+
+                        <% @groups = Group.all%>
+                        <% @groups.each do |g| %>
+
+                        
+                        <div class="mt-5 d-grid gap-2 d-md-flex justify-content-md-end">
+                                
+
+                            <div class="me-5  border border-dark rounded-pill bg-white border-2 mt-3 mb-4 w-50">
+                                Group <%= g.name %>
+                            </div>
+
+                            <% @teams = g.team_ids %> 
+                                
+                            <p class="badge"><a class="mt-2 btn btn-success rounded-pill btn-sm" href="/admin/group/<%= g.id%>/edit">Edit Group</a></p>
+                                
+                            <form class="mt-3" action="/admin/group_delete/ <%= g.id %>" method="post">
+                                <input type="hidden" name="_method" value="delete">
+                                <input class=" btn btn-success rounded-pill" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" type="submit" value="Delete Group" />
+                            </form> 
+
+                        </div>
+
+                        <table class="mt-2 table table-striped">
+                            
+
+                            <% @teams.each do |t| %>
+                            <% team = Team.find_by_id(t) %>
                 
+                            <tr>
+                                
+                                <td> <%= team.name %> </td>
+                                <td> <%= team.points_of_group %> </td>
+                                <td> <a class="ms-5 btn btn-success btn-sm" href="/admin/team/<%= team.id %>/edit">Edit Team</a> </td>
+                                <td>
+                                <form  action="/admin/team_delete/<%= team.id %>" method="post">
+                                    <input type="hidden" name="_method" value="delete">
+                                    <input class="btn btn-success btn-sm" type="submit" value="Delete Team" />
+                                </form>
+                                </td>
+                            </tr>
+                            <% end %>
+                        </table>
+                        <% end %>
+                    </div>
 
-                <div class="me-5  border border-success rounded-pill bg-light border-0 mt-5 mb-4 w-50">Group <%= g.name %></div>
-
-                <% @teams = g.team_ids %> 
-                
-                <a class="mt-5 h-25 btn btn-sm badge rounded-pill text-bg-light " href="/admin/group/<%= g.id%>/edit">Edit Group</a>
-                
-                <form class=" mt-4" action="/admin/group_delete/ <%= g.id %>" method="post">
-                    <input type="hidden" name="_method" value="delete">
-                    <input class=" mt-3 btn btn-light btn-sm " type="submit" value="Delete Group" />
-                </form> 
-
+                </div>
+                            
             </div>
         </div>
-
-
-        <table class="table table-striped">
-
-            <% @teams.each do |t| %>
-            <% team = Team.find_by_id(t) %>
-
-            <tr>
-                
-                <td> <%= team.name %> </td>
-                <td> <%= team.points_of_group %> </td>
-                <td> <a class="ms-5 btn btn-success btn-sm" href="/admin/team/<%= team.id %>/edit">Edit Team</a> </td>
-                <td>
-                <form  action="/admin/team_delete/<%= team.id %>" method="post">
-                    <input type="hidden" name="_method" value="delete">
-                    <input class="btn btn-success btn-sm" type="submit" value="Delete Team" />
-                </form>
-                </td>
-            </tr>
-            <% end %>
-        </table>
-        <% end %>
-
-            
-        <div>
-            <p><a class="btn btn-light mt-5" href="/admin/group/new">Create a group</a></p>
-            <p><a class="btn btn-light" href="/admin/team/new">Create a team</a></p>
-        </div>        
+        <div class="position-absolute top-50 start-100 translate-middle ms-5">
+            <p><a class="btn btn-light rounded-pill btn-sm mt-5 ms-3 w-100" href="/admin/group/new">Create a group</a></p>
+            <p><a class="btn btn-light rounded-pill btn-sm ms-3 w-100" href="/admin/team/new">Create a team</a></p>
+        </div>
 
     </div>
 
