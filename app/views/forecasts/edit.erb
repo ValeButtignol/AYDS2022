@@ -1,6 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProdemosAr</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Days+One&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+
+    <style>
+        body {
+          background-image: url("/image/Background.png");
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-attachment: fixed;
+        }
+
+    </style>
+
+</head>
+<body>
+
+  <header>
+        
+    <div class="container-fluid">
+        <div class="d-flex">
+
+            <p class="m-4"><a href="/player/landingpage/:id/edit" class="text-center fs-1 " style="font-family: Days One, sans-serif; color: white; text-decoration: none;">ProdemosAr</a></p>
+            
+        </div>
+
+        <%@player = Player.find_by_id(session[:player_id])%>
+        <div class="d-flex m-4 position-absolute top-0 end-0">
+
+            
+          <i class="bi bi-person-circle fs-3 mt-2 me-2 " style="color:white ;"></i> <p class=" me-4 fs-2 " style="color:white ;"><%=@player.username%> </p>
+          <p class=""><a class="btn btn-outline-primary btn-outline-light me-2 mt-2" href="/logout">Logout</a></p>
+        
+        </div>
+        
+    </div>
+    
+  </header>
+    <div class="btn-group-vertical mt-4 gap-4 position-absolute top-50 start-0 translate-middle-y">
+
+      <div class="container-md w-75 ">
+        <div class="d-grid gap-5">
+          <a class="btn btn-outline-primary btn-outline-light me-1" href="/player/forecast/new">Create new forecast</a>
+          <a class="btn btn-outline-primary btn-outline-light me-1" href="/player/forecasts">See all your forecasts and points</a>
+          <a class="btn btn-outline-primary btn-outline-light me-1" href="/player/matches">See the played matches or the matches to play</a>
+          <a class="btn btn-outline-primary btn-outline-light me-1" href="/player/groups&teams">See the groups phase table</a>
+          
+        </div>   
+      </div>
+
+      
+    </div>
+
+
+
+    <div class="position-absolute top-50 start-50 translate-middle ms-5 text-center">
+
+      <h1 class="fs-1 mb-4 text-center" style="color:white ;">Edit Forecast </h1>
+
+
+      <form class="d-grid gap-1" action="/player/forecast_edit/ <%= @forecast.id%>" method="post">
+        <input type="hidden" name="_method" value="patch">
+        <p>Home Goals: <input class="ms-2 rounded-2 border border-2" type="number" name="home_goals" value="<%= @forecast.home_goals %>" /> </p>
+        <p>Visitor Goals: <input class="ms-2 rounded-2 border border-2" type="number" name="visitor_goals" value="<%= @forecast.visitor_goals %>" /></p>
+        <input class="btn btn-light mt-2" type="submit" value="Edit Forecast" />
+      </form>
+
+    </div>
+</body>
+</html>
+
+
+<!--
 <h1> Edit Forecast </h1>
 
-<!-- It calls a post method and overrides it with the patch method for update-->
+ It calls a post method and overrides it with the patch method for update
 <form action="/player/forecast_edit/ <%= @forecast.id%>" method="post">
   <input type="hidden" name="_method" value="patch">
   Home Goals: <input type="number" name="home_goals" value="<%= @forecast.home_goals %>" />
@@ -9,3 +94,5 @@
 </form>
 
 <p><a href="/player/forecasts">Back</a></p>
+
+-->
