@@ -18,7 +18,7 @@ module Forecasts
     logger.info(new_forecast)
     
     if Forecast.find_by_id(new_forecast.id) then
-      redirect to '/player/landingpage'
+      redirect to '/player/landingpage/:id/edit'
     else 
       # Flash message: Invalid forecast
       flash[:error] = "Invalid forecast"
