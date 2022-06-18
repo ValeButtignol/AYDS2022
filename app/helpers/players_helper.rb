@@ -8,7 +8,8 @@ module Players
   player = Player.new(params)
         
     if player.save then
-      redirect to '/player/login'
+      session[:player_id] = player.id 
+      redirect to '/player/landingpage/:id/edit'
     else
       # Flash message: username invalid
       flash[:error] = "Username invalid"
