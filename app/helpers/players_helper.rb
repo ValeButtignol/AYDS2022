@@ -43,6 +43,6 @@ module Players
   def delete_player 
     @player = Player.find_by(id: params[:id])
     @player.destroy
-    redirect to '/views/index'
+    redirect to '/'
   end
 end
