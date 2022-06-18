@@ -39,6 +39,7 @@ module Matches
       redirect to '/admin/landingpage'
     else
       #Flash message
+      flash[:error] = "This match cannot be deleted because it has an associated result or prediction"
       redirect to '/admin/matches'
     end  
   end
