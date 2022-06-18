@@ -46,7 +46,8 @@
         </div>
         
     </header>
-    <div class="btn-group-vertical mt-4 gap-4 position-absolute top-50 start-0 translate-middle-y">
+
+    <div class="btn-group-vertical mt-4 position-absolute top-50 start-0 translate-middle-y">
 
       <div class="container-md w-75 ">
         <div class="d-grid gap-5">
@@ -60,14 +61,61 @@
 
     </div>
 
-    <div class="position-absolute top-50 start-50 translate-middle ms-5 text-center">
+    <div class="position-absolute top-50 start-50 translate-middle ms-4">
 
         
-        <h1 class="display-3" style="font-family: Days One, sans-serif; color: white;">Forecasts</h1>
+        <h1 class="display-3 text-center" style="font-family: Days One, sans-serif; color: white;">Forecasts</h1>
 
         <%@player = Player.find_by_id(session[:player_id])%>
 
-        <h2 class="pt-1" style="color:white ;"> Your Points: <%=@player.points%> </h2>
+        <h2 class="pt-1 text-center" style="color:white ;"> Your Points: <%=@player.points%> </h2>
+
+        <h3 class="pt-4 pb-2 ms-3" style="color:white ;"> Forecasts played matches </h3>
+
+        <p class="ms-4"><strong>
+
+            <% @player.forecasts.each do |f| %>
+            <% m = Match.find_by_id(f.match_id) %>
+            <% if m.result != nil then%>
+            <!--VER DE BORRAR ESTO -->
+            <% home = Team.find_by_id(m.home_team_id) %>
+            <% visitor = Team.find_by_id(m.visitor_team_id) %>
+            Match: <%= home.name %> <%= m.result.home_goals %> vs <%= m.result.visitor_goals %> <%= visitor.name %> - Date: <%= m.date %>
+            Forecast: <%= home.name %> <%= f.home_goals %> vs <%= f.visitor_goals %> <%= visitor.name %> </p>
+            <% end %>
+            <% end %>
+
+        </strong></p>
+
+         <!--Now we have a view for the forecasts of the matches to play and also for the played matches.-->
+        <h3 class="pt-4 pb-1 ms-3" style="color:white;" > Forecasts of matches to play </h3>
+
+            <% @player.forecasts.each do |f| %> 
+            <% m = Match.find_by_id(f.match_id) %>
+            <% if m.result == nil then%>
+            <% home = Team.find_by_id(m.home_team_id) %>
+            <% visitor = Team.find_by_id(m.visitor_team_id) %>
+
+         <!--For each forecast, we show the predicted goals corresponding to the teams, and we can Edit the forecast -->
+        <!--
+         This is a button to delete the forecast
+         It calls a post method, but overrides it with delete
+        -->
+         <form action="/player/forecast_delete/ <%= f.id %>" method="post">
+
+            <p class="d-flex ms-4"><strong>    
+                <%= home.name %> <%= f.home_goals %> vs <%= f.visitor_goals %> <%= visitor.name %> - Date: <%= m.date %> <a href="/player/forecast/<%= f.id%>/edit" class="ms-2 btn btn-light me-2"> Edit Forecast</a>  
+            
+                
+                <input type="hidden" name="_method" value="delete" class="btn btn-light ">
+                <input type="submit" value="Delete Forecast" class="btn btn-light"/>
+            </strong></p>
+
+            
+        </form>
+        </p>
+        <% end %>
+        <% end %>
 
 
     </div>
