@@ -23,8 +23,8 @@
         }
 
         .Scroll {
-            height:auto;
-            width:600px ;
+            height: 500px;
+            width:auto ;
             overflow-y: scroll;
         }
 
@@ -66,44 +66,50 @@
         <p><a class="btn btn-outline-primary btn-outline-light me-1" href="/admin/matches">See all matches</a></p>
     </div>
 
-    <div class="position-absolute top-50 start-50 translate-middle ms-5 text-center ">
+    <div class="position-absolute top-50 start-50 translate-middle ms-5 text-center mb-3">
 
-      <h1 class="fs-1 text-center" style="color:white ;">All Matches</h1>
+      <h1 class="fs-1 text-center mb-3" style="color:white ;">All Matches</h1>
         
       <div class="Scroll border rounded-3">
 
         <div class="row p-3 bg-light text-dark rounded-4">
-          <% @admin = Administrator.find_by_id(session[:admin_id])%>
-          <% @matches = Match.all%>
 
-          <h3>Played Matches</h3>
+          <div class="col">
+            <% @admin = Administrator.find_by_id(session[:admin_id])%>
+            <% @matches = Match.all%>
 
-          <% @matches.each do |m| %>
-            <%if m.result != nil%>
-              <p> <%= m.home_team.name %> <%= m.result.home_goals %> - <%= m.result.visitor_goals %> <%= m.visitor_team.name %> - Date: <%= m.date %> - Stadium: <%= m.stadium %> - Type: <%= m.match_type %> </p>
-            <% end %>
-          <% end %>
+            <h3>Played Matches</h3>
 
-
-          <!-- All created matchs will be displayed.-->
-          <h3> Matches to play </h3>
-          <div class="text-center mt-2">
-
-            <div>
-              <% @matches.each do |m| %> 
-                  <!-- For each created match we can edit or delete.-->
-                  <% m.id %> <%= m.home_team.name %> vs <%= m.visitor_team.name %> Date: <%= m.date %> Stadium: <%= m.stadium%> <a href="/admin/match/<%= m.id%>/edit">Edit Match</a>  
-                  
-                  <!-- This is a button to delete the match-->
-                  <!-- It calls a post method, but overrides it with delete-->
-                  <form class="mt-2" action="/admin/match_delete/ <%= m.id %>" method="post">
-                    <input type="hidden" name="_method" value="delete">
-                    <input type="submit" value="Delete Match" />
-                  </form>
-                  </p>
+            <% @matches.each do |m| %>
+              <%if m.result != nil%>
+                <p> <%= m.home_team.name %> <%= m.result.home_goals %> - <%= m.result.visitor_goals %> <%= m.visitor_team.name %> - Date: <%= m.date %> - Stadium: <%= m.stadium %> - Type: <%= m.match_type %> </p>
               <% end %>
+            <% end %>
+
+
+            <!-- All created matchs will be displayed.-->
+            <h3> Matches to play </h3>
+            <div class="text-center mt-2">
+
+              <div>
+                <% @matches.each do |m| %> 
+                    <!-- For each created match we can edit or delete.-->
+                    <% m.id %> <%= m.home_team.name %> vs <%= m.visitor_team.name %> Date: <%= m.date %> Stadium: <%= m.stadium%> <a href="/admin/match/<%= m.id%>/edit">Edit Match</a>  
+                    
+                    <!-- This is a button to delete the match-->
+                    <!-- It calls a post method, but overrides it with delete-->
+                    <form class="mt-2" action="/admin/match_delete/ <%= m.id %>" method="post">
+                      <input type="hidden" name="_method" value="delete">
+                      <input type="submit" value="Delete Match" />
+                    </form>
+                    </p>
+                <% end %>
+              </div>
             </div>
+
+
           </div>
+          
         </div>
 
       </div>
