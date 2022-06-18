@@ -38,7 +38,7 @@ module Teams
     end
         
     if had_match then
-      #flash[:warning] = "Cannot delete this team because it has associated matches"
+      flash[:error] = "Cannot delete this team because it has associated matches"
       redirect to '/admin/groups&teams'
     else
       @team.destroy
