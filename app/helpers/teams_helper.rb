@@ -32,15 +32,13 @@ module Teams
     @matches = Match.all
     had_match = false
     @matches.each do |m|
-      if m.home_team == @team.id || m.visitor_team == @team.id
+      if m.home_team_id == @team.id || m.visitor_team_id == @team.id
         had_match = true
       end
-      
     end
         
     if had_match then
-      #flash message: Cannot delete this team because it has matches
-      #flash[:warning] = "Cannot delete this team because it has matches"
+      flash[:error] = "Cannot delete this team because it has associated matches"
       redirect to '/admin/groups&teams'
     else
       @team.destroy

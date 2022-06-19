@@ -29,7 +29,6 @@ module Groups
       @group.destroy
       redirect to '/admin/landingpage'
     else
-      #flash message: this group cant be deleted because it has teams
       flash[:error] = "This group cant be deleted because it has teams"
       redirect to '/admin/groups&teams'
     end

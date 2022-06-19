@@ -55,19 +55,20 @@ class App < Sinatra::Application
   end
 
 # Configure a before filter to protect private routes!
-#  before do
-#    if session[:player_id]
-#      @current_player = Player.find_by(id: session[:player_id])
-#    elsif session[:admin_id]
-#      @current_administrator = Administrator.find_by(id: session[:admin_id])
-#      administrator_pages = ["/create_group", "/create_team", "/create_match", "/create_result", "/all_groups", "/all_teams", "/all_matches", "/logout"]
-#    else
-#      public_pages = ["/", "/login", "/signup","/login_admin"]
-#      if !public_pages.include?(request.path_info)
-#        redirect '/'
-#      end
-#    end
-#  end
+  before do
+    if session[:player_id]
+      @current_player = Player.find_by(id: session[:player_id])
+    elsif session[:administrator_id]
+      @current_administrator = Administrator.find_by(id: session[:admin_id])
+      administrator_pages = ["/admin/landingpage", "/admin/group/new", "/admin/group/:id/edit",
+        "/admin/team/:id/edit", "/admin/team/new", "/admin/groups&teams", "/admin/match/new",
+        "/admin/match/:id/edit", "/admin/matches", "/admin/result/new"]    
+      if !public_pages.include?(request.path_info)
+        public_pages = ["/", "/player/login", "/player/signup","/admin/login"]
+        redirect '/'
+      end
+    end
+  end
 
 ################ PLAYERS CONTROLLERS ################
 
