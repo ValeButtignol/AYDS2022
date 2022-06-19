@@ -32,43 +32,57 @@
   <header>
         
     <div class="container-fluid">
-        <div class="d-flex">
 
-            <p class="m-4"><a href="/player/landingpage/:id/edit" class="text-center fs-1 " style="font-family: Days One, sans-serif; color: white; text-decoration: none;">ProdemosAr</a></p>
-            
+        <div class="d-flex">
+          <p class="m-4"><a href="/player/landingpage/:id/edit" class="text-center fs-1 " style="font-family: Days One, sans-serif; color: white; text-decoration: none;">ProdemosAr</a></p>
         </div>
 
         <%@player = Player.find_by_id(session[:player_id])%>
         <div class="d-flex m-4 position-absolute top-0 end-0">
-
-            
           <i class="bi bi-person-circle fs-3 mt-2 me-2 " style="color:white ;"></i> <p class=" me-4 fs-2 " style="color:white ;"><%=@player.username%> </p>
           <p class=""><a class="btn btn-outline-primary btn-outline-light me-2 mt-2" href="/logout">Logout</a></p>
-        
         </div>
-        
     </div>
-    
-  </header>
-    <div class="btn-group-vertical mt-4 gap-4 position-absolute top-50 start-0 translate-middle-y">
 
-      <div class="container-md w-75 ">
-        <div class="d-grid gap-5">
+  </header>
+
+  <main class="container-fluid mt-3">
+
+    <div class="row align-items-center">
+
+      <div class="col-3 mt-5">
+        
+        <div class="w-75 d-flex d-sm-inline-flex flex-column gap-5 mb-3 ms-2">
           <a class="btn btn-outline-primary btn-outline-light me-1" href="/player/forecast/new">Create new forecast</a>
           <a class="btn btn-outline-primary btn-outline-light me-1" href="/player/forecasts">See all your forecasts and points</a>
           <a class="btn btn-outline-primary btn-outline-light me-1" href="/player/matches">See the played matches or the matches to play</a>
           <a class="btn btn-outline-primary btn-outline-light me-1" href="/player/groups&teams">See the groups phase table</a>
           <form action="/player/delete/ <%= @player.id %>" method="post" id="formNewPlayer">
-          <input type="hidden" name="_method" value="delete">
-          <!-- Button trigger modal -->
-          <button type="button" class="btn btn-outline-primary btn-outline-light me-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-            Delete Account
-          </button>
+            <input type="hidden" name="_method" value="delete"> 
+            <button type="button" class="btn btn-outline-primary btn-outline-light me-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+              Delete Account
+            </button>
           </form>
-        </div>   
-      </div>
+        </div>
 
+      </div>
     </div>
+  </main>
+
+  <footer class="container-fluid  mt-5">
+
+    <div class="row d-flex justify-content-center">
+      
+        <hr class="featurette-divider">
+        <a class="w-auto" style="color:black ;" href="https://github.com/ValeButtignol/AYDS2022.git"><i class="bi bi-github fs-3"></i></a></button>
+        <p class="text-center mt-2 text-muted">© 2022 Company, Inc. All rights reserved.</p>
+      
+    </div>
+
+  </footer>
+
+
+    
       
     <!-- Modal -->
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -98,3 +112,4 @@
 
 </body>
 </html>
+
