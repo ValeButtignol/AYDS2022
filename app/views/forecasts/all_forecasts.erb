@@ -21,8 +21,8 @@
         }
 
         .Scroll {
-            height:auto;
-            width: 800px;
+            height:565px;;
+            width: 700px;
             overflow-y: scroll;
             overflow-x:hidden;
             
@@ -57,12 +57,12 @@
         
     </header>
 
-    <main class="container-fluid mt-5 mb-3 ">
+    <main class="container-fluid mb-3 ">
         
 
         <div class="row align-items-center">
     
-            <div class="col-3 mt-5">
+            <div class="col-3">
             
                 <div class="w-75 d-flex d-sm-inline-flex flex-column gap-5 mb-3 ms-2">
                     <a class="btn btn-outline-primary btn-outline-light me-1" href="/player/forecast/new">Create new forecast</a>
@@ -75,8 +75,8 @@
 
             <div class="col-1"></div>
 
-            <div class="col">
-                <div class="pt-2 bg-light text-dark rounded-4 overflow-auto">
+            <div class=" col">
+                <div class="Scroll pt-2 bg-light text-dark rounded-4 overflow-auto">
                     <h1 class="display-3 text-center" style="font-family: Days One, sans-serif; color: black;">Forecasts</h1>
         
                     <%@player = Player.find_by_id(session[:player_id])%>
