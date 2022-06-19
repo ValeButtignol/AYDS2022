@@ -77,6 +77,11 @@
           <div class="col">
             <% @admin = Administrator.find_by_id(session[:admin_id])%>
             <% @matches = Match.all%>
+            <% flash.each do |type, msg| %>
+              <div class= "alert alert-danger" role="error">
+                <%= msg %>
+              </div>
+            <% end %>
 
             <h3>Played Matches</h3>
 
@@ -117,41 +122,3 @@
     </div>
 </body>
 </html>
-
-
-
-<!-- 
-
-<h1>All Matches</h1>
-
-<% @admin = Administrator.find_by_id(session[:admin_id])%>
-<% @matches = Match.all%>
-
-<h3>Played Matches</h3>
-
-<% @matches.each do |m| %>
-  <%if m.result != nil%>
-    <p> <%= m.home_team.name %> <%= m.result.home_goals %> - <%= m.result.visitor_goals %> <%= m.visitor_team.name %> - Date: <%= m.date %> - Stadium: <%= m.stadium %> </p>
-  <% end %>
-<% end %>
-
-
- All created matchs will be displayed.
-<h3> Matches to play </h3>
-<% @matches.each do |m| %> 
-
-     For each created match we can edit or delete.
-    <% m.id %> <%= m.home_team.name %> vs <%= m.visitor_team.name %> Date: <%= m.date %> Stadium: <%= m.stadium%> <a href="/admin/match/<%= m.id%>/edit">Edit Match</a>  
-    
-     This is a button to delete the match
-     It calls a post method, but overrides it with delete
-    <form action="/admin/match_delete/ <%= m.id %>" method="post">
-      <input type="hidden" name="_method" value="delete">
-      <input type="submit" value="Delete Match" />
-    </form>
-    </p>
-<% end %>
-
-<p><a href="/admin/landingpage">Back</a></p>
-
--->
