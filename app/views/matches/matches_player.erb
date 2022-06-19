@@ -23,7 +23,226 @@
 
 </head>
 <body>
+
+  <header>
+    <div class="container-fluid">
+      <div class="d-flex">
+        <p class="m-4"><a href="/player/landingpage/:id/edit" class="text-center fs-1 " style="font-family: Days One, sans-serif; color: white; text-decoration: none;">ProdemosAr</a></p>
+      </div>
     
+      <%@player = Player.find_by_id(session[:player_id])%>
+      <div class="d-flex m-4 position-absolute top-0 end-0">          
+        <i class="bi bi-person-circle fs-3 mt-2 me-2 " style="color:white ;"></i> <p class=" me-4 fs-2 " style="color:white ;"><%=@player.username%> </p>
+        <p class=""><a class="btn btn-outline-primary btn-outline-light me-2 mt-2" href="/logout">Logout</a></p>      
+      </div>
+    </div>
+  </header>
+
+  <main class="container-fluid mt-3">
+
+    <div class="row align-items-center">
+      <div class="col-3">
+        
+        <div class="w-75 d-flex d-sm-inline-flex flex-column gap-5 mb-3 ms-2">
+          <a class="btn btn-outline-primary btn-outline-light me-1" href="/player/forecast/new">Create new forecast</a>
+          <a class="btn btn-outline-primary btn-outline-light me-1" href="/player/forecasts">See all your forecasts and points</a>
+          <a class="btn btn-outline-primary btn-outline-light me-1" href="/player/matches">See the played matches or the matches to play</a>
+          <a class="btn btn-outline-primary btn-outline-light me-1" href="/player/groups&teams">See the groups phase table</a>
+          
+        </div>
+
+      </div>
+
+      <div class="col-1">
+
+      </div>
+
+      <div class="col-md-auto mb-3 p-3 bg-light text-dark rounded-4">
+      
+        <h1 class="mb-4" style="color:black ;">Played Matches</h1>
+        
+          <% @matches = Match.all%>
+
+        <% @matches.each do |m| %>
+          <%if m.result != nil%>
+            <p><i class="bi bi-caret-right"></i> <%= m.home_team.name %> <%= m.result.home_goals %> - <%= m.result.visitor_goals %> <%= m.visitor_team.name %> - Date: <%= m.date %> - Stadium: <%= m.stadium %> </p>
+          <% end %>
+        <% end %>
+
+        <h1 class="mb-4" style="color:black ;">Matches To Play</h1>
+
+        <% @matches.each do |m| %>
+          <%if m.result == nil%>
+            <p><i class="bi bi-caret-right"></i> Home: <%= m.home_team.name %> - Visitor: <%= m.visitor_team.name %> - Date: <%= m.date %> - Stadium: <%= m.stadium %> </p>
+          <% end %>
+        <% end %>
+
+        
+
+      </div>
+      <!--
+      <div class="d-inline-flex justify-content-evenly">
+        
+        <p><a class="btn btn-light" style="text-decoration:none ;" href="/player/forecast/new">Create a new forecast</a></p>
+      </div>
+      -->
+
+    </div>
+
+    <h1 class="mt-5 mb-3 text-center" style="color:white ;"> PlayOffs </h1>
+
+    <div class="row justify-content-center">
+
+      <div class="col-md-auto rounded-4 d-flex justify-content-center gap-5 mb-5  bg-light text-dark w-auto">
+        
+        <table class="table">
+          <th> OCTAVES </th>
+          <% @matches.each do |m| %>
+            <% if m.match_type == "OCTAVES" %>
+              <%if m.result == nil %>
+                <tr>
+                  <td> <%= m.home_team.name %> </td> 
+                </tr>
+                <tr>
+                  <td> <%= m.visitor_team.name %> </td>
+                </tr>
+              <% else %>
+                <tr>
+                  <td> <%= m.home_team.name %> </td> 
+                  <td> <%= m.result.home_goals %> </td>
+                </tr>
+                <tr>
+                  <td> <%= m.visitor_team.name %> </td> 
+                  <td> <%= m.result.visitor_goals %> </td>
+                </tr>
+              <% end %>
+            <% end %>
+          <% end %>
+        </table>
+
+        <table class="table">
+          <th> QUARTERS </th>
+          <% @matches.each do |m| %>
+            <% if m.match_type == "QUARTERS" %>
+              <%if m.result == nil %>
+                <tr>
+                  <td> <%= m.home_team.name %> </td> 
+                </tr>
+                <tr>
+                  <td> <%= m.visitor_team.name %> </td>
+                </tr>
+              <% else %>
+                <tr>
+                  <td> <%= m.home_team.name %> </td> 
+                  <td> <%= m.result.home_goals %> </td>
+                </tr>
+                <tr>
+                  <td> <%= m.visitor_team.name %> </td> 
+                  <td> <%= m.result.visitor_goals %> </td>
+                </tr>
+              <% end %>
+            <% end %>
+          <% end %>
+        </table>
+
+        <table class="table">
+          <th> SEMIS </th>
+          <% @matches.each do |m| %>
+            <% if m.match_type == "SEMI" %>
+              <%if m.result == nil %>
+                <tr>
+                  <td> <%= m.home_team.name %> </td> 
+                </tr>
+                <tr>
+                  <td> <%= m.visitor_team.name %> </td>
+                </tr>
+              <% else %>
+                <tr>
+                  <td> <%= m.home_team.name %> </td> 
+                  <td> <%= m.result.home_goals %> </td>
+                </tr>
+                <tr>
+                  <td> <%= m.visitor_team.name %> </td> 
+                  <td> <%= m.result.visitor_goals %> </td>
+                </tr>
+              <% end %>
+            <% end %>
+          <% end %>
+        </table>
+
+        <table class="table">
+          <th> THIRD AND FOURTH </th>
+          <% @matches.each do |m| %>
+            <% if m.match_type == "THIRD AND FOURTH" %>
+              <%if m.result == nil %>
+                <tr>
+                  <td> <%= m.home_team.name %> </td> 
+                </tr>
+                <tr>
+                  <td> <%= m.visitor_team.name %> </td>
+                </tr>
+              <% else %>
+                <tr>
+                  <td> <%= m.home_team.name %> </td> 
+                  <td> <%= m.result.home_goals %> </td>
+                </tr>
+                <tr>
+                  <td> <%= m.visitor_team.name %> </td> 
+                  <td> <%= m.result.visitor_goals %> </td>
+                </tr>
+              <% end %>
+            <% end %>
+          <% end %>
+        </table>
+
+        <table class="table">
+          <th> FINAL </th>
+          <% @matches.each do |m| %>
+            <% if m.match_type == "FINAL" %>
+              <%if m.result == nil %>
+                <tr>
+                  <td> <%= m.home_team.name %> </td> 
+                </tr>
+                <tr>
+                  <td> <%= m.visitor_team.name %> </td>
+                </tr>
+              <% else %>
+                <tr>
+                  <td> <%= m.home_team.name %> </td> 
+                  <td> <%= m.result.home_goals %> </td>
+                </tr>
+                <tr>
+                  <td> <%= m.visitor_team.name %> </td> 
+                  <td> <%= m.result.visitor_goals %> </td>
+                </tr>
+              <% end %>
+            <% end %>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <footer class="conteiner-md bg-light bg-opacity-75 mt-5">
+
+    <div class="row d-flex justify-content-center">
+      
+        <hr class="featurette-divider">
+        <a class="w-auto" style="color:black ;" href="https://github.com/ValeButtignol/AYDS2022.git"><i class="bi bi-github fs-3"></i></a></button>
+        <p class="text-center mt-2 text-muted">© 2022 Company, Inc. All rights reserved.</p>
+      
+    </div>
+
+  </footer>
+
+  
+
+</body>
+</html>
+
+
+<!--
+      
 
     <header>
         
@@ -190,9 +409,8 @@
     </div>
 
 
-</body>
-</html>
 
+-->
 
 <!-- 
 <h1>Played Matches</h1>
