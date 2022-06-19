@@ -48,7 +48,48 @@
     </div>
     
   </header>
-    <div class="btn-group-vertical mt-4 gap-4 position-absolute top-50 start-0 translate-middle-y">
+
+
+  <main class="container-fluid mt-5">
+
+    <div class="row align-items-center">
+
+      <div class="col-3 ms-3 mt-5">
+        
+        <div class="w-75 d-flex d-sm-inline-flex flex-column gap-5 mb-3 ms-2">
+          <a class="btn btn-outline-primary btn-outline-light me-1" href="/player/forecast/new">Create new forecast</a>
+          <a class="btn btn-outline-primary btn-outline-light me-1" href="/player/forecasts">See all your forecasts and points</a>
+          <a class="btn btn-outline-primary btn-outline-light me-1" href="/player/matches">See the played matches or the matches to play</a>
+          <a class="btn btn-outline-primary btn-outline-light me-1" href="/player/groups&teams">See the groups phase table</a>
+        </div>
+
+      </div>
+
+      <div class="col-2"></div>
+
+      <div class="col-5">
+        <h1 class="fs-1 mb-4" style="color:white ;">Edit Forecast </h1>
+
+
+        <form class="d-grid gap-2" action="/player/forecast_edit/ <%= @forecast.id%>" method="post">
+          <input type="hidden" name="_method" value="patch">
+          <p>Home Goals: <input class="ms-2 rounded-2 border border-2" type="number" name="home_goals" value="<%= @forecast.home_goals %>" /> </p>
+          <p>Visitor Goals: <input class="ms-2 rounded-2 border border-2" type="number" name="visitor_goals" value="<%= @forecast.visitor_goals %>" /></p>
+          <input class="btn btn-light mt-2 w-25 " type="submit" value="Edit Forecast" />
+        </form>
+        
+
+      </div>
+      <div class="col-1"></div>
+    </div>
+  </main>
+    
+</body>
+</html>
+
+
+<!--
+  <div class="btn-group-vertical mt-4 gap-4 position-absolute top-50 start-0 translate-middle-y">
 
       <div class="container-md w-75 ">
         <div class="d-grid gap-5">
@@ -78,11 +119,8 @@
       </form>
 
     </div>
-</body>
-</html>
 
 
-<!--
 <h1> Edit Forecast </h1>
 
  It calls a post method and overrides it with the patch method for update
