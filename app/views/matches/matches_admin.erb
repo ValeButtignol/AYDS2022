@@ -74,7 +74,6 @@
 
         <div class="row p-3 bg-light text-dark rounded-4">
 
-<<<<<<< HEAD
           <div class="col">
             <% @admin = Administrator.find_by_id(session[:admin_id])%>
             <% @matches = Match.all%>
@@ -82,19 +81,6 @@
               <div class= "alert alert-danger" role="error">
                 <%= msg %>
               </div>
-=======
-          <% flash.each do |type, msg| %>
-            <div class= "alert alert-danger" role="error">
-              <%= msg %>
-             </div>
-          <% end %>
-
-          <h3>Played Matches</h3>
-
-          <% @matches.each do |m| %>
-            <%if m.result != nil%>
-              <p> <%= m.home_team.name %> <%= m.result.home_goals %> - <%= m.result.visitor_goals %> <%= m.visitor_team.name %> - Date: <%= m.date %> - Stadium: <%= m.stadium %> - Type: <%= m.match_type %> </p>
->>>>>>> 8bf756573930e4212bbfeb58780d10ea6255b23a
             <% end %>
 
             <h3>Played Matches</h3>
