@@ -46,3 +46,8 @@ Team.create(name:"PORTUGAL", group_id: 8)
 Team.create(name:"GHANA", group_id: 8)
 Team.create(name:"URUGUAY", group_id: 8)
 Team.create(name:"COREA DEL SUR", group_id: 8)
+
+####################################################
+#Administrador
+
+Administrator.create(username: "admin", password: "123")
