@@ -46,7 +46,61 @@
 
     </header>
 
+    <main class="container-fluid mt-4">
+
+        <div class="row align-items-center">
+
+            <div class="col-3 mt-5 ms-3 d-grid gap-3">
+
+                <p><a class="btn btn-outline-primary btn-outline-light me-1" href="/admin/group/new">Create new group</a></p>
+                <p><a class="btn btn-outline-primary btn-outline-light me-1" href="/admin/team/new">Create new team</a></p>
+                <p><a class="btn btn-outline-primary btn-outline-light me-1" href="/admin/match/new">Create new match</a></p>
+                <p><a class="btn btn-outline-primary btn-outline-light me-1" href="/admin/result/new">Create new result</a></p>
+                <p><a class="btn btn-outline-primary btn-outline-light me-1" href="/admin/groups&teams">See all groups and teams</a></p>
+                <p><a class="btn btn-outline-primary btn-outline-light me-1" href="/admin/matches">See all matches</a></p>
+
+            </div>
+
+            <div class="col-2"></div>
+
+            <div class="col-5 ms-5">
+
+                <h1 class="fs-1" style="color:white ;">Create Team</h1>
+
+                <% @admin = Administrator.find_by_id(session[:admin_id]) %>
+                <% if @error %>
+                    <div class="error">Sign up failed.</div>
+                <% end %>
+
+                <form action="/admin/team/new" method="post">
+                    <div class="mb-2" style="color:white ;">Enter Team:</div> 
+                    
+                    <input class="rounded-2 border border-2" type="text" name="name" placeholder="Team" />
+
+                    <div class="mt-3 mb-2" style="color:white ;">Enter Group:</div> 
+                    
+                    <select class="rounded-2 border border-2" name="group_id">
+                        <% @group = Group.all%>
+                        <% @group.each do |t| %>
+                        <option value="<%= t.id %>"> <%= t.name %> </option>
+                        <% end %>
+                    </select>
+                    
+                    <input class="btn btn-light mb-1 ms-2" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" type="submit" value="Enter"/>
+                </form>
+
+            </div>
+        </div>
+    </main>
+
     
+
+    
+
+</body>
+</html>
+
+<!--
 
     <div class="btn-group-vertical ms-5 mt-4 gap-4 position-absolute top-50 start-0 translate-middle-y">
         <p><a class="btn btn-outline-primary btn-outline-light me-1" href="/admin/group/new">Create new group</a></p>
@@ -85,11 +139,6 @@
 
 
     </div>
-
-</body>
-</html>
-
-<!--
 
 <h1>Create Team</h1>
 
