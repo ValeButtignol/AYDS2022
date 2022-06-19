@@ -22,11 +22,7 @@
       <div class="error">Login failed.</div>
     <% end %>  
     
-    <% flash.each do |type, msg| %>
-      <div class= "alert alert-danger" role="error">
-       <%= msg %>
-       </div>
-     <% end %>
+    
 
     <div class="position-absolute top-50 start-50 translate-middle">
       <form action="/player/signup" method="post">
@@ -45,6 +41,11 @@
           
         <button class="btn btn-success mt-3"><a style="color:white; text-decoration: none;" type="submit" value="Sign up">Sign-up</a></button>   
       </form>
+      <% flash.each do |type, msg| %>
+      <div class= "alert alert-danger mt-4" role="error">
+       <%= msg %>
+       </div>
+     <% end %>
     </div>
   </body>
 </html>
