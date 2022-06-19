@@ -178,8 +178,8 @@
           <% end %>
         </table>
 
-        <table class="table">
-          <th> THIRD AND FOURTH </th>
+        <table class="table mb-5">
+          <th style="font-size:smaller ;"> THIRD AND FOURTH </th>
           <% @matches.each do |m| %>
             <% if m.match_type == "THIRD AND FOURTH" %>
               <%if m.result == nil %>
@@ -204,7 +204,7 @@
         </table>
 
         <table class="table">
-          <th> FINAL </th>
+          <th scope="col"> FINAL </th>
           <% @matches.each do |m| %>
             <% if m.match_type == "FINAL" %>
               <%if m.result == nil %>
