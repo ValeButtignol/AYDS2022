@@ -53,6 +53,11 @@ Team.create(name:"COREA DEL SUR", group_id: 8)
 Administrator.create(username: "admin", password: "123")
 
 ####################################################
-#match
+#match C
 
 Match.create(stadium: "Estadio Lusail", date: "22/11/2022 07:00", home_team_id: 9, visitor_team_id: 10, match_type: "GROUP")
+Match.create(stadium: "Estadio CIUDAD EDUCACION", date: "26/11/2022 10:00", home_team_id: 10, visitor_team_id: 12, match_type: "GROUP")
+Match.create(stadium: "Estadio 974", date: "30/11/2022 16:00", home_team_id: 9, visitor_team_id: 12, match_type: "GROUP")
+Match.create(stadium: "Estadio 974", date: "22/11/2022 13:00", home_team_id: 11, visitor_team_id: 12, match_type: "GROUP")
+Match.create(stadium: "Estadio Lusail", date: "26/11/2022 16:00", home_team_id: 9, visitor_team_id: 11, match_type: "GROUP")
+Match.create(stadium: "Estadio Lusail", date: "30/11/2022 16:00", home_team_id: 10, visitor_team_id: 11, match_type: "GROUP")

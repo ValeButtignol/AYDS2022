@@ -33,12 +33,6 @@
 </head>
 <body>
 
-    <% flash.each do |type, msg| %>
-        <div class= "alert alert-danger" role="error">
-            <%= msg %>
-        </div>
-    <% end %>
-
     <header>
         
         <div class="container-fluid">
@@ -60,6 +54,14 @@
         </div>
         
     </header>
+
+    <% flash.each do |type, msg| %>
+        <div class= "alert alert-danger" role="error">
+            <%= msg %>
+        </div>
+    <% end %>
+
+    
 
     
     <main class="container-fluid">
@@ -143,6 +145,8 @@
 
         </div>
     </main>
+
+    
 
     
     
