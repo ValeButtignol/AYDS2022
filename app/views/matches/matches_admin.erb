@@ -24,7 +24,7 @@
 
         .Scroll {
             height: 500px;
-            width:auto ;
+            width: 680px ;
             overflow-y: scroll;
             overflow-x: hidden;
         }
@@ -74,9 +74,9 @@
 
         <div class="col-1"></div>
 
-        <div class="col-5">
+        <div class="col-5 me-2">
 
-          <h1 class="fs-1 text-center mb-3 " style="color:white ;">All Matches</h1>
+          <h1 class="fs-1 text-center mb-3 ms-5" style="color:white ;">All Matches</h1>
         
           <div class="Scroll border rounded-3">
 
@@ -92,7 +92,7 @@
                 <% end %>
 
                 <h3>Played Matches</h3>
-
+                <hr>
                 <% @matches.each do |m| %>
                   <%if m.result != nil%>
                     <p> <%= m.home_team.name %> <%= m.result.home_goals %> - <%= m.result.visitor_goals %> <%= m.visitor_team.name %> - Date: <%= m.date %> - Stadium: <%= m.stadium %> - Type: <%= m.match_type %> </p>
@@ -101,20 +101,26 @@
 
 
                 <!-- All created matchs will be displayed.-->
-                <h3> Matches to play </h3>
+                <hr>
+                <h3 class="mb-5"> Matches to play </h3>
+                
                 <div class="text-center mt-2">
 
-                  <div>
+                  <div class="">
                     <% @matches.each do |m| %> 
                         <!-- For each created match we can edit or delete.-->
-                        <% m.id %> <%= m.home_team.name %> vs <%= m.visitor_team.name %> Date: <%= m.date %> Stadium: <%= m.stadium%> <a href="/admin/match/<%= m.id%>/edit">Edit Match</a>  
+                        <% m.id %> <%= m.home_team.name %> vs <%= m.visitor_team.name %> Date: <%= m.date %> Stadium: <%= m.stadium%> 
+                        
+                          
                         
                         <!-- This is a button to delete the match-->
                         <!-- It calls a post method, but overrides it with delete-->
                         <form class="mt-2" action="/admin/match_delete/ <%= m.id %>" method="post">
+                          <a class="btn btn-success btn-sm mt-2" href="/admin/match/<%= m.id%>/edit">Edit Match</a>
                           <input type="hidden" name="_method" value="delete">
-                          <input type="submit" value="Delete Match" />
+                          <input class="btn btn-success btn-sm mt-2 ms-2" type="submit" value="Delete Match" />
                         </form>
+                        <hr>
                         </p>
                     <% end %>
                   </div>
