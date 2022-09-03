@@ -88,15 +88,190 @@
         
 
       </div>
+      <div class="container-xl mt-5 mb-5 ">
+        <div class="container text-bg-light p-3">
+          <div class="row row-cols-5 p-2">
+            <div class="col">
+              <table class="table table-striped">
+                <th class="text-center"> OCTAVES </th>
+                <% @matches.each do |m| %>
+                  <% if m.match_type == "OCTAVES" %>
+                    <%if m.result == nil %>
+                      <tr>
+                        <td> <%= m.home_team.name %> </td> 
+                      </tr>
+                      <tr>
+                        <td> <%= m.visitor_team.name %> </td>
+                      </tr>
+                    <% else %>
+                      <tr>
+                        <td> <%= m.home_team.name %> </td> 
+                        <td> <%= m.result.home_goals %> </td>
+                      </tr>
+                      <tr>
+                        <td> <%= m.visitor_team.name %> </td> 
+                        <td> <%= m.result.visitor_goals %> </td>
+                      </tr>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </table>
+            </div>
+            <div class="col">
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <table class="table table-striped">
+                <th class="text-center"> QUARTERS </th>
+                <% @matches.each do |m| %>
+                  <% if m.match_type == "QUARTERS" %>
+                    <%if m.result == nil %>
+                      <tr>
+                        <td> <%= m.home_team.name %> </td> 
+                      </tr>
+                      <tr>
+                        <td> <%= m.visitor_team.name %> </td>
+                      </tr>
+                    <% else %>
+                      <tr>
+                        <td> <%= m.home_team.name %> </td> 
+                        <td> <%= m.result.home_goals %> </td>
+                      </tr>
+                      <tr>
+                        <td> <%= m.visitor_team.name %> </td> 
+                        <td> <%= m.result.visitor_goals %> </td>
+                      </tr>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </table>
+            </div>
+            <div class="col">
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <table class="table table-striped">
+                <th class="text-center"> SEMIS </th>
+                <% @matches.each do |m| %>
+                  <% if m.match_type == "SEMI" %>
+                    <%if m.result == nil %>
+                      <tr>
+                        <td> <%= m.home_team.name %> </td> 
+                      </tr>
+                      <tr>
+                        <td> <%= m.visitor_team.name %> </td>
+                      </tr>
+                    <% else %>
+                      <tr>
+                        <td> <%= m.home_team.name %> </td> 
+                        <td> <%= m.result.home_goals %> </td>
+                      </tr>
+                      <tr>
+                        <td> <%= m.visitor_team.name %> </td> 
+                        <td> <%= m.result.visitor_goals %> </td>
+                      </tr>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </table>
+            </div>
+            <div class="col">
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <table class="table mb-5 table-striped">
+                <th class="text-center"> THIRD AND FOURTH </th>
+                <% @matches.each do |m| %>
+                  <% if m.match_type == "THIRD AND FOURTH" %>
+                    <%if m.result == nil %>
+                      <tr>
+                        <td> <%= m.home_team.name %> </td> 
+                      </tr>
+                      <tr>
+                        <td> <%= m.visitor_team.name %> </td>
+                      </tr>
+                    <% else %>
+                      <tr>
+                        <td> <%= m.home_team.name %> </td> 
+                        <td> <%= m.result.home_goals %> </td>
+                      </tr>
+                      <tr>
+                        <td> <%= m.visitor_team.name %> </td> 
+                        <td> <%= m.result.visitor_goals %> </td>
+                      </tr>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </table>
+            </div>
+            <div class="col">
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              
+              <table class="table table-striped">
+                <th class="text-center"> FINAL </th>
+                <% @matches.each do |m| %>
+                  <% if m.match_type == "FINAL" %>
+                    <%if m.result == nil %>
+                      <tr>
+                        <td> <%= m.home_team.name %> </td> 
+                      </tr>
+                      <tr>
+                        <td> <%= m.visitor_team.name %> </td>
+                      </tr>
+                    <% else %>
+                      <tr>
+                        <td> <%= m.home_team.name %> </td> 
+                        <td> <%= m.result.home_goals %> </td>
+                      </tr>
+                      <tr>
+                        <td> <%= m.visitor_team.name %> </td> 
+                        <td> <%= m.result.visitor_goals %> </td>
+                      </tr>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
       <!--
       <div class="d-inline-flex justify-content-evenly">
         
         <p><a class="btn btn-light" style="text-decoration:none ;" href="/player/forecast/new">Create a new forecast</a></p>
       </div>
-      -->
-
-    </div>
-
+      
     <h1 class="mt-5 mb-3 text-center" style="color:white ;"> PlayOffs </h1>
 
     <div class="row justify-content-center">
@@ -229,6 +404,9 @@
         </table>
       </div>
     </div>
+
+      -->
+
   </main>
 
   

@@ -61,3 +61,42 @@ Match.create(stadium: "Estadio 974", date: "30/11/2022 16:00", home_team_id: 9, 
 Match.create(stadium: "Estadio 974", date: "22/11/2022 13:00", home_team_id: 11, visitor_team_id: 12, match_type: "GROUP")
 Match.create(stadium: "Estadio Lusail", date: "26/11/2022 16:00", home_team_id: 9, visitor_team_id: 11, match_type: "GROUP")
 Match.create(stadium: "Estadio Lusail", date: "30/11/2022 16:00", home_team_id: 10, visitor_team_id: 11, match_type: "GROUP")
+
+###################################################
+
+#Octaves
+Match.create(stadium: "A", date: "23/11/2022 07:00", home_team_id: 1, visitor_team_id: 9, match_type: "OCTAVES")
+Match.create(stadium: "B", date: "24/11/2022 07:00", home_team_id: 2, visitor_team_id: 10, match_type: "OCTAVES")
+Match.create(stadium: "C", date: "25/11/2022 07:00", home_team_id: 3, visitor_team_id: 11, match_type: "OCTAVES")
+Match.create(stadium: "D", date: "26/11/2022 07:00", home_team_id: 4, visitor_team_id: 12, match_type: "OCTAVES")
+Match.create(stadium: "E", date: "27/11/2022 07:00", home_team_id: 5, visitor_team_id: 13, match_type: "OCTAVES")
+Match.create(stadium: "F", date: "28/11/2022 07:00", home_team_id: 6, visitor_team_id: 14, match_type: "OCTAVES")
+Match.create(stadium: "G", date: "29/11/2022 07:00", home_team_id: 7, visitor_team_id: 15, match_type: "OCTAVES")
+Match.create(stadium: "h", date: "30/11/2022 07:00", home_team_id: 8, visitor_team_id: 16, match_type: "OCTAVES")
+
+
+###################################################
+
+#Quarters
+Match.create(stadium: "A", date: "23/11/2022 07:00", home_team_id: 1, visitor_team_id: 9, match_type: "QUARTERS")
+Match.create(stadium: "B", date: "24/11/2022 07:00", home_team_id: 2, visitor_team_id: 10, match_type: "QUARTERS")
+Match.create(stadium: "C", date: "25/11/2022 07:00", home_team_id: 3, visitor_team_id: 11, match_type: "QUARTERS")
+Match.create(stadium: "D", date: "26/11/2022 07:00", home_team_id: 4, visitor_team_id: 12, match_type: "QUARTERS")
+
+###################################################
+
+#Semi
+Match.create(stadium: "A", date: "23/11/2022 07:00", home_team_id: 1, visitor_team_id: 9, match_type: "SEMI")
+Match.create(stadium: "B", date: "24/11/2022 07:00", home_team_id: 2, visitor_team_id: 10, match_type: "SEMI")
+
+###################################################
+
+#THIRD AND FOURTH
+Match.create(stadium: "B", date: "24/11/2022 07:00", home_team_id: 2, visitor_team_id: 10, match_type: "THIRD AND FOURTH")
+
+###################################################
+
+#Final
+Match.create(stadium: "A", date: "23/11/2022 07:00", home_team_id: 1, visitor_team_id: 9, match_type: "FINAL")
+
+###################################################
