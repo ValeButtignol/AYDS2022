@@ -87,7 +87,9 @@
                     <select name="match_id">
                     <% @match = Match.all%>
                     <% @match.each do |m| %>
-                    <option value="<%= m.id %>"> <%= m.home_team.name %> vs <%= m.visitor_team.name %></option>
+                        <%if m.result == nil %>
+                            <option value="<%= m.id %>"> <%= m.home_team.name %> vs <%= m.visitor_team.name %></option>
+                        <% end %>
                     <% end %>
                     </select>
 
