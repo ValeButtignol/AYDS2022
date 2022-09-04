@@ -84,17 +84,18 @@
                       <div class="mb-3 mt-2 border border-dark border-2 rounded-3"> Group <%= g.name %></div>
                       <thead>
                         <tr>
-                          <th scope="col">Select</th>
+                          <th scope="col">Team</th>
                           <th scope="col">Points</th>                          
                         </tr>
                       </thead>
-                      <% @teams = g.team_ids %>
+                      <% @teams = Team.all.sort_by { |t| [t.group_id, !t.points_of_group]} %>
                       <% @teams.each do |t| %>
-                        <% team = Team.find_by_id(t) %>
-                        <tr>
-                          <td> <%= team.name %> </td>
-                          <td> <%= team.points_of_group %> </td>
-                        </tr>
+                        <% if t.group_id == g.id %>
+                          <tr>
+                            <td> <%= t.name %> </td>
+                            <td> <%= t.points_of_group %> </td>
+                          </tr>
+                        <% end %>
                       <% end %>
                     </table>
                   <% end %>
