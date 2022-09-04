@@ -10,7 +10,7 @@ module Players
   player = Player.new(params)
     if player.save then
       session[:player_id] = player.id 
-      redirect to '/player/landingpage/:id/edit'
+      redirect to '/player/landingpage'
     else
       # Flash message: username invalid
       flash[:error] = "Username invalid"
@@ -23,11 +23,17 @@ module Players
   end
 
   def post_login
+    admin = Administrator.find_by(username: params[:username])
     player = Player.find_by(username: params[:username])
-  
-    if player && player.authenticate(params[:password])
+
+    if admin && admin.authenticate(params[:password])
+      session[:admin_id] = admin.id 
+      redirect to '/admin/landingpage'
+
+    elsif player && player.authenticate(params[:password])
       session[:player_id] = player.id 
-      redirect to '/player/landingpage/:id/edit'
+      redirect to '/player/landingpage'
+
     else
       flash[:error] = "Username or password invalid"
       redirect '/player/login'

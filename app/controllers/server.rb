@@ -96,7 +96,7 @@ class App < Sinatra::Application
     get_all_players
   end
 
-  get '/player/landingpage/:id/edit' do
+  get '/player/landingpage' do
     get_landingpage
   end
 
@@ -108,10 +108,6 @@ class App < Sinatra::Application
 
   get '/admin/login' do
     get_admin_login
-  end
-
-  post '/admin/login' do
-    post_admin_login
   end
 
   get '/admin/landingpage' do
