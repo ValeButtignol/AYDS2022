@@ -49,4 +49,9 @@ module Players
     @player.destroy
     redirect to '/'
   end
+  
+  def get_all_players
+    @player = Player.find_by(id: params[:id])
+    erb :'players/all_players'
+  end
 end

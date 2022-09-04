@@ -92,6 +92,10 @@ class App < Sinatra::Application
     get_logout
   end
 
+  get '/player/players' do
+    get_all_players
+  end
+
   get '/player/landingpage/:id/edit' do
     get_landingpage
   end
