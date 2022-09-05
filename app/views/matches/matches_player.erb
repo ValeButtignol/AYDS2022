@@ -56,7 +56,7 @@
           <a class="btn btn-outline-primary btn-outline-light me-1" href="/player/forecasts">See all your forecasts and points</a>
           <a class="btn btn-outline-primary btn-outline-light me-1" href="/player/matches">See the played matches or the matches to play</a>
           <a class="btn btn-outline-primary btn-outline-light me-1" href="/player/groups&teams">See the groups phase table</a>
-          
+          <a class="btn btn-outline-primary btn-outline-light me-1" href="/player/players">See the players ranking</a>
         </div>
 
       </div>
@@ -89,11 +89,11 @@
 
       </div>
       <div class="container-xl mt-5 mb-5 ">
-        <div class="container text-bg-light p-3">
+        <div class="container text-bg-light p-3 rounded-3">
           <div class="row row-cols-5 p-2">
             <div class="col">
               <table class="table table-striped">
-                <th class="text-center"> OCTAVES </th>
+                <th class="text-center table-dark"> OCTAVES </th>
                 <% @matches.each do |m| %>
                   <% if m.match_type == "OCTAVES" %>
                     <%if m.result == nil %>
@@ -126,7 +126,7 @@
               <br>
               <br>
               <table class="table table-striped">
-                <th class="text-center"> QUARTERS </th>
+                <th class="text-center table-dark"> QUARTERS </th>
                 <% @matches.each do |m| %>
                   <% if m.match_type == "QUARTERS" %>
                     <%if m.result == nil %>
@@ -162,7 +162,7 @@
               <br>
               <br>
               <table class="table table-striped">
-                <th class="text-center"> SEMIS </th>
+                <th class="text-center table-dark"> SEMIS </th>
                 <% @matches.each do |m| %>
                   <% if m.match_type == "SEMI" %>
                     <%if m.result == nil %>
@@ -200,7 +200,7 @@
               <br>
               <br>
               <table class="table mb-5 table-striped">
-                <th class="text-center"> THIRD AND FOURTH </th>
+                <th class="text-center table-dark"> THIRD AND FOURTH </th>
                 <% @matches.each do |m| %>
                   <% if m.match_type == "THIRD AND FOURTH" %>
                     <%if m.result == nil %>
@@ -239,7 +239,7 @@
               <br>
               
               <table class="table table-striped">
-                <th class="text-center"> FINAL </th>
+                <th class="text-center table-dark"> FINAL </th>
                 <% @matches.each do |m| %>
                   <% if m.match_type == "FINAL" %>
                     <%if m.result == nil %>

@@ -34,7 +34,7 @@
   <header>
     <div class="container-fluid">
       <div class="d-flex">
-        <p class="m-4"><a href="/player/landingpage/:id/edit" class="text-center fs-1 " style="font-family: Days One, sans-serif; color: white; text-decoration: none;">ProdemosAr</a></p>
+        <p class="m-4"><a href="/player/landingpage" class="text-center fs-1 " style="font-family: Days One, sans-serif; color: white; text-decoration: none;">ProdemosAr</a></p>
       </div>
     
       <%@player = Player.find_by_id(session[:player_id])%>
@@ -45,21 +45,54 @@
     </div>
   </header>
 
+  <main>
 
+    <div class="container-fluid mt-5">
+      <div class="row">
+        <div class="col-3">
+          <div class="row align-items-center">
+            
+              
+              <div class="w-75 d-flex d-sm-inline-flex flex-column gap-5 mb-3 ms-2">
+                <a class="btn btn-outline-primary btn-outline-light me-1" href="/player/forecast/new">Create new forecast</a>
+                <a class="btn btn-outline-primary btn-outline-light me-1" href="/player/forecasts">See all your forecasts and points</a>
+                <a class="btn btn-outline-primary btn-outline-light me-1" href="/player/matches">See the played matches or the matches to play</a>
+                <a class="btn btn-outline-primary btn-outline-light me-1" href="/player/groups&teams">See the groups phase table</a>
+                <a class="btn btn-outline-primary btn-outline-light me-1" href="/player/players">See the players ranking</a>
+              </div>
+        </div>
+        </div>
+        <div class="col-8">
+          <div class="container-lg mt-5">
+            <div class="container text-bg-light p-3 rounded-3">
+                  <h1 class="mb-3"> Ranking of all players </h1>
+                  <% @players = Player.all.sort_by { |p| [p.points, p.username] }.reverse %>
+                    <table class="table text-center mt-4">
+                      <tr>
+                        <th> Players </th>
+                        <th> Points </th>
+                      </tr>
+                      <% @players.each do |p| %>
+                        <tr>
+                          <td> <%= p.username%> </td>
+                          <td> <%= p.points%> </td>
+                        </tr>
+                      <% end %>
+                    </table>
+                </div>
+              </div>
+            </div>
+          </div>
 
-  <h1> Ranking of all players </h1>
-  <% @players = Player.all.sort_by { |p| [p.points, p.username] }.reverse %>
-    <table>
-      <tr>
-        <th> Player </th>
-        <th> Points </th>
-      </tr>
-      <% @players.each do |p| %>
-        <tr>
-          <td> <%= p.username%> </td>
-          <td> <%= p.points%> </td>
-        </tr>
-      <% end %>
-    </table>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  
+
+  
 </body>
 </html>
