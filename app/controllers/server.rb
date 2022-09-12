@@ -5,23 +5,9 @@ require 'logger'
 require "sinatra/activerecord"
 require 'sinatra/flash'
 require_relative '../models/init.rb'
-require_relative '../helpers/players_helper'
-require_relative '../helpers/administrators_helper'
-require_relative '../helpers/teams_helper'
-require_relative '../helpers/groups_helper'
-require_relative '../helpers/forecasts_helper'
-require_relative '../helpers/results_helper'
-require_relative '../helpers/matches_helper'
+require_relative '../helpers/init_helper'
 
 class App < Sinatra::Application
-
-  helpers Players
-  helpers Administrators
-  helpers Forecasts
-  helpers Teams
-  helpers Groups
-  helpers Results
-  helpers Matches
   
   configure :production, :development do
     enable :logging
