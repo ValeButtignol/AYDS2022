@@ -30,10 +30,12 @@ class Result < ActiveRecord::Base
   # Function that calculates the winner.
   def set_points(result, forecast)
     if result.winner == forecast.winner then
-      forecast.player.update(points: forecast.player.points + 2)
+      forecast.player.update(points: forecast.player.points + 2, forecasts_half_hit: forecast.player.forecasts_half_hit + 1)
       if result.home_goals == forecast.home_goals and result.visitor_goals == forecast.visitor_goals then
-        forecast.player.update(points: forecast.player.points + 1)
+        forecast.player.update(points: forecast.player.points + 1, forecasts_half_hit: forecast.player.forecasts_half_hit - 1,forecasts_hit: forecast.player.forecasts_hit+1)
       end
+    else
+      forecast.player.update(forecasts_miss: forecast.player.forecasts_miss + 1)
     end
   end
 

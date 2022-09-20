@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_09_213003) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_20_125736) do
   create_table "administrators", force: :cascade do |t|
     t.string "username"
     t.datetime "created_at", null: false
@@ -58,6 +58,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_09_213003) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest", default: "", null: false
+    t.integer "forecasts_hit", default: 0
+    t.integer "forecasts_miss", default: 0
+    t.integer "forecasts_half_hit", default: 0
+    t.integer "forecasts_made", default: 0
   end
 
   create_table "results", force: :cascade do |t|
