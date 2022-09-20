@@ -88,6 +88,10 @@ class App < Sinatra::Application
     post_login
   end
 
+  get '/player/search/:username' do
+    get_profile(params[:username])
+  end
+
   get '/logout' do
     get_logout
   end
