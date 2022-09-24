@@ -19,7 +19,12 @@ class Forecast < ActiveRecord::Base
     f = Forecast.find_by(player: self.player, match: self.match) 
     if f.player == self.player and f.match == self.match and f.id != self.id then
       self.delete
+      f.player.update(forecasts_made: f.player.forecasts_made - 1)
     end
+  end
+
+  after_create do
+    self.player.update(forecasts_made: self.player.forecasts_made + 1)
   end
 
   def set_winner(home_goals, visitor_goals)

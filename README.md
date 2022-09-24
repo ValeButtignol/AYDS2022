@@ -26,7 +26,7 @@ Integrantes:
 * Rollback Migration: ```docker compose exec app bundle exec rake db:rollback```
 * Create Migration: ```docker compose exec app bundle exec rake db:migration_name NAME=create_players```
 * Reset BD: ```docker compose exec app bundle exec rake db:reset```
-* db commands: ```docker compose exec app bundle exec rake db -T``` 
+* db commands: ```docker compose exec app bundle exec rake db -T```
 
 \*Docker Commands:\*
 
