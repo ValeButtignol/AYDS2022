@@ -70,9 +70,22 @@
       <div class="col-1"></div>
 
       <div class="col-5 text-center">
-        <h1 class="display-3 pb-4" style="font-family: Days One, sans-serif; color: white; text-decoration: none;"> Welcome to ProdemosAr </h1>
-        <p class="mt-5 display-5" style="color:white ;"><i class="bi bi-dash me-3 mt-1"></i> <%=@player.username%> <i class="bi bi-dash ms-3 mt-5"></i></p>
+        <h1 class="fs-1 mb-2 text-center" style="color:white ;">Search Player</h1>
+        <p class="text-center" style="color:white;">
+          ¡Search for another player by username and see their forecasts stats!
+        </p>
+        <form action="/player/search" method="post">
+          <input type="text" name="username" class="form-control" placeholder="Username">
+          <button type="submit" value="Search" class="btn btn-success mt-3">Search</button>
+        </form>
+      <% flash.each do |type, msg| %>
+        <div class= "alert alert-danger mt-3" role="error">
+         <%= msg %>
+        </div>
+      <% end %>
+
       </div>
+
     </div>
   </main>
 
@@ -116,7 +129,5 @@
             objetoRepresentaForm.submit();
         }
         </script>
-
 </body>
 </html>
-
