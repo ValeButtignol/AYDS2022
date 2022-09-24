@@ -49,4 +49,9 @@ module Teams
   def get_team_and_group
     erb :'teams/groups_teams'
   end
+
+  def get_profile(name)
+    @team = Team.find_by(name: name)
+    erb :'teams/team_profile'
+  end
 end

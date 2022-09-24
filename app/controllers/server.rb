@@ -166,6 +166,10 @@ class App < Sinatra::Application
     get_team_and_group
   end
 
+  get '/team/search/:name' do
+    get_profile(params[:name])
+  end
+
   ################ MATCHES CONTROLLERS ################
 
   get '/admin/match/new' do
