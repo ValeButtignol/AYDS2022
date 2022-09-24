@@ -65,4 +65,12 @@ module Players
     @player = Player.find_by(username: username)
     erb :'players/player_profile'
   end
+
+  def get_player_search
+    @player = Player.find_by(id: params[:id])
+    erb :'players/search'
+  end
+
+  def post_player_search
+  end
 end
