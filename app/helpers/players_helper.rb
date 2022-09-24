@@ -72,5 +72,12 @@ module Players
   end
 
   def post_player_search
+    player = Player.find_by(username: params[:username])
+    if player
+      redirect to "/player/search/#{params[:username]}"
+    else
+      flash[:error] = "User doesn't exist"
+      redirect to '/player/search'
+    end
   end
 end
