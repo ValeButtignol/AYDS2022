@@ -5,9 +5,23 @@ require 'logger'
 require "sinatra/activerecord"
 require 'sinatra/flash'
 require_relative '../models/init.rb'
-require_relative '../helpers/init_helper'
+require_relative '../helpers/players_helper'
+require_relative '../helpers/administrators_helper'
+require_relative '../helpers/teams_helper'
+require_relative '../helpers/groups_helper'
+require_relative '../helpers/forecasts_helper'
+require_relative '../helpers/results_helper'
+require_relative '../helpers/matches_helper'
 
 class App < Sinatra::Application
+
+  helpers Players
+  helpers Administrators
+  helpers Forecasts
+  helpers Teams
+  helpers Groups
+  helpers Results
+  helpers Matches
   
   configure :production, :development do
     enable :logging
@@ -72,6 +86,18 @@ class App < Sinatra::Application
 
   post '/player/login' do
     post_login
+  end
+
+  get '/player/search' do
+    get_player_search
+  end
+
+  post '/player/search' do
+    post_player_search
+  end
+
+  get '/player/search/:username' do
+    get_profile(params[:username])
   end
 
   get '/logout' do

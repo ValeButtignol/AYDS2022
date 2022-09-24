@@ -53,6 +53,10 @@ Team.create(name:"COREA DEL SUR", group_id: 8)
 Administrator.create(username: "admin", password: "123")
 
 ####################################################
+#Player
+Player.create(username: "player", password: "123")
+
+####################################################
 #match C
 
 Match.create(stadium: "Estadio Lusail", date: "22/11/2022 07:00", home_team_id: 9, visitor_team_id: 10, match_type: "GROUP")
