@@ -20,6 +20,10 @@
           background-attachment: fixed;
         }
 
+        .bi {
+          font-size: 120px;
+        }
+
     </style>
 
 </head>
@@ -42,18 +46,25 @@
   </header>
 
   <main>
-    <div class="container text-center">
+
+    <br>
+    <br>
+    
+    <div class="container ">
 
       <div class="row bg-light rounded-2 mt-5">
 
-        
-
-        <div class="col">
-          1 of 2
+        <div class="col text-center align-self-center">
+          <p class="bi"><i class="bi bi-person-circle"></i></p>
+          <p class="h2 mb-5">Username: <%= @player.username %></p>
         </div>
         <div class="vr bg-dark"></div>
-        <div class="col">
-          2 of 2
+        <div class="col d-grid gap-3 mt-4 mb-4 ms-4">
+          <p class="h4">Poinst: <%= @player.points %></p>
+          <p class="h4">Forecasts Hit: <%= @player.forecasts_hit %></p>
+          <p class="h4">Forecasts Miss: <%= @player.forecasts_miss %></p>
+          <p class="h4">Forecasts Half Hit: <%= @player.forecasts_half_hit %></p>
+          <p class="h4">Forecasts Made: <%= @player.forecasts_made %></p>
         </div>
 
       </div>
@@ -61,7 +72,6 @@
     </div>
 
   </main>
-
-  <%= @player.forecasts_hit %>
+  
 </body>
 </html>
