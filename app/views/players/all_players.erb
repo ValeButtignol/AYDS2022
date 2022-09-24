@@ -40,6 +40,7 @@
       <%@player = Player.find_by_id(session[:player_id])%>
       <div class="d-flex m-4 position-absolute top-0 end-0">          
         <a class="w-auto mt-2" style="color:black ;" href="/player/search/<%=@player.username%>"><i class="bi bi-person-circle fs-3 mt-2 me-2 " style="color:white ;"></i></a> <p class=" me-4 fs-2 " style="color:white ;"><%=@player.username%></p>        
+        <p class=""><a class="btn btn-outline-primary btn-outline-light me-2 mt-2" href="/player/search">Search Players</a></p>
         <p class=""><a class="btn btn-outline-primary btn-outline-light me-2 mt-2" href="/logout">Logout</a></p>      
       </div>
     </div>
