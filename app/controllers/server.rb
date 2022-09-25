@@ -56,6 +56,12 @@ class App < Sinatra::Application
     end
   end
 
+################ PAGE INFORMATIO ################
+
+  get '/information' do
+    erb :'information'
+  end
+
 ################ PLAYERS CONTROLLERS ################
 
   get '/player/signup' do
