@@ -36,6 +36,13 @@
           <p class="m-4"><a href="/player/landingpage" class="text-center fs-1 " style="font-family: Days One, sans-serif; color: white; text-decoration: none;">ProdemosAr</a></p>
         </div>
 
+      <form action= "/team/search" method="post">
+        <div class="d-flex m-4 position-absolute top-5 end-0">
+            <input type="text" name="name" class="form-control" placeholder=Team>
+            <button type="submit" value="Search Team" class="btn btn-outline-primary btn-outline-light me-1">Search Team</button>
+        </div>
+      </form>
+
         <%@player = Player.find_by_id(session[:player_id])%>
         <div class="d-flex m-4 position-absolute top-0 end-0">
           <i class="bi bi-person-circle fs-3 mt-2 me-2 " style="color:white ;"></i> <p class=" me-4 fs-2 " style="color:white ;"><%=@player.username%> </p>

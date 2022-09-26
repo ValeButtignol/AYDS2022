@@ -54,4 +54,15 @@ module Teams
     @team = Team.find_by(name: name)
     erb :'teams/team_profile'
   end
+
+  def post_search_team
+    team_name = params[:name]
+    team = Team.find_by(name: team_name.upcase)
+    if team
+      redirect to "/team/search/#{params[:name]}"
+    else
+      flash[:error] = "Team doesn't exist"
+      redirect to '/team/search'
+    end
+  end
 end

@@ -170,6 +170,10 @@ class App < Sinatra::Application
     get_profile(params[:name])
   end
 
+  post '/team/search' do
+    post_search_team
+  end
+
   ################ MATCHES CONTROLLERS ################
 
   get '/admin/match/new' do
