@@ -56,13 +56,12 @@ module Teams
   end
 
   def post_search_team
-    team_name = params[:name]
-    team = Team.find_by(name: team_name.upcase)
+    team = Team.find_by(name: params[:name].upcase)
     if team
-      redirect to "/team/search/#{params[:name]}"
+      redirect to "/team/search/#{params[:name].upcase}"
     else
       flash[:error] = "Team doesn't exist"
-      redirect to '/team/search'
+      redirect to '/player/landingpage'
     end
   end
 end
