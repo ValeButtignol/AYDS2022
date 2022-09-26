@@ -41,6 +41,11 @@
             <input type="text" name="name" class="form-control" placeholder=Team>
             <button type="submit" value="Search Team" class="btn btn-outline-primary btn-outline-light me-1">Search Team</button>
         </div>
+        <% flash.each do |type, msg| %>
+          <div class= "alert alert-danger mt-3" role="error">
+           <%= msg %>
+          </div>
+        <% end %>
       </form>
 
         <%@player = Player.find_by_id(session[:player_id])%>
