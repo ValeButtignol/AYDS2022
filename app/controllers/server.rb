@@ -170,6 +170,10 @@ class App < Sinatra::Application
     get_profile(params[:name])
   end
 
+  get '/team/search' do
+    get_team_search
+  end
+
   post '/team/search' do
     post_search_team
   end
