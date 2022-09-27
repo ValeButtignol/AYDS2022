@@ -55,6 +55,14 @@ Administrator.create(username: "admin", password: "123")
 ####################################################
 #Player
 Player.create(username: "player", password: "123")
+Player.create(username: "Joel", password: "123")
+Player.create(username: "Joni", password: "123")
+Player.create(username: "Joel", password: "123")
+Player.create(username: "Vale", password: "123")
+Player.create(username: "Mateo", password: "123")
+Player.create(username: "Ignacio", password: "123")
+Player.create(username: "Pablo", password: "123")
+Player.create(username: "Lucio", password: "123")
 
 ####################################################
 #match C
