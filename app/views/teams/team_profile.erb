@@ -56,13 +56,14 @@
             </div>
             <div class="vr bg-dark"></div>
             <div class="col d-grid gap-3 mt-4 mb-4 ms-4">
-                <p class="h4">Group: <%= @team.group_id %></p>
-                <p class="h4">Poinst: <%= @team.points_of_group %></p>
-                <p class="h4">lost_match: <%= @team.lost_match %></p>
-                <p class="h4">won_match: <%= @team.won_match %></p>
-                <p class="h4">drawn_match: <%= @team.drawn_match %></p>
-                <p class="h4">GF: <%= @team.GF %></p>
-                <p class="h4">GC: <%= @team.GC %></p>
+                <%g = Group.find_by_id(@team.group_id)%>
+                <p class="h4">Group: <%= g.name %></p>
+                <p class="h4">Points of group: <%= @team.points_of_group %></p>
+                <p class="h4">Lost matches: <%= @team.lost_match %></p>
+                <p class="h4">Won matches: <%= @team.won_match %></p>
+                <p class="h4">Drawn matches: <%= @team.drawn_match %></p>
+                <p class="h4">Goals in favor: <%= @team.GF %></p>
+                <p class="h4">Goals against: <%= @team.GC %></p>
                 
             </div>
         </div>
