@@ -70,6 +70,12 @@ class App < Sinatra::Application
     end
   end
 
+################ PAGE INFORMATIO ################
+
+  get '/information' do
+    erb :'information'
+  end
+
 ################ PLAYERS CONTROLLERS ################
 
   get '/player/signup' do
@@ -86,6 +92,18 @@ class App < Sinatra::Application
 
   post '/player/login' do
     post_login
+  end
+
+  get '/player/search' do
+    get_player_search
+  end
+
+  post '/player/search' do
+    post_player_search
+  end
+
+  get '/player/search/:username' do
+    get_profile(params[:username])
   end
 
   get '/logout' do

@@ -1,19 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<<<<<<< HEAD
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ProdemosAr</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+=======
+
+  <title>Profile</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+>>>>>>> a9a1accf474d9cb6bc325884e6015feda9e806f1
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Days+One&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+<<<<<<< HEAD
     
 
+=======
+   
+>>>>>>> a9a1accf474d9cb6bc325884e6015feda9e806f1
     <style>
         body {
           background-image: url("/image/Background.png");
@@ -23,6 +33,13 @@
           background-attachment: fixed;
         }
 
+<<<<<<< HEAD
+=======
+        .bi {
+          font-size: 120px;
+        }
+
+>>>>>>> a9a1accf474d9cb6bc325884e6015feda9e806f1
     </style>
 
 </head>
@@ -35,16 +52,25 @@
         <div class="d-flex">
           <p class="m-4"><a href="/player/landingpage" class="text-center fs-1 " style="font-family: Days One, sans-serif; color: white; text-decoration: none;">ProdemosAr</a></p>
         </div>
+<<<<<<< HEAD
 
         <%@player = Player.find_by_id(session[:player_id])%>
         <div class="d-flex m-4 position-absolute top-0 end-0">
           <i class="bi bi-person-circle fs-3 mt-2 me-2 " style="color:white ;"></i> <p class=" me-4 fs-2 " style="color:white ;"><%=@player.username%> </p>
+=======
+        
+        <div class="d-flex m-4 position-absolute top-0 end-0">
+          <!--<i class="bi bi-person-circle fs-3 mt-2 me-2 " style="color:white ;"></i> <p class=" me-4 fs-2 " style="color:white ;"><%=@player.username%> </p>
+          -->
+          <p class=""><a class="btn btn-outline-primary btn-outline-light me-2 mt-2" href="/player/search">Search Players</a></p>
+>>>>>>> a9a1accf474d9cb6bc325884e6015feda9e806f1
           <p class=""><a class="btn btn-outline-primary btn-outline-light me-2 mt-2" href="/logout">Logout</a></p>
         </div>
     </div>
 
   </header>
 
+<<<<<<< HEAD
   <main class="container-fluid mt-3">
 
   </main>
@@ -61,5 +87,35 @@
 
   </footer>
 
+=======
+  <main>
+
+    <br>
+    <br>
+    
+    <div class="container ">
+
+      <div class="row bg-light rounded-2 mt-5">
+
+        <div class="col text-center align-self-center">
+          <p class="bi"><i class="bi bi-person-circle"></i></p>
+          <p class="h2 mb-5">Username: <%= @player.username %></p>
+        </div>
+        <div class="vr bg-dark"></div>
+        <div class="col d-grid gap-3 mt-4 mb-4 ms-4">
+          <p class="h4">Poinst: <%= @player.points %></p>
+          <p class="h4">Forecasts Hit: <%= @player.forecasts_hit %></p>
+          <p class="h4">Forecasts Miss: <%= @player.forecasts_miss %></p>
+          <p class="h4">Forecasts Half Hit: <%= @player.forecasts_half_hit %></p>
+          <p class="h4">Forecasts Made: <%= @player.forecasts_made %></p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+  
+>>>>>>> a9a1accf474d9cb6bc325884e6015feda9e806f1
 </body>
 </html>

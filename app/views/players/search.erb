@@ -28,6 +28,7 @@
 <body>
 
   <header>
+        
     <div class="container-fluid">
 
         <div class="d-flex">
@@ -36,13 +37,8 @@
 
         <%@player = Player.find_by_id(session[:player_id])%>
         <div class="d-flex m-4 position-absolute top-0 end-0">
-<<<<<<< HEAD
-          <i class="bi bi-person-circle fs-3 mt-2 me-2 " style="color:white ;"></i> <p class=" me-4 fs-2 " style="color:white ;"><%=@player.username%> </p>
-          <p class=""><a class="btn btn-outline-primary btn-outline-light me-2 mt-2" href="/team/search">Search Teams</a></p>
-=======
           <a class="w-auto mt-2" style="color:black ;" href="/player/search/<%=@player.username%>"><i class="bi bi-person-circle fs-3 mt-2 me-2 " style="color:white ;"></i></a> <p class=" me-4 fs-2 " style="color:white ;"><%=@player.username%></p>
           <p class=""><a class="btn btn-outline-primary btn-outline-light me-2 mt-2" href="/player/search">Search Players</a></p>
->>>>>>> a9a1accf474d9cb6bc325884e6015feda9e806f1
           <p class=""><a class="btn btn-outline-primary btn-outline-light me-2 mt-2" href="/logout">Logout</a></p>
         </div>
     </div>
@@ -74,31 +70,29 @@
       <div class="col-1"></div>
 
       <div class="col-5 text-center">
-        <h1 class="display-3 pb-4" style="font-family: Days One, sans-serif; color: white; text-decoration: none;"> Welcome to ProdemosAr </h1>
-        <p class="mt-5 display-5" style="color:white ;"><i class="bi bi-dash me-3 mt-1"></i> <%=@player.username%> <i class="bi bi-dash ms-3 mt-5"></i></p>
+        <h1 class="fs-1 mb-2 text-center" style="color:white ;">Search Player</h1>
+        <p class="text-center" style="color:white;">
+          ¡Search for another player by username and see their forecasts stats!
+        </p>
+        <form action="/player/search" method="post">
+          <input type="text" name="username" class="form-control" placeholder="Username">
+          <button type="submit" value="Search" class="btn btn-success mt-3">Search</button>
+        </form>
+      <% flash.each do |type, msg| %>
+        <div class= "alert alert-danger mt-3" role="error">
+         <%= msg %>
+        </div>
+      <% end %>
+
       </div>
 
-      
     </div>
   </main>
 
-<<<<<<< HEAD
-  <div class="position-absolute bottom-0 end-0">
-    <a class="btn btn-outline-primary btn-outline-light me-1" href="/information"><i class="bi bi-question-lg"></i></a>
-  </div>
-
   <footer class="container-fluid bg-light bg-opacity-75 mt-5">
-=======
-  <div class="d-flex flex-row-reverse">
-    <a class="btn btn-outline-primary btn-outline-light me-1" href="/information"><i class="bi bi-question-lg"></i></a>
-  </div>
-  
-
-  <footer class="container-fluid bg-light bg-opacity-75 mt-2">
->>>>>>> a9a1accf474d9cb6bc325884e6015feda9e806f1
 
     <div class="row d-flex justify-content-center">
-
+      
         <hr class="featurette-divider">
         <a class="w-auto" style="color:black ;" href="https://github.com/ValeButtignol/AYDS2022.git"><i class="bi bi-github fs-3"></i></a>
         <p class="text-center mt-2 text-muted">© 2022 Company, Inc. All rights reserved.</p>
@@ -135,7 +129,5 @@
             objetoRepresentaForm.submit();
         }
         </script>
-
 </body>
 </html>
-

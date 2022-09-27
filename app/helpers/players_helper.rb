@@ -60,4 +60,24 @@ module Players
     @player = Player.find_by(id: params[:id])
     erb :'players/all_players'
   end
+
+  def get_profile(username)
+    @player = Player.find_by(username: username)
+    erb :'players/player_profile'
+  end
+
+  def get_player_search
+    @player = Player.find_by(id: params[:id])
+    erb :'players/search'
+  end
+
+  def post_player_search
+    player = Player.find_by(username: params[:username])
+    if player
+      redirect to "/player/search/#{params[:username]}"
+    else
+      flash[:error] = "User doesn't exist"
+      redirect to '/player/search'
+    end
+  end
 end
