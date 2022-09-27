@@ -185,7 +185,7 @@ class App < Sinatra::Application
   end
 
   get '/team/search/:name' do
-    get_profile(params[:name])
+    get_profile_teams(params[:name])
   end
 
   get '/team/search' do

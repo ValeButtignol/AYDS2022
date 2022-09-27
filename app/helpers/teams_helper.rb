@@ -54,7 +54,7 @@ module Teams
     erb :'teams/search_team'
   end
 
-  def get_profile(name)
+  def get_profile_teams(name)
     @team = Team.find_by(name: name)
     erb :'teams/team_profile'
   end
