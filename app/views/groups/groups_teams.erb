@@ -71,8 +71,7 @@
         </div>   
       </div>
     </div>
-
-    <div class="position-absolute top-50 start-50 translate-middle ms-5 text-center mb-3">
+    <div class="position-absolute top-50 start-50 translate-middle mt-5 ms-5 text-center mb-3">
 
       <h1 class="fs-1 mb-4 text-center" style="color:white ;">Groups Phase Table</h1>
 
@@ -82,7 +81,7 @@
                 <div class="col">
 
                   <% @groups = Group.all%>
-                  <% @teams = Team.all.sort_by { |t| [t.group_id, !t.points_of_group]} %>
+                  <% @teams = Team.all %>
                   <% @groups.each do |g| %>
                     <table class="mt-2 table table-striped">
                       <div class="mb-3 mt-2 border border-dark border-2 rounded-3"> Group <%= g.name %></div>
@@ -92,6 +91,7 @@
                           <th scope="col">Points</th>                          
                         </tr>
                       </thead>
+                      <%@teams.sort_by{ |t| [t.group_id, !t.points_of_group]}%>
                       <% @teams.each do |t| %>
                         <% if t.group_id == g.id %>
                           <tr>
