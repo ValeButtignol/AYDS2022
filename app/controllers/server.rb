@@ -55,19 +55,20 @@ class App < Sinatra::Application
 
   # Configure a before filter to protect private routes!
   before do
-    if session[:player_id]
-      @current_player = Player.find_by(id: session[:player_id])
-    elsif session[:administrator_id]
-      @current_administrator = Administrator.find_by(id: session[:admin_id])
-      administrator_pages = ['/admin/landingpage', '/admin/group/new', '/admin/group/:id/edit',
-                             '/admin/team/:id/edit', '/admin/team/new', '/admin/groups&teams', '/admin/match/new',
-                             '/admin/match/:id/edit', '/admin/matches', '/admin/result/new']
-      unless public_pages.include?(request.path_info)
-        public_pages = ['/', '/player/login', '/player/signup', '/admin/login']
-        redirect '/'
-      end
+    administrator_pages = ['/admin/landingpage', '/admin/group/new', '/admin/group/:id/edit',
+                           '/admin/team/:id/edit', '/admin/team/new', '/admin/groups&teams', '/admin/match/new',
+                           '/admin/match/:id/edit', '/admin/matches', '/admin/result/new', '/admin/logout']
+    logger.info(session)
+    if session[:player_id] && Player.find_by_id(session[:player_id])
+      redirect '/player/landingpage' if administrator_pages.include?(request.path_info)
+    elsif session[:admin_id] && Administrator.find_by_id(session[:admin_id])
+      redirect to '/admin/landingpage' unless administrator_pages.include?(request.path_info)
+    else
+      public_pages = ['/', '/player/login', '/player/signup']
+      redirect to '/' unless public_pages.include?(request.path_info)
     end
   end
+
 
   ################ PAGE INFORMATIO ################
 
