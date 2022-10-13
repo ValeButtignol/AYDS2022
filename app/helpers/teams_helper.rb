@@ -1,60 +1,64 @@
-module Teams
+# frozen_string_literal: true
 
-  def get_team
+# module Teams
+module Teams
+  def team
     erb :'teams/create_team'
   end
-    
+
   def post_team
     team = Team.new
-    team.name= params[:name]
-    team.group_id= params[:group_id]
+    team.name = params[:name]
+    team.group_id = params[:group_id]
     team.administrator_id = session[:admin_id]
-    
-    if team.save then
+
+    if team.save
       redirect to '/admin/landingpage'
     else
       redirect '/admin/team/new'
     end
   end
-    
-  def get_team_edit
+
+  def team_edit
     @team = Team.find_by(id: params[:id])
     erb :'teams/edit_team'
   end
 
   def patch_team
-    Team.find_by(id: params[:id]).update(name: params['name'], group_id: params['group_id'], administrator_id: params['admin_id']) 
+    Team.find_by(id: params[:id]).update(name: params['name'], group_id: params['group_id'],
+                                         administrator_id: params['admin_id'])
     redirect to '/admin/landingpage'
   end
 
+  #rubocop:disable Metrics/AbcSize
+  #rubocop:disable Metrics/MethodLength
   def delete_team
     @team = Team.find_by(id: params[:id])
     @matches = Match.all
     had_match = false
     @matches.each do |m|
-      if m.home_team_id == @team.id || m.visitor_team_id == @team.id
-        had_match = true
-      end
+      had_match = true if m.home_team_id == @team.id || m.visitor_team_id == @team.id
     end
-        
-    if had_match then
-      flash[:error] = "Cannot delete this team because it has associated matches"
+    if had_match
+      flash[:error] = 'Cannot delete this team because it has associated matches'
       redirect to '/admin/groups&teams'
     else
       @team.destroy
       redirect to '/admin/landingpage'
     end
   end
+  #rubocop:enable Metrics/AbcSize
+  #rubocop:enable Metrics/MethodLength
 
-  def get_team_and_group
+  def team_and_group
     erb :'teams/groups_teams'
   end
 
-  def get_team_search
+  def team_search
     erb :'teams/search_team'
   end
 
-  def get_profile_teams(name)
+  def profile_teams(name)
     @team = Team.find_by(name: name)
     erb :'teams/team_profile'
   end

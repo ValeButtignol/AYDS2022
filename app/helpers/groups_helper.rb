@@ -1,12 +1,13 @@
+# frozen_string_literal: true
+
 module Groups
-    
   def get_group
     erb :'groups/create_group'
   end
 
   def post_group
-    group = Group.new(name: params[:name],administrator_id: session['admin_id'])
-    if group.save then
+    group = Group.new(name: params[:name], administrator_id: session['admin_id'])
+    if group.save
       redirect to '/admin/landingpage'
     else
       redirect '/admin/group/new'
@@ -25,11 +26,11 @@ module Groups
 
   def delete_group
     @group = Group.find_by(id: params[:id])
-    if (@group.teams.count == 0) 
+    if @group.teams.count.zero?
       @group.destroy
       redirect to '/admin/landingpage'
     else
-      flash[:error] = "This group cant be deleted because it has teams"
+      flash[:error] = 'This group cant be deleted because it has teams'
       redirect to '/admin/groups&teams'
     end
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../helpers/players_helper'
 require_relative '../helpers/administrators_helper'
 require_relative '../helpers/teams_helper'
