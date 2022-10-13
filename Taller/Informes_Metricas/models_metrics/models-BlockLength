@@ -1,0 +1,10 @@
+Inspecting 8 files
+....C...
+
+Offenses:
+
+app/models/match.rb:12:3: C: Metrics/BlockLength: Block has too many lines. [30/25]
+  after_create do ...
+  ^^^^^^^^^^^^^^^
+
+8 files inspected, 1 offense detected

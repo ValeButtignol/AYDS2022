@@ -1,0 +1,10 @@
+Inspecting 8 files
+......C.
+
+Offenses:
+
+app/models/result.rb:54:3: C: Metrics/MethodLength: Method has too many lines. [12/10]
+  def set_won_matches(match) ...
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+8 files inspected, 1 offense detected

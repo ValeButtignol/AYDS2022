@@ -6,34 +6,32 @@ class Forecast < ActiveRecord::Base
 
   # Callback that sets forcast.winner automaticly.
   before_create do
-    self.winner = set_winner(self.home_goals, self.visitor_goals) 
+    self.winner = set_winner(home_goals, visitor_goals)
   end
 
   before_create do
-    if self.match.result
-      self.delete
-    end
+    delete if match.result
   end
 
   after_create do
-    f = Forecast.find_by(player: self.player, match: self.match) 
-    if f.player == self.player and f.match == self.match and f.id != self.id then
-      self.delete
+    f = Forecast.find_by(player: player, match: match)
+    if f.player == player and f.match == match and f.id != id
+      delete
       f.player.update(forecasts_made: f.player.forecasts_made - 1)
     end
   end
 
   after_create do
-    self.player.update(forecasts_made: self.player.forecasts_made + 1)
+    player.update(forecasts_made: player.forecasts_made + 1)
   end
 
   def set_winner(home_goals, visitor_goals)
     if home_goals > visitor_goals
-      "home"
+      'home'
     elsif home_goals < visitor_goals
-      "visitor"
-    else 
-      "draw"
+      'visitor'
+    else
+      'draw'
     end
   end
 end

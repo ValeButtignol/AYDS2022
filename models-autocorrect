@@ -1,0 +1,97 @@
+Inspecting 9 files
+CCCCWCCC.
+
+Offenses:
+
+app/models/administrator.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+require 'bcrypt'
+^
+app/models/forecast.rb:1:1: C: Style/Documentation: Missing top-level documentation comment for class Forecast.
+class Forecast < ActiveRecord::Base
+^^^^^^^^^^^^^^
+app/models/forecast.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+class Forecast < ActiveRecord::Base
+^
+app/models/forecast.rb:18:27: C: [Correctable] Style/AndOr: Use && instead of and.
+    if f.player == player and f.match == match and f.id != id
+                          ^^^
+app/models/forecast.rb:18:48: C: [Correctable] Style/AndOr: Use && instead of and.
+    if f.player == player and f.match == match and f.id != id
+                                               ^^^
+app/models/group.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+class Group < ActiveRecord::Base
+^
+app/models/init.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+require_relative 'team'
+^
+app/models/match.rb:1:1: C: Style/Documentation: Missing top-level documentation comment for class Match.
+class Match < ActiveRecord::Base
+^^^^^^^^^^^
+app/models/match.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+class Match < ActiveRecord::Base
+^
+app/models/match.rb:21:7: C: [Correctable] Style/CaseLikeIf: Convert if-elsif to case-when.
+      if m.match_type == 'OCTAVES' ...
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/models/match.rb:34:32: C: [Correctable] Style/AndOr: Use && instead of and.
+    if match_type == 'OCTAVES' and octaves > 8
+                               ^^^
+app/models/match.rb:36:5: W: Lint/DuplicateBranch: Duplicate branch body detected.
+    elsif match_type == 'QUARTERS' and quarters > 4 ...
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/models/match.rb:36:36: C: [Correctable] Style/AndOr: Use && instead of and.
+    elsif match_type == 'QUARTERS' and quarters > 4
+                                   ^^^
+app/models/match.rb:38:5: W: Lint/DuplicateBranch: Duplicate branch body detected.
+    elsif match_type == 'SEMI' and semifinals > 2 ...
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/models/match.rb:38:32: C: [Correctable] Style/AndOr: Use && instead of and.
+    elsif match_type == 'SEMI' and semifinals > 2
+                               ^^^
+app/models/match.rb:40:5: W: Lint/DuplicateBranch: Duplicate branch body detected.
+    elsif match_type == 'THIRD AND FOURTH' and third_fourths > 1 ...
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/models/match.rb:40:44: C: [Correctable] Style/AndOr: Use && instead of and.
+    elsif match_type == 'THIRD AND FOURTH' and third_fourths > 1
+                                           ^^^
+app/models/match.rb:42:5: W: Lint/DuplicateBranch: Duplicate branch body detected.
+    elsif match_type == 'FINAL' and finals > 1 ...
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/models/match.rb:42:33: C: [Correctable] Style/AndOr: Use && instead of and.
+    elsif match_type == 'FINAL' and finals > 1
+                                ^^^
+app/models/player.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+require 'bcrypt'
+^
+app/models/player.rb:3:1: C: Style/Documentation: Missing top-level documentation comment for class Player.
+class Player < ActiveRecord::Base
+^^^^^^^^^^^^
+app/models/result.rb:1:1: C: Style/Documentation: Missing top-level documentation comment for class Result.
+class Result < ActiveRecord::Base
+^^^^^^^^^^^^
+app/models/result.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+class Result < ActiveRecord::Base
+^
+app/models/result.rb:25:32: C: [Correctable] Style/AndOr: Use && instead of and.
+    delete if r.match == match and r.id != id
+                               ^^^
+app/models/result.rb:34:51: C: [Correctable] Style/AndOr: Use && instead of and.
+      if result.home_goals == forecast.home_goals and result.visitor_goals == forecast.visitor_goals
+                                                  ^^^
+app/models/result.rb:36:121: C: Layout/LineLength: Line is too long. [140/120]
+                               forecasts_half_hit: forecast.player.forecasts_half_hit - 1, forecasts_hit: forecast.player.forecasts_hit + 1)
+                                                                                                                        ^^^^^^^^^^^^^^^^^^^^
+app/models/result.rb:56:7: C: Naming/AccessorMethodName: Do not prefix writer method names with set_.
+  def set_won_matches(match)
+      ^^^^^^^^^^^^^^^
+app/models/result.rb:57:5: C: Style/GuardClause: Use a guard clause (return unless match.match_type == 'GROUP') instead of wrapping the code inside a conditional expression.
+    if match.match_type == 'GROUP'
+    ^^
+app/models/result.rb:58:7: C: [Correctable] Style/CaseLikeIf: Convert if-elsif to case-when.
+      if match.result.winner == 'home' ...
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/models/team.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+class Team < ActiveRecord::Base
+^
+
+8 files inspected, 30 offenses detected, 19 more offenses can be corrected with `rubocop -A`

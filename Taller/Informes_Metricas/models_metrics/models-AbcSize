@@ -1,0 +1,13 @@
+Inspecting 8 files
+......C.
+
+Offenses:
+
+app/models/result.rb:31:3: C: Metrics/AbcSize: Assignment Branch Condition size for set_points is too high. [<0, 30, 7> 30.81/17]
+  def set_points(result, forecast) ...
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/models/result.rb:54:3: C: Metrics/AbcSize: Assignment Branch Condition size for set_won_matches is too high. [<0, 47, 7> 47.52/17]
+  def set_won_matches(match) ...
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+8 files inspected, 2 offenses detected
