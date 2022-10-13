@@ -20,5 +20,8 @@ AllCops:
     - 'app/helpers/*'
     - 'app/views/*'
     - 'config.ru'
+
+AllCops:
+    NewCops: enable
     
     
