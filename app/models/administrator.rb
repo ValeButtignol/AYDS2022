@@ -7,7 +7,7 @@ class Administrator < ActiveRecord::Base
 
   validates :username, presence: true
   validates :username, uniqueness: true
-  
+
   # Adds salt to the password.
   has_secure_password
 end

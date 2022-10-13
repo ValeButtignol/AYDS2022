@@ -1,7 +1,6 @@
 require 'bcrypt'
 
 class Player < ActiveRecord::Base
-  
   has_many :forecasts
 
   validates :username, presence: true
