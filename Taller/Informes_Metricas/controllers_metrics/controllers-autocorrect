@@ -1,0 +1,134 @@
+Inspecting 1 file
+W
+
+Offenses:
+
+app/controllers/server.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+require 'sinatra/base'
+^
+app/controllers/server.rb:5:9: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+require "sinatra/activerecord"
+        ^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/server.rb:7:33: C: [Corrected] Style/RedundantFileExtensionInRequire: Redundant .rb file extension detected.
+require_relative '../models/init.rb'
+                                ^^^
+app/controllers/server.rb:16:1: C: Metrics/ClassLength: Class has too many lines. [178/100]
+class App < Sinatra::Application ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/server.rb:16:1: C: Style/Documentation: Missing top-level documentation comment for class App.
+class App < Sinatra::Application
+^^^^^^^^^
+app/controllers/server.rb:17:1: C: [Corrected] Layout/EmptyLinesAroundClassBody: Extra empty line detected at class body beginning.
+app/controllers/server.rb:25:1: C: [Corrected] Layout/TrailingWhitespace: Trailing whitespace detected.
+app/controllers/server.rb:27:25: C: [Correctable] Style/GlobalStdStream: Use $stdout instead of STDOUT.
+    logger = Logger.new(STDOUT)
+                        ^^^^^^
+app/controllers/server.rb:41:18: W: [Corrected] Lint/UnusedMethodArgument: Unused method argument - app. If it's necessary, use _ or _app as an argument name to indicate that it won't be used. You can also write as initialize(*) if you want the method to accept any arguments but don't care about them.
+  def initialize(app = nil)
+                 ^^^
+app/controllers/server.rb:44:1: C: [Corrected] Layout/TrailingWhitespace: Trailing whitespace detected.
+app/controllers/server.rb:52:1: C: [Corrected] Layout/CommentIndentation: Incorrect indentation detected (column 0 instead of 2).
+# Start Page  
+^^^^^^^^^^^^^^
+app/controllers/server.rb:52:13: C: [Corrected] Layout/TrailingWhitespace: Trailing whitespace detected.
+# Start Page  
+            ^^
+app/controllers/server.rb:57:1: C: [Corrected] Layout/CommentIndentation: Incorrect indentation detected (column 0 instead of 2).
+# Configure a before filter to protect private routes!
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/server.rb:62:7: W: Lint/UselessAssignment: Useless assignment to variable - administrator_pages.
+      administrator_pages = ['/admin/landingpage', '/admin/group/new', '/admin/group/:id/edit',
+      ^^^^^^^^^^^^^^^^^^^
+app/controllers/server.rb:63:30: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      administrator_pages = ["/admin/landingpage", "/admin/group/new", "/admin/group/:id/edit",
+                             ^^^^^^^^^^^^^^^^^^^^
+app/controllers/server.rb:63:52: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      administrator_pages = ["/admin/landingpage", "/admin/group/new", "/admin/group/:id/edit",
+                                                   ^^^^^^^^^^^^^^^^^^
+app/controllers/server.rb:63:72: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      administrator_pages = ["/admin/landingpage", "/admin/group/new", "/admin/group/:id/edit",
+                                                                       ^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/server.rb:64:9: C: [Corrected] Layout/ArrayAlignment: Align the elements of an array literal if they span more than one line.
+        "/admin/team/:id/edit", "/admin/team/new", "/admin/groups&teams", "/admin/match/new",
+        ^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/server.rb:64:9: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        "/admin/team/:id/edit", "/admin/team/new", "/admin/groups&teams", "/admin/match/new",
+        ^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/server.rb:64:33: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        "/admin/team/:id/edit", "/admin/team/new", "/admin/groups&teams", "/admin/match/new",
+                                ^^^^^^^^^^^^^^^^^
+app/controllers/server.rb:64:52: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        "/admin/team/:id/edit", "/admin/team/new", "/admin/groups&teams", "/admin/match/new",
+                                                   ^^^^^^^^^^^^^^^^^^^^^
+app/controllers/server.rb:64:75: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        "/admin/team/:id/edit", "/admin/team/new", "/admin/groups&teams", "/admin/match/new",
+                                                                          ^^^^^^^^^^^^^^^^^^
+app/controllers/server.rb:65:9: C: [Corrected] Layout/ArrayAlignment: Align the elements of an array literal if they span more than one line.
+        "/admin/match/:id/edit", "/admin/matches", "/admin/result/new"]    
+        ^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/server.rb:65:9: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        "/admin/match/:id/edit", "/admin/matches", "/admin/result/new"]    
+        ^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/server.rb:65:34: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        "/admin/match/:id/edit", "/admin/matches", "/admin/result/new"]    
+                                 ^^^^^^^^^^^^^^^^
+app/controllers/server.rb:65:52: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        "/admin/match/:id/edit", "/admin/matches", "/admin/result/new"]    
+                                                   ^^^^^^^^^^^^^^^^^^^
+app/controllers/server.rb:65:72: C: [Corrected] Layout/TrailingWhitespace: Trailing whitespace detected.
+        "/admin/match/:id/edit", "/admin/matches", "/admin/result/new"]    
+                                                                       ^^^^
+app/controllers/server.rb:66:7: C: [Corrected] Style/NegatedIf: Favor unless over if for negative conditions.
+      if !public_pages.include?(request.path_info) ...
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/server.rb:66:9: W: Lint/UselessAssignment: Useless assignment to variable - public_pages.
+        public_pages = ['/', '/player/login', '/player/signup', '/admin/login']
+        ^^^^^^^^^^^^
+app/controllers/server.rb:67:25: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        public_pages = ["/", "/player/login", "/player/signup","/admin/login"]
+                        ^^^
+app/controllers/server.rb:67:30: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        public_pages = ["/", "/player/login", "/player/signup","/admin/login"]
+                             ^^^^^^^^^^^^^^^
+app/controllers/server.rb:67:47: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        public_pages = ["/", "/player/login", "/player/signup","/admin/login"]
+                                              ^^^^^^^^^^^^^^^^
+app/controllers/server.rb:67:63: C: [Corrected] Layout/SpaceAfterComma: Space missing after comma.
+        public_pages = ["/", "/player/login", "/player/signup","/admin/login"]
+                                                              ^
+app/controllers/server.rb:67:64: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        public_pages = ["/", "/player/login", "/player/signup","/admin/login"]
+                                                               ^^^^^^^^^^^^^^
+app/controllers/server.rb:73:1: C: [Corrected] Layout/CommentIndentation: Incorrect indentation detected (column 0 instead of 2).
+################ PAGE INFORMATIO ################
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/server.rb:76:9: C: [Corrected] Style/SymbolLiteral: Do not use strings for word-like symbol literals.
+    erb :'information'
+        ^^^^^^^^^^^^^^
+app/controllers/server.rb:79:1: C: [Corrected] Layout/CommentIndentation: Incorrect indentation detected (column 0 instead of 2).
+################ PLAYERS CONTROLLERS ################
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/server.rb:125:1: C: [Corrected] Layout/CommentIndentation: Incorrect indentation detected (column 0 instead of 2).
+################ ADMINISTRATORS CONTROLLERS ################
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/server.rb:135:1: C: [Corrected] Layout/CommentIndentation: Incorrect indentation detected (column 0 instead of 2).
+################ GROUPS CONTROLLERS ################
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/server.rb:161:1: C: [Corrected] Layout/CommentIndentation: Incorrect indentation detected (column 0 instead of 2).
+################ TEAMS CONTROLLERS ################
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/server.rb:202:3: C: [Corrected] Layout/IndentationWidth: Use 2 (not 3) spaces for indentation.
+     get_match
+  ^^^
+app/controllers/server.rb:229:1: C: [Corrected] Layout/CommentIndentation: Incorrect indentation detected (column 0 instead of 2).
+################ FORECASTS CONTROLLERS ################
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/server.rb:255:1: C: [Corrected] Layout/CommentIndentation: Incorrect indentation detected (column 0 instead of 2).
+################ RESULTS CONTROLLERS ################
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/server.rb:264:1: C: [Corrected] Layout/EmptyLinesAroundClassBody: Extra empty line detected at class body end.
+app/controllers/server.rb:265:4: C: [Corrected] Layout/TrailingEmptyLines: Final newline missing.
+end
+   
+
+1 file inspected, 45 offenses detected, 39 offenses corrected, 2 more offenses can be corrected with `rubocop -A`
