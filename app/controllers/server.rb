@@ -2,9 +2,9 @@ require 'sinatra/base'
 require 'bundler/setup'
 require 'sinatra/reloader' if Sinatra::Base.environment == :development
 require 'logger'
-require "sinatra/activerecord"
+require 'sinatra/activerecord'
 require 'sinatra/flash'
-require_relative '../models/init.rb'
+require_relative '../models/init'
 require_relative '../helpers/players_helper'
 require_relative '../helpers/administrators_helper'
 require_relative '../helpers/teams_helper'
@@ -14,7 +14,6 @@ require_relative '../helpers/results_helper'
 require_relative '../helpers/matches_helper'
 
 class App < Sinatra::Application
-
   helpers Players
   helpers Administrators
   helpers Forecasts
@@ -22,7 +21,7 @@ class App < Sinatra::Application
   helpers Groups
   helpers Results
   helpers Matches
-  
+
   configure :production, :development do
     enable :logging
     logger = Logger.new(STDOUT)
@@ -38,10 +37,10 @@ class App < Sinatra::Application
     end
   end
 
-  def initialize(app = nil)
+  def initialize(_app = nil)
     super()
   end
-    
+
   configure do
     set :views, 'app/views'
     set :public_folder, './public'
@@ -49,34 +48,34 @@ class App < Sinatra::Application
     set :session_secret, ENV.fetch('SESSION_SECRET') { SecureRandom.hex(64) }
   end
 
-# Start Page  
+  # Start Page
   get '/' do
     erb :index
   end
 
-# Configure a before filter to protect private routes!
+  # Configure a before filter to protect private routes!
   before do
     if session[:player_id]
       @current_player = Player.find_by(id: session[:player_id])
     elsif session[:administrator_id]
       @current_administrator = Administrator.find_by(id: session[:admin_id])
-      administrator_pages = ["/admin/landingpage", "/admin/group/new", "/admin/group/:id/edit",
-        "/admin/team/:id/edit", "/admin/team/new", "/admin/groups&teams", "/admin/match/new",
-        "/admin/match/:id/edit", "/admin/matches", "/admin/result/new"]    
-      if !public_pages.include?(request.path_info)
-        public_pages = ["/", "/player/login", "/player/signup","/admin/login"]
+      administrator_pages = ['/admin/landingpage', '/admin/group/new', '/admin/group/:id/edit',
+                             '/admin/team/:id/edit', '/admin/team/new', '/admin/groups&teams', '/admin/match/new',
+                             '/admin/match/:id/edit', '/admin/matches', '/admin/result/new']
+      unless public_pages.include?(request.path_info)
+        public_pages = ['/', '/player/login', '/player/signup', '/admin/login']
         redirect '/'
       end
     end
   end
 
-################ PAGE INFORMATIO ################
+  ################ PAGE INFORMATIO ################
 
   get '/information' do
-    erb :'information'
+    erb :information
   end
 
-################ PLAYERS CONTROLLERS ################
+  ################ PLAYERS CONTROLLERS ################
 
   get '/player/signup' do
     get_signup
@@ -122,7 +121,7 @@ class App < Sinatra::Application
     delete_player
   end
 
-################ ADMINISTRATORS CONTROLLERS ################
+  ################ ADMINISTRATORS CONTROLLERS ################
 
   get '/admin/login' do
     get_admin_login
@@ -132,7 +131,7 @@ class App < Sinatra::Application
     get_admin_landingpage
   end
 
-################ GROUPS CONTROLLERS ################
+  ################ GROUPS CONTROLLERS ################
 
   get '/admin/group/new' do
     get_group
@@ -158,7 +157,7 @@ class App < Sinatra::Application
     get_group_and_team
   end
 
-################ TEAMS CONTROLLERS ################
+  ################ TEAMS CONTROLLERS ################
 
   get '/admin/team/new' do
     get_team
@@ -199,7 +198,7 @@ class App < Sinatra::Application
   ################ MATCHES CONTROLLERS ################
 
   get '/admin/match/new' do
-     get_match
+    get_match
   end
 
   post '/admin/match/new' do
@@ -226,7 +225,7 @@ class App < Sinatra::Application
     get_match_player
   end
 
-################ FORECASTS CONTROLLERS ################
+  ################ FORECASTS CONTROLLERS ################
 
   get '/player/forecast/new' do
     get_forecast
@@ -252,7 +251,7 @@ class App < Sinatra::Application
     get_all_forecast
   end
 
-################ RESULTS CONTROLLERS ################
+  ################ RESULTS CONTROLLERS ################
 
   get '/admin/result/new' do
     get_result
@@ -261,5 +260,4 @@ class App < Sinatra::Application
   post '/admin/result/new' do
     post_result
   end
-
 end
