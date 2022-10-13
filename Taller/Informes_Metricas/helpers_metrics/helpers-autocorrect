@@ -1,0 +1,318 @@
+Inspecting 9 files
+CCCCCCCC.
+
+Offenses:
+
+app/helpers/administrators_helper.rb:1:1: C: Style/Documentation: Missing top-level documentation comment for module Administrators.
+module Administrators
+^^^^^^^^^^^^^^^^^^^^^
+app/helpers/administrators_helper.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+module Administrators
+^
+app/helpers/administrators_helper.rb:2:1: C: [Corrected] Layout/EmptyLinesAroundModuleBody: Extra empty line detected at module body beginning.
+app/helpers/administrators_helper.rb:2:1: C: [Corrected] Layout/TrailingWhitespace: Trailing whitespace detected.
+app/helpers/administrators_helper.rb:2:7: C: Naming/AccessorMethodName: Do not prefix reader method names with get_.
+  def get_admin_login
+      ^^^^^^^^^^^^^^^
+app/helpers/administrators_helper.rb:4:3: C: [Corrected] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+      erb :'administrators/login_admin'
+  ^^^^
+app/helpers/administrators_helper.rb:8:8: C: [Correctable] Style/SafeNavigation: Use safe navigation (&.) instead of checking if an object exists before calling the method.
+    if admin && admin.authenticate(params[:password])
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/helpers/administrators_helper.rb:10:36: C: [Corrected] Layout/TrailingWhitespace: Trailing whitespace detected.
+      session[:admin_id] = admin.id 
+                                   ^
+app/helpers/administrators_helper.rb:13:23: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      flash[:error] = "Username or password invalid"
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/helpers/administrators_helper.rb:17:1: C: [Corrected] Layout/TrailingWhitespace: Trailing whitespace detected.
+app/helpers/administrators_helper.rb:17:7: C: Naming/AccessorMethodName: Do not prefix reader method names with get_.
+  def get_admin_landingpage
+      ^^^^^^^^^^^^^^^^^^^^^
+app/helpers/administrators_helper.rb:21:4: C: [Corrected] Layout/TrailingEmptyLines: Final newline missing.
+end
+   
+app/helpers/forecasts_helper.rb:1:1: C: Style/Documentation: Missing top-level documentation comment for module Forecasts.
+module Forecasts
+^^^^^^^^^^^^^^^^
+app/helpers/forecasts_helper.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+module Forecasts
+^
+app/helpers/forecasts_helper.rb:2:1: C: [Corrected] Layout/EmptyLinesAroundModuleBody: Extra empty line detected at module body beginning.
+app/helpers/forecasts_helper.rb:2:1: C: [Corrected] Layout/TrailingWhitespace: Trailing whitespace detected.
+app/helpers/forecasts_helper.rb:2:7: C: Naming/AccessorMethodName: Do not prefix reader method names with get_.
+  def get_forecast
+      ^^^^^^^^^^^^
+app/helpers/forecasts_helper.rb:6:3: C: Metrics/AbcSize: Assignment Branch Condition size for post_forecast is too high. [<6, 28, 2> 28.71/17]
+  def post_forecast ...
+  ^^^^^^^^^^^^^^^^^
+app/helpers/forecasts_helper.rb:6:3: C: Metrics/MethodLength: Method has too many lines. [14/10]
+  def post_forecast ...
+  ^^^^^^^^^^^^^^^^^
+app/helpers/forecasts_helper.rb:13:1: C: [Corrected] Layout/TrailingWhitespace: Trailing whitespace detected.
+app/helpers/forecasts_helper.rb:17:1: C: [Corrected] Layout/TrailingWhitespace: Trailing whitespace detected.
+app/helpers/forecasts_helper.rb:19:1: C: [Corrected] Layout/TrailingWhitespace: Trailing whitespace detected.
+app/helpers/forecasts_helper.rb:20:45: C: [Corrected] Style/MultilineIfThen: Do not use then for multi-line if.
+    if Forecast.find_by_id(new_forecast.id) then
+                                            ^^^^
+app/helpers/forecasts_helper.rb:22:9: C: [Corrected] Layout/TrailingWhitespace: Trailing whitespace detected.
+    else 
+        ^
+app/helpers/forecasts_helper.rb:23:23: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      flash[:error] = "Invalid forecast"
+                      ^^^^^^^^^^^^^^^^^^
+app/helpers/forecasts_helper.rb:28:7: C: Naming/AccessorMethodName: Do not prefix reader method names with get_.
+  def get_forecast_edit
+      ^^^^^^^^^^^^^^^^^
+app/helpers/forecasts_helper.rb:46:7: C: Naming/AccessorMethodName: Do not prefix reader method names with get_.
+  def get_all_forecast
+      ^^^^^^^^^^^^^^^^
+app/helpers/forecasts_helper.rb:50:4: C: [Corrected] Layout/TrailingEmptyLines: Final newline missing.
+end
+   
+app/helpers/groups_helper.rb:1:1: C: Style/Documentation: Missing top-level documentation comment for module Groups.
+module Groups
+^^^^^^^^^^^^^
+app/helpers/groups_helper.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+module Groups
+^
+app/helpers/groups_helper.rb:2:1: C: [Corrected] Layout/EmptyLinesAroundModuleBody: Extra empty line detected at module body beginning.
+app/helpers/groups_helper.rb:2:1: C: [Corrected] Layout/TrailingWhitespace: Trailing whitespace detected.
+app/helpers/groups_helper.rb:2:7: C: Naming/AccessorMethodName: Do not prefix reader method names with get_.
+  def get_group
+      ^^^^^^^^^
+app/helpers/groups_helper.rb:8:42: C: [Corrected] Layout/SpaceAfterComma: Space missing after comma.
+    group = Group.new(name: params[:name],administrator_id: session['admin_id'])
+                                         ^
+app/helpers/groups_helper.rb:9:19: C: [Corrected] Style/MultilineIfThen: Do not use then for multi-line if.
+    if group.save then
+                  ^^^^
+app/helpers/groups_helper.rb:15:7: C: Naming/AccessorMethodName: Do not prefix reader method names with get_.
+  def get_group_edit
+      ^^^^^^^^^^^^^^
+app/helpers/groups_helper.rb:27:8: C: [Correctable] Style/NumericPredicate: Use @group.teams.count.zero? instead of @group.teams.count == 0.
+    if @group.teams.count == 0
+       ^^^^^^^^^^^^^^^^^^^^^^^
+app/helpers/groups_helper.rb:28:8: C: [Corrected] Style/ParenthesesAroundCondition: Don't use parentheses around the condition of an if.
+    if (@group.teams.count == 0) 
+       ^^^^^^^^^^^^^^^^^^^^^^^^^
+app/helpers/groups_helper.rb:28:33: C: [Corrected] Layout/TrailingWhitespace: Trailing whitespace detected.
+    if (@group.teams.count == 0) 
+                                ^
+app/helpers/groups_helper.rb:32:23: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      flash[:error] = "This group cant be deleted because it has teams"
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/helpers/groups_helper.rb:36:7: C: Naming/AccessorMethodName: Do not prefix reader method names with get_.
+  def get_group_and_team
+      ^^^^^^^^^^^^^^^^^^
+app/helpers/groups_helper.rb:40:4: C: [Corrected] Layout/TrailingEmptyLines: Final newline missing.
+end
+   
+app/helpers/init_helper.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+require_relative '../helpers/players_helper'
+^
+app/helpers/init_helper.rb:15:16: C: [Corrected] Layout/TrailingEmptyLines: Final newline missing.
+helpers Matches
+               
+app/helpers/matches_helper.rb:1:1: C: Style/Documentation: Missing top-level documentation comment for module Matches.
+module Matches
+^^^^^^^^^^^^^^
+app/helpers/matches_helper.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+module Matches
+^
+app/helpers/matches_helper.rb:2:1: C: [Corrected] Layout/EmptyLinesAroundModuleBody: Extra empty line detected at module body beginning.
+app/helpers/matches_helper.rb:2:1: C: [Corrected] Layout/TrailingWhitespace: Trailing whitespace detected.
+app/helpers/matches_helper.rb:2:7: C: Naming/AccessorMethodName: Do not prefix reader method names with get_.
+  def get_match
+      ^^^^^^^^^
+app/helpers/matches_helper.rb:4:32: C: [Corrected] Layout/TrailingWhitespace: Trailing whitespace detected.
+    erb :'matches/create_match' 
+                               ^
+app/helpers/matches_helper.rb:6:3: C: Metrics/AbcSize: Assignment Branch Condition size for post_match is too high. [<7, 26, 2> 27/17]
+  def post_match ...
+  ^^^^^^^^^^^^^^
+app/helpers/matches_helper.rb:6:3: C: Metrics/MethodLength: Method has too many lines. [13/10]
+  def post_match ...
+  ^^^^^^^^^^^^^^
+app/helpers/matches_helper.rb:17:1: C: [Corrected] Layout/TrailingWhitespace: Trailing whitespace detected.
+app/helpers/matches_helper.rb:18:19: C: [Corrected] Style/MultilineIfThen: Do not use then for multi-line if.
+    if match.save then
+                  ^^^^
+app/helpers/matches_helper.rb:24:1: C: [Corrected] Layout/TrailingWhitespace: Trailing whitespace detected.
+app/helpers/matches_helper.rb:24:7: C: Naming/AccessorMethodName: Do not prefix reader method names with get_.
+  def get_match_edit
+      ^^^^^^^^^^^^^^
+app/helpers/matches_helper.rb:29:1: C: [Corrected] Layout/TrailingWhitespace: Trailing whitespace detected.
+app/helpers/matches_helper.rb:31:79: C: [Corrected] Layout/SpaceAfterComma: Space missing after comma.
+    Match.find_by(id: params[:id]).update(home_team_id: params['home_team_id'],visitor_team_id: params['visitor_team_id'],stadium: params['stadium'], date: params['date'], match_type: params['match_type'])
+                                                                              ^
+app/helpers/matches_helper.rb:31:80: C: [Corrected] Layout/TrailingWhitespace: Trailing whitespace detected.
+    Match.find_by(id: params[:id]).update(home_team_id: params['home_team_id'], 
+                                                                               ^
+app/helpers/matches_helper.rb:31:85: C: [Corrected] Layout/ArgumentAlignment: Align the arguments of a method call if they span more than one line.
+                                                                                    visitor_team_id: params['visitor_team_id'], stadium: params['stadium'], date: params['date'], match_type: params['match_type'])
+                                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/helpers/matches_helper.rb:31:85: C: [Corrected] Layout/HashAlignment: Align the keys of a hash literal if they span more than one line.
+                                                                                    visitor_team_id: params['visitor_team_id'], stadium: params['stadium'], date: params['date'], match_type: params['match_type'])
+                                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/helpers/matches_helper.rb:31:121: C: Layout/LineLength: Line is too long. [169/120]
+                                          visitor_team_id: params['visitor_team_id'], stadium: params['stadium'], date: params['date'], match_type: params['match_type'])
+                                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/helpers/matches_helper.rb:31:121: C: [Corrected] Layout/LineLength: Line is too long. [205/120]
+    Match.find_by(id: params[:id]).update(home_team_id: params['home_team_id'],visitor_team_id: params['visitor_team_id'],stadium: params['stadium'], date: params['date'], match_type: params['match_type'])
+                                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/helpers/matches_helper.rb:31:122: C: [Corrected] Layout/SpaceAfterComma: Space missing after comma.
+    Match.find_by(id: params[:id]).update(home_team_id: params['home_team_id'],visitor_team_id: params['visitor_team_id'],stadium: params['stadium'], date: params['date'], match_type: params['match_type'])
+                                                                                                                         ^
+app/helpers/matches_helper.rb:32:1: C: [Corrected] Layout/ArgumentAlignment: Align the arguments of a method call if they span more than one line.
+visitor_team_id: params['visitor_team_id'], stadium: params['stadium'], date: params['date'], match_type: params['match_type'])
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/helpers/matches_helper.rb:32:1: C: [Corrected] Layout/HashAlignment: Align the keys of a hash literal if they span more than one line.
+visitor_team_id: params['visitor_team_id'], stadium: params['stadium'], date: params['date'], match_type: params['match_type'])
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/helpers/matches_helper.rb:34:1: C: [Corrected] Layout/TrailingWhitespace: Trailing whitespace detected.
+app/helpers/matches_helper.rb:37:8: C: [Correctable] Style/NumericPredicate: Use @match.forecasts.count.zero? instead of @match.forecasts.count == 0.
+    if @match.forecasts.count == 0 && @match.result.nil?
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/helpers/matches_helper.rb:37:8: C: [Corrected] Style/ParenthesesAroundCondition: Don't use parentheses around the condition of an if.
+    if (@match.forecasts.count == 0 && @match.result == nil)
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/helpers/matches_helper.rb:37:54: C: [Corrected] Style/NilComparison: Prefer the use of the nil? predicate.
+    if (@match.forecasts.count == 0 && @match.result == nil)
+                                                     ^^
+app/helpers/matches_helper.rb:41:7: C: [Corrected] Layout/LeadingCommentSpace: Missing space after #.
+      #Flash message
+      ^^^^^^^^^^^^^^
+app/helpers/matches_helper.rb:42:23: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      flash[:error] = "This match cannot be deleted because it has an associated result or prediction"
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/helpers/matches_helper.rb:44:8: C: [Corrected] Layout/TrailingWhitespace: Trailing whitespace detected.
+    end  
+       ^^
+app/helpers/matches_helper.rb:47:7: C: Naming/AccessorMethodName: Do not prefix reader method names with get_.
+  def get_match_admin
+      ^^^^^^^^^^^^^^^
+app/helpers/matches_helper.rb:52:7: C: Naming/AccessorMethodName: Do not prefix reader method names with get_.
+  def get_match_player
+      ^^^^^^^^^^^^^^^^
+app/helpers/matches_helper.rb:55:4: C: [Corrected] Layout/TrailingEmptyLines: Final newline missing.
+end
+   
+app/helpers/players_helper.rb:1:1: C: Style/Documentation: Missing top-level documentation comment for module Players.
+module Players
+^^^^^^^^^^^^^^
+app/helpers/players_helper.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+module Players
+^
+app/helpers/players_helper.rb:2:1: C: [Corrected] Layout/EmptyLinesAroundModuleBody: Extra empty line detected at module body beginning.
+app/helpers/players_helper.rb:2:7: C: Naming/AccessorMethodName: Do not prefix reader method names with get_.
+  def get_signup
+      ^^^^^^^^^^
+app/helpers/players_helper.rb:6:1: C: [Corrected] Layout/TrailingWhitespace: Trailing whitespace detected.
+app/helpers/players_helper.rb:8:3: C: [Corrected] Layout/CommentIndentation: Incorrect indentation detected (column 2 instead of 4).
+  # Create a new player and persist it.
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/helpers/players_helper.rb:9:5: C: [Corrected] Layout/CommentIndentation: Incorrect indentation detected (column 4 instead of 2).
+    # Create a new player and persist it.
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/helpers/players_helper.rb:10:3: C: [Corrected] Layout/IndentationConsistency: Inconsistent indentation detected.
+  if player.save ...
+  ^^^^^^^^^^^^^^
+app/helpers/players_helper.rb:10:3: C: [Corrected] Layout/IndentationWidth: Use 2 (not 0) spaces for indentation.
+  player = Player.new(params)
+  
+app/helpers/players_helper.rb:11:5: C: [Corrected] Layout/IndentationConsistency: Inconsistent indentation detected.
+    if player.save then ...
+    ^^^^^^^^^^^^^^^^^^^
+app/helpers/players_helper.rb:11:20: C: [Corrected] Style/MultilineIfThen: Do not use then for multi-line if.
+    if player.save then
+                   ^^^^
+app/helpers/players_helper.rb:12:38: C: [Corrected] Layout/TrailingWhitespace: Trailing whitespace detected.
+      session[:player_id] = player.id 
+                                     ^
+app/helpers/players_helper.rb:16:23: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      flash[:error] = "Username invalid"
+                      ^^^^^^^^^^^^^^^^^^
+app/helpers/players_helper.rb:20:1: C: [Corrected] Layout/TrailingWhitespace: Trailing whitespace detected.
+app/helpers/players_helper.rb:20:7: C: Naming/AccessorMethodName: Do not prefix reader method names with get_.
+  def get_login
+      ^^^^^^^^^
+app/helpers/players_helper.rb:22:25: C: [Corrected] Layout/TrailingWhitespace: Trailing whitespace detected.
+    erb :'players/login'  
+                        ^^
+app/helpers/players_helper.rb:24:3: C: Metrics/AbcSize: Assignment Branch Condition size for post_login is too high. [<5, 25, 5> 25.98/17]
+  def post_login ...
+  ^^^^^^^^^^^^^^
+app/helpers/players_helper.rb:24:3: C: Metrics/MethodLength: Method has too many lines. [12/10]
+  def post_login ...
+  ^^^^^^^^^^^^^^
+app/helpers/players_helper.rb:28:8: C: [Correctable] Style/SafeNavigation: Use safe navigation (&.) instead of checking if an object exists before calling the method.
+    if admin && admin.authenticate(params[:password])
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/helpers/players_helper.rb:30:36: C: [Corrected] Layout/TrailingWhitespace: Trailing whitespace detected.
+      session[:admin_id] = admin.id 
+                                   ^
+app/helpers/players_helper.rb:32:11: C: [Correctable] Style/SafeNavigation: Use safe navigation (&.) instead of checking if an object exists before calling the method.
+    elsif player && player.authenticate(params[:password])
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/helpers/players_helper.rb:34:38: C: [Corrected] Layout/TrailingWhitespace: Trailing whitespace detected.
+      session[:player_id] = player.id 
+                                     ^
+app/helpers/players_helper.rb:38:23: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      flash[:error] = "Username or password invalid"
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/helpers/players_helper.rb:42:7: C: Naming/AccessorMethodName: Do not prefix reader method names with get_.
+  def get_logout
+      ^^^^^^^^^^
+app/helpers/players_helper.rb:47:7: C: Naming/AccessorMethodName: Do not prefix reader method names with get_.
+  def get_landingpage
+      ^^^^^^^^^^^^^^^
+app/helpers/players_helper.rb:53:20: C: [Corrected] Layout/TrailingWhitespace: Trailing whitespace detected.
+  def delete_player 
+                   ^
+app/helpers/players_helper.rb:58:1: C: [Corrected] Layout/TrailingWhitespace: Trailing whitespace detected.
+app/helpers/players_helper.rb:58:7: C: Naming/AccessorMethodName: Do not prefix reader method names with get_.
+  def get_all_players
+      ^^^^^^^^^^^^^^^
+app/helpers/players_helper.rb:68:7: C: Naming/AccessorMethodName: Do not prefix reader method names with get_.
+  def get_player_search
+      ^^^^^^^^^^^^^^^^^
+app/helpers/results_helper.rb:1:1: C: Style/Documentation: Missing top-level documentation comment for module Results.
+module Results
+^^^^^^^^^^^^^^
+app/helpers/results_helper.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+module Results
+^
+app/helpers/results_helper.rb:2:1: C: [Corrected] Layout/EmptyLinesAroundModuleBody: Extra empty line detected at module body beginning.
+app/helpers/results_helper.rb:2:7: C: Naming/AccessorMethodName: Do not prefix reader method names with get_.
+  def get_result
+      ^^^^^^^^^^
+app/helpers/results_helper.rb:4:3: C: [Corrected] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+      erb :'results/create_result'
+  ^^^^
+app/helpers/results_helper.rb:6:1: C: [Corrected] Layout/TrailingWhitespace: Trailing whitespace detected.
+app/helpers/results_helper.rb:6:3: C: Metrics/AbcSize: Assignment Branch Condition size for post_result is too high. [<5, 19, 2> 19.75/17]
+  def post_result ...
+  ^^^^^^^^^^^^^^^
+app/helpers/results_helper.rb:6:3: C: Metrics/MethodLength: Method has too many lines. [11/10]
+  def post_result ...
+  ^^^^^^^^^^^^^^^
+app/helpers/results_helper.rb:13:1: C: [Corrected] Layout/TrailingWhitespace: Trailing whitespace detected.
+app/helpers/results_helper.rb:15:20: C: [Corrected] Style/MultilineIfThen: Do not use then for multi-line if.
+    if result.save then
+                   ^^^^
+app/helpers/results_helper.rb:18:35: C: [Corrected] Layout/TrailingWhitespace: Trailing whitespace detected.
+      redirect '/admin/result/new' 
+                                  ^
+app/helpers/results_helper.rb:21:4: C: [Corrected] Layout/TrailingEmptyLines: Final newline missing.
+end
+   
+app/helpers/teams_helper.rb:33:3: C: Metrics/AbcSize: Assignment Branch Condition size for delete_team is too high. [<6, 16, 7> 18.47/17]
+  def delete_team ...
+  ^^^^^^^^^^^^^^^
+app/helpers/teams_helper.rb:33:3: C: Metrics/MethodLength: Method has too many lines. [13/10]
+  def delete_team ...
+  ^^^^^^^^^^^^^^^
+
+8 files inspected, 119 offenses detected, 71 offenses corrected, 12 more offenses can be corrected with `rubocop -A`

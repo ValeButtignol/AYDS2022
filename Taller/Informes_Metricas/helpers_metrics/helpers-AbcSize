@@ -1,0 +1,22 @@
+Inspecting 8 files
+.C..CCCC
+
+Offenses:
+
+app/helpers/forecasts_helper.rb:7:3: C: Metrics/AbcSize: Assignment Branch Condition size for post_forecast is too high. [<6, 28, 2> 28.71/17]
+  def post_forecast ...
+  ^^^^^^^^^^^^^^^^^
+app/helpers/matches_helper.rb:7:3: C: Metrics/AbcSize: Assignment Branch Condition size for post_match is too high. [<7, 26, 2> 27/17]
+  def post_match ...
+  ^^^^^^^^^^^^^^
+app/helpers/players_helper.rb:25:3: C: Metrics/AbcSize: Assignment Branch Condition size for post_login is too high. [<5, 25, 5> 25.98/17]
+  def post_login ...
+  ^^^^^^^^^^^^^^
+app/helpers/results_helper.rb:7:3: C: Metrics/AbcSize: Assignment Branch Condition size for post_result is too high. [<5, 19, 2> 19.75/17]
+  def post_result ...
+  ^^^^^^^^^^^^^^^
+app/helpers/teams_helper.rb:33:3: C: Metrics/AbcSize: Assignment Branch Condition size for delete_team is too high. [<6, 16, 7> 18.47/17]
+  def delete_team ...
+  ^^^^^^^^^^^^^^^
+
+8 files inspected, 5 offenses detected

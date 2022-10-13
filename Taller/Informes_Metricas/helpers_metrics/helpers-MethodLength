@@ -1,0 +1,22 @@
+Inspecting 8 files
+.C..CCCC
+
+Offenses:
+
+app/helpers/forecasts_helper.rb:7:3: C: Metrics/MethodLength: Method has too many lines. [14/10]
+  def post_forecast ...
+  ^^^^^^^^^^^^^^^^^
+app/helpers/matches_helper.rb:7:3: C: Metrics/MethodLength: Method has too many lines. [13/10]
+  def post_match ...
+  ^^^^^^^^^^^^^^
+app/helpers/players_helper.rb:25:3: C: Metrics/MethodLength: Method has too many lines. [12/10]
+  def post_login ...
+  ^^^^^^^^^^^^^^
+app/helpers/results_helper.rb:7:3: C: Metrics/MethodLength: Method has too many lines. [11/10]
+  def post_result ...
+  ^^^^^^^^^^^^^^^
+app/helpers/teams_helper.rb:33:3: C: Metrics/MethodLength: Method has too many lines. [13/10]
+  def delete_team ...
+  ^^^^^^^^^^^^^^^
+
+8 files inspected, 5 offenses detected
