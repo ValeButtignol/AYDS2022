@@ -54,11 +54,11 @@ module Teams
     erb :'teams/groups_teams'
   end
 
-  def team_search
+  def get_team_search
     erb :'teams/search_team'
   end
 
-  def profile_teams(name)
+  def get_profile_teams(name)
     @team = Team.find_by(name: name)
     erb :'teams/team_profile'
   end
