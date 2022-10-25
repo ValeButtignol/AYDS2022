@@ -7,7 +7,7 @@ Group.create(name: "F")
 Group.create(name: "G")
 Group.create(name: "H")
 ########################## GRUPO A
-Team.create(name:"QATAR", group_id: 1)
+Team.create(name:"QATAR", group_id: 1, icon:"./public/team_icons/qatar.png")
 Team.create(name:"ECUADOR", group_id: 1)
 Team.create(name:"SENEGAL", group_id: 1)
 Team.create(name:"PAÍSES BAJOS", group_id: 1)

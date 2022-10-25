@@ -24,7 +24,7 @@ Integrantes:
 * Run the interpreter: ```docker compose exec app bundle exec irb -I. -r app/controllers/server.rb```
 * Run Migrations: ```docker compose exec app bundle exec rake db:migrate```
 * Rollback Migration: ```docker compose exec app bundle exec rake db:rollback```
-* Create Migration: ```docker compose exec app bundle exec rake db:migration_name NAME=create_players```
+* Create Migration: ```docker compose exec app bundle exec rake db:create_migration NAME=create_players```
 * Reset BD: ```docker compose exec app bundle exec rake db:reset```
 * db commands: ```docker compose exec app bundle exec rake db -T```
 
