@@ -222,6 +222,10 @@ class App < Sinatra::Application
     get_match_admin
   end
 
+  get '/player/matches/:id' do
+    get_match_details
+  end
+
   get '/player/matches' do
     get_match_player
   end

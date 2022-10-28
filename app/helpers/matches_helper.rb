@@ -58,4 +58,8 @@ module Matches
   def get_match_player
     erb :'matches/matches_player'
   end
+
+  def get_match_details
+    erb :'matches/details'
+  end
 end
