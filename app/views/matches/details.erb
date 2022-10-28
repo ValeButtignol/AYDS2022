@@ -63,7 +63,7 @@
       </div>
 
       <div class=" col">
-        <div class="Scroll pt-2 bg-light text-dark rounded-4 overflow-auto">
+        <div class="Scroll pt-2 bg-light text-dark rounded-5">
           <%@match = Match.find_by_id(params[:id])%>
           <%home = Team.find_by_id(@match.home_team_id)%>
           <%visitor = Team.find_by_id(@match.visitor_team_id)%>
@@ -71,18 +71,23 @@
           <div class="row justify-content-md-center">
             <div class="col text-center" >
               <img src= <%=home.icon%> width="200" height="200">
-              <p class="display-6 text-center" style="font-family: Days One, sans-serif; color: black; font-size: 30px"> <%=home.name%> </p>
+              <p class="display-6 text-center" style="font-family: Days One, sans-serif; font-size: 30px"> <a href="/team/search/<%=home.name%>" style="color: black;"> <%=home.name%> </a> </p>
             </div>
 
             <div class="col-2 align-self-center text-center">
               <p class="display-6 text-center" style="font-family: Days One, sans-serif; color: black; font-size: 15px"><%=@match.date%></p>
-              <p class="display-6 text-center" style="font-family: Days One, sans-serif; color: black; font-size: 40px">VS</p>
+              <% if @match.result == nil%>
+                <p class="display-6 text-center" style="font-family: Days One, sans-serif; color: black; font-size: 40px">VS</p>
+              <%else%>
+                <%result = Result.find_by_id(@match.result)%>
+                <p class="display-6 text-center" style="font-family: Days One, sans-serif; color: black; font-size: 40px"><%=result.home_goals%> - <%=result.visitor_goals%></p>
+              <%end%>
               <p class="display-6 text-center" style="font-family: Days One, sans-serif; color: black; font-size: 15px"><%=@match.stadium%></p>
             </div>
             
             <div class="col text-center">
               <img src= <%=visitor.icon%> width="200" height="200">
-              <p class="display-6 text-center" style="font-family: Days One, sans-serif; color: black; font-size: 30px"> <%=visitor.name%> </p>
+              <p class="display-6 text-center" style="font-family: Days One, sans-serif; font-size: 30px"> <a href="/team/search/<%=visitor.name%>" style="color: black;"> <%=visitor.name%> </a> </p>
             </div>
           </div>
         </div>    
