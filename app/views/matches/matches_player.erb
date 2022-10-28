@@ -75,7 +75,7 @@
 
         <% @matches.each do |m| %>
           <%if m.result != nil%>
-            <p><i class="bi bi-caret-right"></i> <%= m.home_team.name %> <%= m.result.home_goals %> - <%= m.result.visitor_goals %> <%= m.visitor_team.name %> - Date: <%= m.date %> - Stadium: <%= m.stadium %> </p>
+            <p><i class="bi bi-caret-right"></i> <a href="/player/matches/<%=m.id%>"> <%= m.home_team.name %> - <%= m.visitor_team.name %> </a></p>
           <% end %>
         <% end %>
 
@@ -83,7 +83,7 @@
 
         <% @matches.each do |m| %>
           <%if m.result == nil%>
-            <p><i class="bi bi-caret-right"></i> Home: <%= m.home_team.name %> - Visitor: <%= m.visitor_team.name %> - Date: <%= m.date %> - Stadium: <%= m.stadium %> </p>
+            <p><i class="bi bi-caret-right"></i> <a href="/player/matches/<%=m.id%>"> <%= m.home_team.name %> - <%= m.visitor_team.name %> </a></p>
           <% end %>
         <% end %>
 
