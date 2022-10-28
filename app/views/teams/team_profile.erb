@@ -46,12 +46,11 @@
   </header>
 
   <main>
-    <br>
-    <br>
-
-    <div class="container ">
-        <div class="row bg-light rounded-2 mt-5">
+    <div class="container">
+      
+        <div class="row bg-light rounded-2 mt-2">
             <div class="col text-center align-self-center">
+                <img src= <%=@team.icon%> width="400" height="400">
                 <p class="h2 mb-5">Team: <%= @team.name %></p>
             </div>
             <div class="vr bg-dark"></div>
@@ -64,10 +63,32 @@
                 <p class="h4">Drawn matches: <%= @team.drawn_match %></p>
                 <p class="h4">Goals in favor: <%= @team.GF %></p>
                 <p class="h4">Goals against: <%= @team.GC %></p>
-                <img src= <%=@team.icon%> width="400" height="400">
+               
             </div>
         </div>
     </div>
+
+    <div class="container mt-3">
+      <div class="row bg-light rounded-2 mt-3 mb-5 pt-3">
+
+        <h1 class="mb-3" style="color:black ;">Upcoming matches</h1>
+
+       <% @matches = Match.all%>
+
+        <% @matches.each do |m| %>
+          <%if m.home_team_id == @team.id%>
+            <p><i class="bi bi-caret-right"></i> Home: <%= m.home_team.name %> - Visitor: <%= m.visitor_team.name %> - Date: <%= m.date %> - Stadium: <%= m.stadium %> </p>
+          <% end %>
+        <% end %>
+
+        <% @matches.each do |m| %>
+          <%if m.visitor_team_id == @team.id%>
+            <p><i class="bi bi-caret-right"></i> Home: <%= m.home_team.name %> - Visitor: <%= m.visitor_team.name %> - Date: <%= m.date %> - Stadium: <%= m.stadium %> </p>
+          <% end %>
+        <% end %>
+      <div>
+    <div>
+
   </main>
     
   <footer>
