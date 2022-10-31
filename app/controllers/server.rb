@@ -76,6 +76,10 @@ class App < Sinatra::Application
     erb :information
   end
 
+  get '/informationWorld' do
+    erb :informationWorld
+  end
+
   ################ PLAYERS CONTROLLERS ################
 
   get '/player/signup' do
@@ -120,10 +124,6 @@ class App < Sinatra::Application
 
   delete '/player/delete/:id' do
     delete_player
-  end
-
-  get '/player/tournament' do
-    get_tournament
   end
 
   ################ ADMINISTRATORS CONTROLLERS ################
