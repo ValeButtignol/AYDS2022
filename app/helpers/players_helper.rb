@@ -85,4 +85,7 @@ module Players
       redirect to '/player/search'
     end
   end
+
+  def get_tournament
+    erb :'players/tournament'
 end
