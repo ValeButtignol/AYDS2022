@@ -88,4 +88,5 @@ module Players
 
   def get_tournament
     erb :'players/tournament'
+  end
 end
