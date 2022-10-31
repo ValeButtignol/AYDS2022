@@ -122,7 +122,7 @@ class App < Sinatra::Application
     delete_player
   end
 
-  get '/playee/tournament' do
+  get '/player/tournament' do
     get_tournament
   end
 
