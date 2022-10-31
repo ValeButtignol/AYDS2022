@@ -122,6 +122,10 @@ class App < Sinatra::Application
     delete_player
   end
 
+  get '/playee/tournament' do
+    get_tournament
+  end
+
   ################ ADMINISTRATORS CONTROLLERS ################
 
   get '/admin/login' do
