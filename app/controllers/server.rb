@@ -76,6 +76,10 @@ class App < Sinatra::Application
     erb :information
   end
 
+  get '/informationWorld' do
+    erb :informationWorld
+  end
+
   ################ PLAYERS CONTROLLERS ################
 
   get '/player/signup' do
